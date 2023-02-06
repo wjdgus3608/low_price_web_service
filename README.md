@@ -91,6 +91,40 @@
   * 상품ID  
 
 ### 클래스 다이어그램  
+
+- User  
+  * userId  
+  * userPw  
+  * userName  
+  * userType  
+
+- ApiUsage  
+  * _id  
+  * apiType  
+  * currentUsage  
+  * maxUsage  
+
+- ExcludeProductInfo  
+  * excludeProductInfoId  
+  * searchKeyword  
+  * ownerId  
+  * totalCnt  
+
+- ExcludeProduct_Keyword  
+  * _id  
+  * excludeProductInfoId  
+  * excludeKeyword  
+
+- CompareCart  
+  * cartId  
+  * ownerId  
+  * totalCnt  
+ 
+- Cart_Product  
+  * _id  
+  * cartId  
+  * productId  
+  
 ### 스퀀스 다이어그램  
 
 * 메모  

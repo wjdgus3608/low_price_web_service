@@ -129,8 +129,19 @@
 - ExcludeProductInfoController  
 - CompareCartController  
 - WebPageController   
+
+### 웹 페이지 구성  
+
+- 로그인  
+- 회원가입  
+- 승인요청내역  
+- 검색 메인  
+- 상품리스트  
+- 회원정보 메인  
+- 키워드 내역 상세
   
 ### 스퀀스 다이어그램  
 
+
 * 메모  
-- 상품조회 결과, 카테고리, API 정보는 캐시 적극활용
+- 상품조회 결과, API 정보는 캐시 적극활용

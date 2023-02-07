@@ -51,9 +51,12 @@
 ### 모듈 구성  
 ![모듈구성도](https://user-images.githubusercontent.com/31335823/216994747-7a8708bb-155e-4663-ac47-d7517bc32aef.PNG)  
 
+상품 모듈 추가  
+
 ### 엔티티 구성  
   
-![lowPriceERD](https://user-images.githubusercontent.com/31335823/216988706-2b04ca8d-2f50-4398-a29b-f367c4b02e9f.PNG)
+![lowPriceERD](https://user-images.githubusercontent.com/31335823/216988706-2b04ca8d-2f50-4398-a29b-f367c4b02e9f.PNG)  
+- Product 추가  
 
 ### 클래스 다이어그램  
 
@@ -62,6 +65,15 @@
   * String userPw  
   * String userName  
   * int userType  
+ 
+- Product  
+  * int productId  
+  * String productname  
+  * String productLink  
+  * String productImg  
+  * int lprice  
+  * String maker  
+  * String brand  
  
 - ApiUsage  
   * long _id  
@@ -91,6 +103,7 @@
   * long productId  
 
 - UserRepository  
+- ProductRepository  
 - ApiUsageRepository  
 - ExcludeProductInfoRepository  
 - CompareCartRepository  
@@ -101,6 +114,9 @@
   * login()  
   * logout()  
   * approval()  
+  
+- ProductService  
+  * searchProduct()  
   
 - ApiUsageService  
   * getUsage()  

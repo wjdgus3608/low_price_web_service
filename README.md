@@ -58,37 +58,77 @@
 ### 클래스 다이어그램  
 
 - User  
-  * userId  
-  * userPw  
-  * userName  
-  * userType  
-
+  * String userId  
+  * String userPw  
+  * String userName  
+  * int userType  
+ 
 - ApiUsage  
-  * _id  
-  * apiType  
-  * currentUsage  
-  * maxUsage  
+  * long _id  
+  * int apiType  
+  * BigInteger currentUsage  
+  * BigInteger maxUsage  
 
 - ExcludeProductInfo  
-  * excludeProductInfoId  
-  * searchKeyword  
-  * ownerId  
-  * totalCnt  
+  * long excludeProductInfoId  
+  * String searchKeyword  
+  * String ownerId  
+  * long totalCnt  
 
 - ExcludeProduct_Keyword  
-  * _id  
-  * excludeProductInfoId  
-  * excludeKeyword  
+  * long _id  
+  * long excludeProductInfoId  
+  * String excludeKeyword  
 
 - CompareCart  
-  * cartId  
-  * ownerId  
-  * totalCnt  
+  * long cartId  
+  * String ownerId  
+  * long totalCnt  
  
 - Cart_Product  
-  * _id  
-  * cartId  
-  * productId  
+  * long _id  
+  * long cartId  
+  * long productId  
+
+- UserRepository  
+- ApiUsageRepository  
+- ExcludeProductInfoRepository  
+- CompareCartRepository  
+
+- UserService  
+  * join()  
+  * withdrawal()  
+  * login()  
+  * logout()  
+  * approval()  
+  
+- ApiUsageService  
+  * getUsage()  
+  * increaseUsage()  
+  * initUsage()  
+  
+- ExcludeProductInfoService  
+  * findAllProductWithFilter()  
+  * excludeProduct()  
+  * addExcludeKeyword()  
+  * findKeywords()  
+  * removeKeyword()  
+  * removeExcludeKeyword()  
+  
+- CompareCartService  
+  * findCartProduct()  
+  * addProduct()  
+  * removeProduct()  
+  * fixProduct()  
+  * removeAllProduct()  
+  
+- WebPageService  
+
+- UserController  
+- ApiUsageController  
+- ExcludeProductInfoController  
+- CompareCartController  
+- WebPageController   
   
 ### 스퀀스 다이어그램  
 

@@ -48,49 +48,119 @@
 
 ## 시스템 구성  
 ### 전체 구성도  
+<img width="989" alt="스크린샷 2023-02-11 20 57 13" src="https://user-images.githubusercontent.com/31335823/218256785-4df31f43-6750-4eeb-849a-193922879832.png">. 
+
 ### 모듈 구성  
 ![모듈구성도](https://user-images.githubusercontent.com/31335823/216994747-7a8708bb-155e-4663-ac47-d7517bc32aef.PNG)  
 
+상품 모듈 추가  
+
 ### 엔티티 구성  
   
-![lowPriceERD](https://user-images.githubusercontent.com/31335823/216988706-2b04ca8d-2f50-4398-a29b-f367c4b02e9f.PNG)
+![lowPriceERD](https://user-images.githubusercontent.com/31335823/216988706-2b04ca8d-2f50-4398-a29b-f367c4b02e9f.PNG)  
+- Product 추가  
 
 ### 클래스 다이어그램  
 
 - User  
-  * userId  
-  * userPw  
-  * userName  
-  * userType  
-
+  * String userId  
+  * String userPw  
+  * String userName  
+  * int userType  
+ 
+- Product  
+  * int productId  
+  * String productname  
+  * String productLink  
+  * String productImg  
+  * int lprice  
+  * String maker  
+  * String brand  
+ 
 - ApiUsage  
-  * _id  
-  * apiType  
-  * currentUsage  
-  * maxUsage  
+  * long _id  
+  * int apiType  
+  * BigInteger currentUsage  
+  * BigInteger maxUsage  
 
 - ExcludeProductInfo  
-  * excludeProductInfoId  
-  * searchKeyword  
-  * ownerId  
-  * totalCnt  
+  * long excludeProductInfoId  
+  * String searchKeyword  
+  * String ownerId  
+  * long totalCnt  
 
 - ExcludeProduct_Keyword  
-  * _id  
-  * excludeProductInfoId  
-  * excludeKeyword  
+  * long _id  
+  * long excludeProductInfoId  
+  * String excludeKeyword  
 
 - CompareCart  
-  * cartId  
-  * ownerId  
-  * totalCnt  
+  * long cartId  
+  * String ownerId  
+  * long totalCnt  
  
 - Cart_Product  
-  * _id  
-  * cartId  
-  * productId  
+  * long _id  
+  * long cartId  
+  * long productId  
+
+- UserRepository  
+- ProductRepository  
+- ApiUsageRepository  
+- ExcludeProductInfoRepository  
+- CompareCartRepository  
+
+- UserService  
+  * join()  
+  * withdrawal()  
+  * login()  
+  * logout()  
+  * approval()  
+  
+- ProductService  
+  * searchProduct()  
+  
+- ApiUsageService  
+  * getUsage()  
+  * increaseUsage()  
+  * initUsage()  
+  
+- ExcludeProductInfoService  
+  * findAllProductWithFilter()  
+  * excludeProduct()  
+  * addExcludeKeyword()  
+  * findKeywords()  
+  * removeKeyword()  
+  * removeExcludeKeyword()  
+  
+- CompareCartService  
+  * findCartProduct()  
+  * addProduct()  
+  * removeProduct()  
+  * fixProduct()  
+  * removeAllProduct()  
+  
+- WebPageService  
+
+- UserController  
+- ApiUsageController  
+- ExcludeProductInfoController  
+- CompareCartController  
+- WebPageController   
+
+### 웹 페이지 구성  
+
+- 로그인  
+- 회원가입  
+- 승인요청내역  
+- 검색 메인  
+- 상품리스트  
+- 회원정보 메인  
+- 키워드 내역 상세
   
 ### 스퀀스 다이어그램  
 
+
 * 메모  
-- 상품조회 결과, 카테고리, API 정보는 캐시 적극활용
+- 상품조회 결과, API 정보는 캐시 적극활용  
+- 설계 > 젠킨스 빌드/배포 로컬 테스트 > 원격 빌드/배포 설정 > 테스트 코드 작성 > 서버개발 > 웹

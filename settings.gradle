@@ -1,1 +1,4 @@
 rootProject.name = 'lowprice'
+include 'module_user'
+include 'module_api_usage'
+

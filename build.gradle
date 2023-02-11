@@ -1,32 +1,64 @@
 plugins {
+	id 'org.springframework.boot' version '2.7.0'
 	id 'java'
-	id 'org.springframework.boot' version '3.0.2'
-	id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'com.jung.web'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
 
 repositories {
 	mavenCentral()
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+bootJar.enabled = false
+
+subprojects {
+	group = 'com.jung'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+
+	apply plugin: 'java'
+	// build.gradle에서 api() 를 사용하려면 java-library 사용
+	apply plugin: 'java-library'
+	apply plugin: 'org.springframework.boot'
+	// spring boot dependency를 사용하여 사용중인 부트 버전에서 자동으로 의존성을 가져온다.
+	apply plugin: 'io.spring.dependency-management'
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	// 관리하는 모듈에 공통 dependencies
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		compileOnly 'org.projectlombok:lombok'
+		developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+
+	test {
+		useJUnitPlatform()
+	}
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+project(':module_user') {
+	dependencies {
+
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+
+	}
+}
+
+project(':module_api_usage') {
+	dependencies {
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	}
 }

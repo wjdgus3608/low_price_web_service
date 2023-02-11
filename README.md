@@ -48,6 +48,8 @@
 
 ## 시스템 구성  
 ### 전체 구성도  
+<img width="989" alt="스크린샷 2023-02-11 20 57 13" src="https://user-images.githubusercontent.com/31335823/218256785-4df31f43-6750-4eeb-849a-193922879832.png">. 
+
 ### 모듈 구성  
 ![모듈구성도](https://user-images.githubusercontent.com/31335823/216994747-7a8708bb-155e-4663-ac47-d7517bc32aef.PNG)  
 

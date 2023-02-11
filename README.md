@@ -57,8 +57,7 @@
 
 ### 엔티티 구성  
   
-![lowPriceERD](https://user-images.githubusercontent.com/31335823/216988706-2b04ca8d-2f50-4398-a29b-f367c4b02e9f.PNG)  
-- Product 추가  
+![lowPriceERD](https://user-images.githubusercontent.com/31335823/218268925-ae241988-feb9-4a5a-9c60-3bc4029d1aa4.PNG)
 
 ### 클래스 다이어그램  
 

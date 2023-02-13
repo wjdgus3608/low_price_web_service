@@ -12,8 +12,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/module_api_usage" />
-            <option value="$PROJECT_DIR$/module_user" />
+            <option value="$PROJECT_DIR$/module-api-usage" />
+            <option value="$PROJECT_DIR$/module-user" />
+            <option value="$PROJECT_DIR$/module-webpage" />
           </set>
         </option>
       </GradleProjectSettings>

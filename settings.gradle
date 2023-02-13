@@ -1,4 +1,5 @@
 rootProject.name = 'lowprice'
-include 'module_user'
-include 'module_api_usage'
+include 'module-user'
+include 'module-api-usage'
+include 'module-webpage'
 

@@ -34,7 +34,7 @@ subprojects {
 
 	// 관리하는 모듈에 공통 dependencies
 	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		compileOnly 'org.projectlombok:lombok'
 		developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -47,7 +47,7 @@ subprojects {
 	}
 }
 
-project(':module_user') {
+project(':module-user') {
 	dependencies {
 
 //		implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -56,9 +56,16 @@ project(':module_user') {
 	}
 }
 
-project(':module_api_usage') {
+project(':module-api-usage') {
 	dependencies {
 //		implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
+	}
+}
+
+project(':module-webpage') {
+	dependencies {
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.3'
 	}
 }

@@ -54,7 +54,6 @@ project(':module-user') {
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 
 
-		
 	}
 }
 

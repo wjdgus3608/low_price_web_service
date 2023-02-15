@@ -1,4 +1,4 @@
-package com.jung.domain;
+package com.jung.domain.apiusage;
 
 import javax.persistence.Embeddable;
 

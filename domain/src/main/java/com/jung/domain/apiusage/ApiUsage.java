@@ -1,4 +1,4 @@
-package com.jung.domain;
+package com.jung.domain.apiusage;
 
 
 import lombok.AccessLevel;
@@ -20,5 +20,13 @@ public class ApiUsage {
     long currentUsage;
 
     long maxUsage;
+
+    public void increaseUsage(){
+        this.currentUsage++;
+    }
+
+    public void initUsage(){
+        this.currentUsage=0;
+    }
 
 }

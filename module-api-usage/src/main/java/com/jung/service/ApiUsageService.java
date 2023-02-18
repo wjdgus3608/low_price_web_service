@@ -36,6 +36,12 @@ public class ApiUsageService {
     }
 
     @Transactional
+    public String addApi(ApiUsageDTO apiUsageDTO){
+        apiUsageRepository.save(apiUsageDTO.dtoToEntity(apiUsageDTO));
+        return "300";
+    }
+
+    @Transactional
     public ApiUsageDTO increaseUsage(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
         apiUsages.get(0).increaseUsage();

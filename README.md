@@ -1,5 +1,5 @@
 # low_price_web_service  
-> ### 개인화 쇼핑 검색 서비스
+> ### 쇼핑 최저가 검색 서비스
 
 ## 기술 스택  
 
@@ -56,7 +56,7 @@
 
 상품 모듈 추가  
 
-### 엔티티 구성  
+### 테이블 구성  
   
 ![lowPriceERD](https://user-images.githubusercontent.com/31335823/218268925-ae241988-feb9-4a5a-9c60-3bc4029d1aa4.PNG)  
 

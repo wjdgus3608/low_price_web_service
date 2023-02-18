@@ -35,27 +35,35 @@ class ApiUsageServiceTest {
         assertEquals(0,apiUsageDTO.getApiUsage());
     }
 
-//    @Test
-//    @DisplayName("api 최대 사용량 조회")
-//    void getMaxUsage() {
-//        //given
-//        //when
-//        //than
-//    }
-//
-//    @Test
-//    @DisplayName("api 사용량 증가")
-//    void increaseUsage() {
-//        //given
-//        //when
-//        //than
-//    }
-//
-//    @Test
-//    @DisplayName("api 현재 사용량 초기화")
-//    void initUsage() {
-//        //given
-//        //when
-//        //than
-//    }
+    @Test
+    @DisplayName("api 최대 사용량 조회")
+    void getMaxUsage() {
+        //given
+        //when
+        ApiUsageDTO apiUsageDTO = apiUsageService.getMaxUsage();
+        //than
+        assertEquals(25000,apiUsageDTO.getMaxUsage());
+
+    }
+
+    @Test
+    @DisplayName("api 사용량 증가")
+    void increaseUsage() {
+        //given
+        apiUsageService.increaseUsage();
+        //when
+        ApiUsageDTO apiUsageDTO = apiUsageService.getUsage();
+        //than
+        assertEquals(1,apiUsageDTO.getApiUsage());
+    }
+
+    @Test
+    @DisplayName("api 현재 사용량 초기화")
+    void initUsage() {
+        //given
+        apiUsageService.increaseUsage();
+        ApiUsageDTO apiUsageDTO = apiUsageService.initUsage();
+        //than
+        assertEquals(0,apiUsageDTO.getApiUsage());
+    }
 }

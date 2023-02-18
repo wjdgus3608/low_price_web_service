@@ -31,7 +31,7 @@ public class ApiUsageService {
 
         return ApiUsageDTO.builder()
                 .responseMessage("정상")
-                .apiUsage(apiUsages.get(0).getMaxUsage())
+                .maxUsage(apiUsages.get(0).getMaxUsage())
                 .build();
     }
 

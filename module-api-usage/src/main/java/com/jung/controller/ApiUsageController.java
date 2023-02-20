@@ -29,6 +29,6 @@ public class ApiUsageController {
 
     @PostMapping("/usage-zero")
     public ResponseEntity<?> initUsage(){
-        
+
     }
 }

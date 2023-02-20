@@ -57,6 +57,7 @@ class ApiUsageServiceTest {
         assertEquals(1,apiUsageDTO.getApiUsage());
     }
 
+
     @Test
     @DisplayName("api 현재 사용량 초기화")
     void initUsage() {

@@ -5,6 +5,7 @@ import com.jung.domain.apiusage.ApiUsageDTO;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +31,8 @@ class ApiUsageServiceTest {
     void getUsage() {
         //given
         //when
-        ApiUsageDTO apiUsageDTO = apiUsageService.getUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(0,apiUsageDTO.getApiUsage());
     }
@@ -40,7 +42,8 @@ class ApiUsageServiceTest {
     void getMaxUsage() {
         //given
         //when
-        ApiUsageDTO apiUsageDTO = apiUsageService.getMaxUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getMaxUsage();
+        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(25000,apiUsageDTO.getMaxUsage());
 
@@ -52,7 +55,8 @@ class ApiUsageServiceTest {
         //given
         apiUsageService.increaseUsage();
         //when
-        ApiUsageDTO apiUsageDTO = apiUsageService.getUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(1,apiUsageDTO.getApiUsage());
     }
@@ -63,7 +67,10 @@ class ApiUsageServiceTest {
     void initUsage() {
         //given
         apiUsageService.increaseUsage();
-        ApiUsageDTO apiUsageDTO = apiUsageService.initUsage();
+        apiUsageService.initUsage();
+        //when
+        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(0,apiUsageDTO.getApiUsage());
     }

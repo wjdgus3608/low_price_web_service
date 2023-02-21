@@ -67,6 +67,7 @@ class ApiUsageControllerTest {
     }
 
     @Test
+    @DisplayName("api 최대 사용량 조회")
     void getMaxUsage() throws Exception {
         //given
         doReturn(entity).when(apiUsageService).getMaxUsage();

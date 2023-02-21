@@ -18,10 +18,10 @@ public class ApiUsageController {
         return apiUsageService.getUsage();
     }
 
-//    @GetMapping("/max-usage")
-//    public ResponseEntity<?> getMaxUsage(){
-//
-//    }
+    @GetMapping("/max-usage")
+    public ResponseEntity<?> getMaxUsage(){
+        return apiUsageService.getMaxUsage();
+    }
 //
 //    @PostMapping("/api")
 //    public ResponseEntity<?> addApi(){

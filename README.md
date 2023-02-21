@@ -80,4 +80,5 @@
 * 메모  
 - 상품조회 결과, API 정보는 캐시 적극활용  
 - 설계 > 젠킨스 빌드/배포 로컬 테스트 > 원격 빌드/배포 설정 > 테스트 코드 작성 > 서버개발 > 웹
-- Controller 테스트 참조 링크 : https://mangkyu.tistory.com/145
+- Controller 테스트 참조 링크 : https://mangkyu.tistory.com/145 , https://wooody92.github.io/spring%20boot/Spring-Boot-%ED%86%B5%ED%95%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%99%80-%EB%8B%A8%EC%9C%84%ED%85%8C%EC%8A%A4%ED%8A%B8/  
+- 기본적인 서비스 CRUD는 통합테스트로, 로직은 단위테스트로 테스트

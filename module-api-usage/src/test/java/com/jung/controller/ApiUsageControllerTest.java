@@ -67,7 +67,14 @@ class ApiUsageControllerTest {
     }
 
     @Test
-    void getMaxUsage() {
+    void getMaxUsage() throws Exception {
+        //given
+        doReturn(entity).when(apiUsageService).getMaxUsage();
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("/max-usage"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print())
+                .andExpect(MockMvcResultMatchers.jsonPath("maxUsage").value(equalTo(25000)));
     }
 
     @Test

@@ -22,7 +22,7 @@ public class ApiUsageService {
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
                 .responseCode(300)
                 .responseMessage("정상")
-                .apiUsage(apiUsages.get(0).getCurrentUsage())
+                .currentUsage(apiUsages.get(0).getCurrentUsage())
                 .build();
         return ResponseEntity.ok(apiUsageDTO);
     }

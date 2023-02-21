@@ -11,7 +11,6 @@ import lombok.Setter;
 public class ApiUsageDTO {
     int responseCode;
     String responseMessage;
-    long apiUsage;
     ApiType apiType;
     long currentUsage;
     long maxUsage;

@@ -20,7 +20,7 @@ class ApiUsageServiceTest {
     void initApiUsage(){
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
                 .apiType(ApiType.SHOPPING_API)
-                .apiUsage(0)
+                .currentUsage(0)
                 .maxUsage(25000)
                 .build();
         apiUsageService.addApi(apiUsageDTO);
@@ -34,7 +34,7 @@ class ApiUsageServiceTest {
         ResponseEntity<?> responseEntity = apiUsageService.getUsage();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
-        assertEquals(0,apiUsageDTO.getApiUsage());
+        assertEquals(0,apiUsageDTO.getCurrentUsage());
     }
 
     @Test
@@ -58,7 +58,7 @@ class ApiUsageServiceTest {
         ResponseEntity<?> responseEntity = apiUsageService.getUsage();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
-        assertEquals(1,apiUsageDTO.getApiUsage());
+        assertEquals(1,apiUsageDTO.getCurrentUsage());
     }
 
 
@@ -72,6 +72,6 @@ class ApiUsageServiceTest {
         ResponseEntity<?> responseEntity = apiUsageService.getUsage();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
-        assertEquals(0,apiUsageDTO.getApiUsage());
+        assertEquals(0,apiUsageDTO.getCurrentUsage());
     }
 }

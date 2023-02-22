@@ -10,6 +10,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -79,7 +80,14 @@ class ApiUsageControllerTest {
     }
 
     @Test
-    void addApi() {
+    void addApi() throws Exception {
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(entity.toString()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

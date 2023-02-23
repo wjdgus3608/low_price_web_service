@@ -26,12 +26,12 @@ public class ApiUsageController {
     public ResponseEntity<?> addApi(@RequestBody ApiUsageDTO apiUsageDTO){
         return apiUsageService.addApi(apiUsageDTO);
     }
-//
-//    @PostMapping("/usage")
-//    public ResponseEntity<?> increaseUsage(){
-//
-//    }
-//
+
+    @PostMapping("/usage")
+    public ResponseEntity<?> increaseUsage(){
+        return apiUsageService.increaseUsage();
+    }
+
 //    @PostMapping("/usage-zero")
 //    public ResponseEntity<?> initUsage(){
 //

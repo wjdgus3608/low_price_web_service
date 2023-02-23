@@ -105,8 +105,9 @@ class ApiUsageControllerTest {
         doReturn(entity).when(apiUsageService).increaseUsage();
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.post("/api"))
+        mockMvc.perform(MockMvcRequestBuilders.post("/usage"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("currentUsage").value(equalTo(0)))
                 .andDo(print());
     }
 

@@ -1,5 +1,6 @@
 package com.jung.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jung.domain.apiusage.ApiType;
 import com.jung.domain.apiusage.ApiUsageDTO;
@@ -82,6 +83,7 @@ class ApiUsageControllerTest {
     }
 
     @Test
+    @DisplayName("api 추가")
     void addApi() throws Exception {
         //given
         String strEntity = objectMapper.writeValueAsString(entity.getBody());
@@ -97,7 +99,15 @@ class ApiUsageControllerTest {
     }
 
     @Test
-    void increaseUsage() {
+    @DisplayName("api 사용량 증가")
+    void increaseUsage() throws Exception {
+        //given
+        doReturn(entity).when(apiUsageService).increaseUsage();
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

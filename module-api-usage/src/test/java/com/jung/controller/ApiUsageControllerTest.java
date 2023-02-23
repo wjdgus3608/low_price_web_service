@@ -19,6 +19,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
+import java.util.Map;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
@@ -36,9 +38,6 @@ class ApiUsageControllerTest {
 
     @MockBean
     private ApiUsageService apiUsageService;
-//
-//    @InjectMocks
-//    private ApiUsageController apiUsageController;
 
     private ResponseEntity<?> entity;
 
@@ -89,14 +88,21 @@ class ApiUsageControllerTest {
     @Test
     void addApi() throws Exception {
         //given
-        when(apiUsageService.addApi((ApiUsageDTO)entity.getBody())).thenReturn(ResponseEntity.ok().build());
-        String strEntity = objectMapper.writeValueAsString(entity);
-//        doReturn(ResponseEntity.ok()).when(apiUsageService).addApi((ApiUsageDTO) entity.getBody());
+        ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
+                .apiType(ApiType.SHOPPING_API)
+                .currentUsage(0)
+                .maxUsage(25000)
+                .build();
+//        when(apiUsageService.addApi(apiUsageDTO).thenReturn(ResponseEntity.ok().build());
+        String strEntity = objectMapper.writeValueAsString((ApiUsageDTO)entity.getBody());
+        doReturn(entity).when(apiUsageService).addApi(apiUsageDTO);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/api")
+                    .content(strEntity)
+                    .characterEncoding("utf-8")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(strEntity))
+                    .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
     }

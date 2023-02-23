@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,13 +18,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
-import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.mockito.Mockito.when;
 
 @WebMvcTest(ApiUsageController.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -88,19 +84,12 @@ class ApiUsageControllerTest {
     @Test
     void addApi() throws Exception {
         //given
-        ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
-                .apiType(ApiType.SHOPPING_API)
-                .currentUsage(0)
-                .maxUsage(25000)
-                .build();
-//        when(apiUsageService.addApi(apiUsageDTO).thenReturn(ResponseEntity.ok().build());
-        String strEntity = objectMapper.writeValueAsString((ApiUsageDTO)entity.getBody());
-        doReturn(entity).when(apiUsageService).addApi(apiUsageDTO);
+        String strEntity = objectMapper.writeValueAsString(entity.getBody());
+        doReturn(entity).when(apiUsageService).addApi((ApiUsageDTO) entity.getBody());
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/api")
                     .content(strEntity)
-                    .characterEncoding("utf-8")
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

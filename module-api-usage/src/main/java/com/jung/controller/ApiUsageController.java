@@ -1,11 +1,10 @@
 package com.jung.controller;
 
+import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.service.ApiUsageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,11 +21,11 @@ public class ApiUsageController {
     public ResponseEntity<?> getMaxUsage(){
         return apiUsageService.getMaxUsage();
     }
-//
-//    @PostMapping("/api")
-//    public ResponseEntity<?> addApi(){
-//
-//    }
+
+    @PostMapping("/api")
+    public ResponseEntity<?> addApi(@RequestBody ApiUsageDTO apiUsageDTO){
+        return apiUsageService.addApi(apiUsageDTO);
+    }
 //
 //    @PostMapping("/usage")
 //    public ResponseEntity<?> increaseUsage(){

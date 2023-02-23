@@ -1,5 +1,6 @@
 package com.jung.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jung.domain.apiusage.ApiType;
 import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.service.ApiUsageService;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,9 +31,14 @@ class ApiUsageControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @MockBean
     private ApiUsageService apiUsageService;
+//
+//    @InjectMocks
+//    private ApiUsageController apiUsageController;
 
     private ResponseEntity<?> entity;
 
@@ -81,11 +88,15 @@ class ApiUsageControllerTest {
 
     @Test
     void addApi() throws Exception {
+        //given
+        when(apiUsageService.addApi((ApiUsageDTO)entity.getBody())).thenReturn(ResponseEntity.ok().build());
+        String strEntity = objectMapper.writeValueAsString(entity);
+//        doReturn(ResponseEntity.ok()).when(apiUsageService).addApi((ApiUsageDTO) entity.getBody());
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/api")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(entity.toString()))
+                    .content(strEntity))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
     }

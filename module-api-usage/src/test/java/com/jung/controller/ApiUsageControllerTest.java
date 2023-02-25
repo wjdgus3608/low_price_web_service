@@ -15,11 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.transaction.annotation.Transactional;
 
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -117,6 +115,13 @@ class ApiUsageControllerTest {
     }
 
     @Test
-    void initUsage() {
+    @DisplayName("api 사용량 초기화")
+    void initUsage() throws Exception{
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/usage-zero"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 }

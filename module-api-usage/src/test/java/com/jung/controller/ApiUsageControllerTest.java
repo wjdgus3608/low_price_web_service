@@ -56,28 +56,19 @@ class ApiUsageControllerTest {
     }
 
     @Test
-    @DisplayName("api 현재 사용량 조회")
+    @DisplayName("api 조회")
     void getCurrentUsage() throws Exception {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/current-usage"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("currentUsage").value(equalTo(0)));
-    }
-
-    @Test
-    @DisplayName("api 최대 사용량 조회")
-    void getMaxUsage() throws Exception {
-        //given
-        //when
-        //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/max-usage"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(print())
+                .andExpect(MockMvcResultMatchers.jsonPath("apiType").value(equalTo("SHOPPING_API")))
+                .andExpect(MockMvcResultMatchers.jsonPath("currentUsage").value(equalTo(0)))
                 .andExpect(MockMvcResultMatchers.jsonPath("maxUsage").value(equalTo(25000)));
     }
+
 
     @Test
     @DisplayName("api 추가")
@@ -128,7 +119,7 @@ class ApiUsageControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/current-usage"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print())
                 .andExpect(MockMvcResultMatchers.jsonPath("currentUsage").value(equalTo(1)));

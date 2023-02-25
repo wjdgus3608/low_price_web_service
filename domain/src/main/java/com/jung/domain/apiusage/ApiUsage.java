@@ -1,18 +1,25 @@
 package com.jung.domain.apiusage;
 
 
+import com.jung.domain.BaseEntity;
+import com.jung.domain.BaseRedisEntity;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+//@RedisHash(value = "api-usage")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
 @Getter
-public class ApiUsage {
-    @Id @GeneratedValue
+public class ApiUsage extends BaseRedisEntity implements Serializable {
+
+    @Id
+    @GeneratedValue
     long id;
 
     @NotNull

@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Transactional
+//@Transactional
 class ApiUsageControllerTest {
 
     @Autowired
@@ -45,6 +45,7 @@ class ApiUsageControllerTest {
 
     ApiUsageControllerTest(){
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
+                .apiType(ApiType.SHOPPING_API)
                 .currentUsage(0)
                 .maxUsage(25000)
                 .build();

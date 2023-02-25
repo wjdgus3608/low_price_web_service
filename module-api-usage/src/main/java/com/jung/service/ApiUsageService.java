@@ -20,7 +20,7 @@ public class ApiUsageService {
     public ResponseEntity<?> getUsage(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
-                .responseCode(300)
+                .responseCode(0)
                 .responseMessage("정상")
                 .currentUsage(apiUsages.get(0).getCurrentUsage())
                 .build();

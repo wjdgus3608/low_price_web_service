@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -30,7 +31,7 @@ class ApiUsageControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private ResponseEntity<?> entity;
+    private final ResponseEntity<?> entity;
 
     ApiUsageControllerTest(){
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
@@ -100,6 +101,25 @@ class ApiUsageControllerTest {
     }
 
     @Test
+    @DisplayName("api 추가 valid 테스트")
+    void addApiValidTest() throws Exception{
+        //given
+        ApiUsageDTO apiUsageDTO = new ApiUsageDTO();
+        ResponseEntity<ApiUsageDTO> responseEntity = ResponseEntity.ok(apiUsageDTO);
+        String strEntity = objectMapper.writeValueAsString(responseEntity.getBody());
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(result->
+                        assertNotNull(result.getResolvedException()))
+                .andDo(print());
+    }
+
+    @Test
     @DisplayName("api 사용량 증가")
     void increaseUsage() throws Exception {
         //given
@@ -124,4 +144,6 @@ class ApiUsageControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
     }
+
+
 }

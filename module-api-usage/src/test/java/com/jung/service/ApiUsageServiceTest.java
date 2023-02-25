@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -27,27 +28,18 @@ class ApiUsageServiceTest {
     }
 
     @Test
-    @DisplayName("api 현재 사용량 조회")
+    @DisplayName("api 조회")
     void getUsage() {
         //given
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
+        assertEquals(ApiType.SHOPPING_API,apiUsageDTO.getApiType());
         assertEquals(0,apiUsageDTO.getCurrentUsage());
-    }
-
-    @Test
-    @DisplayName("api 최대 사용량 조회")
-    void getMaxUsage() {
-        //given
-        //when
-        ResponseEntity<?> responseEntity = apiUsageService.getMaxUsage();
-        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
-        //than
         assertEquals(25000,apiUsageDTO.getMaxUsage());
-
     }
+
 
     @Test
     @DisplayName("api 사용량 증가")
@@ -55,7 +47,7 @@ class ApiUsageServiceTest {
         //given
         apiUsageService.increaseUsage();
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(1,apiUsageDTO.getCurrentUsage());
@@ -69,7 +61,7 @@ class ApiUsageServiceTest {
         apiUsageService.increaseUsage();
         apiUsageService.initUsage();
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getUsage();
+        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
         ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
         //than
         assertEquals(0,apiUsageDTO.getCurrentUsage());

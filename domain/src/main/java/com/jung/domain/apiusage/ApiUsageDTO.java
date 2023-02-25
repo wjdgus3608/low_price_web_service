@@ -1,5 +1,6 @@
 package com.jung.domain.apiusage;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 @Setter
@@ -10,8 +11,11 @@ import lombok.*;
 public class ApiUsageDTO {
     int responseCode;
     String responseMessage;
+    @NotNull
     ApiType apiType;
+    @NotNull
     long currentUsage;
+    @NotNull
     long maxUsage;
 
     public ApiUsage dtoToEntity(ApiUsageDTO apiUsageDTO){

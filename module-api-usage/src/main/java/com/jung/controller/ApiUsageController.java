@@ -6,24 +6,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class ApiUsageController {
 
     private final ApiUsageService apiUsageService;
 
-    @GetMapping("/current-usage")
-    public ResponseEntity<?> getCurrentUsage(){
-        return apiUsageService.getUsage();
-    }
-
-    @GetMapping("/max-usage")
-    public ResponseEntity<?> getMaxUsage(){
-        return apiUsageService.getMaxUsage();
+    @GetMapping("/api")
+    public ResponseEntity<?> getApiInfo(){
+        return apiUsageService.getApiInfo();
     }
 
     @PostMapping("/api")
-    public ResponseEntity<?> addApi(@RequestBody ApiUsageDTO apiUsageDTO){
+    public ResponseEntity<?> addApi(@RequestBody @Valid ApiUsageDTO apiUsageDTO){
         return apiUsageService.addApi(apiUsageDTO);
     }
 

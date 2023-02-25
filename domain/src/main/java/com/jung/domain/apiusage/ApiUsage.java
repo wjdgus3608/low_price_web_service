@@ -1,6 +1,7 @@
 package com.jung.domain.apiusage;
 
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,9 +14,15 @@ import javax.persistence.*;
 public class ApiUsage {
     @Id @GeneratedValue
     long id;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     ApiType apiType;
+
+    @NotNull
     long currentUsage;
+
+    @NotNull
     long maxUsage;
 
 

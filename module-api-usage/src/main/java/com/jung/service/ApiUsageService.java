@@ -17,24 +17,18 @@ import java.util.List;
 public class ApiUsageService {
     private final ApiUsageRepository apiUsageRepository;
 
-    public ResponseEntity<?> getUsage(){
+    public ResponseEntity<?> getApiInfo(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
                 .responseCode(0)
                 .responseMessage("정상")
+                .apiType(ApiType.SHOPPING_API)
                 .currentUsage(apiUsages.get(0).getCurrentUsage())
-                .build();
-        return ResponseEntity.ok(apiUsageDTO);
-    }
-
-    public ResponseEntity<?> getMaxUsage(){
-        List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
-        ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
-                .responseMessage("정상")
                 .maxUsage(apiUsages.get(0).getMaxUsage())
                 .build();
         return ResponseEntity.ok(apiUsageDTO);
     }
+
 
     @Transactional
     public ResponseEntity<?> addApi(ApiUsageDTO apiUsageDTO){

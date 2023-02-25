@@ -66,4 +66,32 @@ class ApiUsageServiceTest {
         //than
         assertEquals(0,apiUsageDTO.getCurrentUsage());
     }
+
+    @Test
+    @DisplayName("Redis 캐시 속도 테스트")
+    void selectTest(){
+        long start1 = System.currentTimeMillis();
+
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+
+
+        long end1 = System.currentTimeMillis();
+        System.out.println(end1 - start1);
+
+        long start2 = System.currentTimeMillis();
+
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo().getBody());
+
+        long end2 = System.currentTimeMillis();
+
+        System.out.println(end2 - start2);
+    }
 }

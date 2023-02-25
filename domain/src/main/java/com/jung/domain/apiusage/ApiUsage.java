@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Getter
-public class ApiUsage extends BaseRedisEntity implements Serializable {
+public class ApiUsage extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue

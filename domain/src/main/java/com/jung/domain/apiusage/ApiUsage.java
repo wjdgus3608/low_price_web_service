@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 public class ApiUsage {
-    @Id
+    @Id @GeneratedValue
     long id;
     @Enumerated(EnumType.STRING)
     ApiType apiType;

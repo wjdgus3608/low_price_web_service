@@ -32,8 +32,8 @@ public class ApiUsageController {
         return apiUsageService.increaseUsage();
     }
 
-//    @PostMapping("/usage-zero")
-//    public ResponseEntity<?> initUsage(){
-//
-//    }
+    @PostMapping("/usage-zero")
+    public ResponseEntity<?> initUsage(){
+        return apiUsageService.initUsage();
+    }
 }

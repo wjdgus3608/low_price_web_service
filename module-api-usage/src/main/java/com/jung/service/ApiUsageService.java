@@ -5,6 +5,7 @@ import com.jung.domain.apiusage.ApiUsage;
 import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.domain.apiusage.ApiUsageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +18,10 @@ import java.util.List;
 public class ApiUsageService {
     private final ApiUsageRepository apiUsageRepository;
 
-    public ResponseEntity<?> getApiInfo(){
+    @Cacheable(value = "ApiUsage")
+    public ApiUsage getApiInfo(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
-        ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
-                .responseCode(0)
-                .responseMessage("정상")
-                .apiType(ApiType.SHOPPING_API)
-                .currentUsage(apiUsages.get(0).getCurrentUsage())
-                .maxUsage(apiUsages.get(0).getMaxUsage())
-                .build();
-        return ResponseEntity.ok(apiUsageDTO);
+        return apiUsages.get(0);
     }
 
 

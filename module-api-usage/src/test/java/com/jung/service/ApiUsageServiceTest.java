@@ -1,11 +1,11 @@
 package com.jung.service;
 
 import com.jung.domain.apiusage.ApiType;
+import com.jung.domain.apiusage.ApiUsage;
 import com.jung.domain.apiusage.ApiUsageDTO;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,8 +32,7 @@ class ApiUsageServiceTest {
     void getUsage() {
         //given
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
-        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
+        ApiUsage apiUsageDTO = apiUsageService.getApiInfo();
         //than
         assertEquals(ApiType.SHOPPING_API,apiUsageDTO.getApiType());
         assertEquals(0,apiUsageDTO.getCurrentUsage());
@@ -47,8 +46,7 @@ class ApiUsageServiceTest {
         //given
         apiUsageService.increaseUsage();
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
-        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
+        ApiUsage apiUsageDTO = apiUsageService.getApiInfo();
         //than
         assertEquals(1,apiUsageDTO.getCurrentUsage());
     }
@@ -61,8 +59,7 @@ class ApiUsageServiceTest {
         apiUsageService.increaseUsage();
         apiUsageService.initUsage();
         //when
-        ResponseEntity<?> responseEntity = apiUsageService.getApiInfo();
-        ApiUsageDTO apiUsageDTO = (ApiUsageDTO) responseEntity.getBody();
+        ApiUsage apiUsageDTO = apiUsageService.getApiInfo();
         //than
         assertEquals(0,apiUsageDTO.getCurrentUsage());
     }
@@ -72,23 +69,22 @@ class ApiUsageServiceTest {
     void selectTest(){
         long start1 = System.currentTimeMillis();
 
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
 
         long end1 = System.currentTimeMillis();
         System.out.println(end1 - start1);
 
         long start2 = System.currentTimeMillis();
 
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
-        System.out.println(apiUsageService.getApiInfo().getBody());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
+        System.out.println(apiUsageService.getApiInfo());
 
         long end2 = System.currentTimeMillis();
 

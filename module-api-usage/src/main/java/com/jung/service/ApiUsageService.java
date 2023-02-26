@@ -5,6 +5,7 @@ import com.jung.domain.apiusage.ApiUsage;
 import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.domain.apiusage.ApiUsageRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,14 @@ public class ApiUsageService {
 
 
     @Transactional
+    @CacheEvict(value = "ApiUsage")
     public ResponseEntity<?> addApi(ApiUsageDTO apiUsageDTO){
         apiUsageRepository.save(apiUsageDTO.dtoToEntity(apiUsageDTO));
         return ResponseEntity.ok().build();
     }
 
     @Transactional
+    @CacheEvict(value = "ApiUsage")
     public ResponseEntity<?> increaseUsage(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
         apiUsages.get(0).increaseUsage();
@@ -40,6 +43,7 @@ public class ApiUsageService {
     }
 
     @Transactional
+    @CacheEvict(value = "ApiUsage")
     public ResponseEntity<?> initUsage(){
         List<ApiUsage> apiUsages = apiUsageRepository.findByApiType(ApiType.SHOPPING_API);
         apiUsages.get(0).initUsage();

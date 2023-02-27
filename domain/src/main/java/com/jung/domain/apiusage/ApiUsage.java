@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-//@RedisHash(value = "api-usage")
+//@RedisHash(value = "ApiUsage", timeToLive = 600)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder

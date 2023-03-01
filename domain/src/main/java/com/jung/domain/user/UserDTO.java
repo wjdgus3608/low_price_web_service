@@ -1,5 +1,6 @@
 package com.jung.domain.user;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 @Setter
@@ -11,9 +12,13 @@ import lombok.*;
 public class UserDTO {
     int responseCode;
     String responseMessage;
+    @NotNull
     private String userId;
+    @NotNull
     private String userPw;
+    @NotNull
     private String userName;
+    @NotNull
     private UserType userType;
 
 }

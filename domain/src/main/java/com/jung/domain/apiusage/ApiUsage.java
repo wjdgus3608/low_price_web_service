@@ -22,14 +22,14 @@ public class ApiUsage extends BaseEntity implements Serializable {
     @GeneratedValue
     long id;
 
-    @NotNull
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     ApiType apiType;
 
-    @NotNull
+    @Column(nullable = false)
     long currentUsage;
 
-    @NotNull
+    @Column(nullable = false)
     long maxUsage;
 
 

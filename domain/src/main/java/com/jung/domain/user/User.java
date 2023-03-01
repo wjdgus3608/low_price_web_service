@@ -14,11 +14,11 @@ import javax.persistence.*;
 @Getter
 public class User extends BaseEntity {
     @Id
-    @NotNull
+    @Column(nullable = false)
     private String userId;
-    @NotNull
+    @Column(nullable = false)
     private String userPw;
-    @NotNull
+    @Column(nullable = false)
     private String userName;
     @Enumerated(EnumType.STRING)
     private UserType userType;

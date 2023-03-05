@@ -16,7 +16,6 @@ public class UserService {
     private final UserRepository userRepository;
 
     public ResponseEntity<?> signUp(UserDTO userDTO){
-
         return ResponseEntity.ok().build();
     }
 }

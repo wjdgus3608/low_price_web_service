@@ -21,4 +21,13 @@ public class UserDTO {
     @NotNull
     private UserType userType;
 
+    public User dtoToEntity(UserDTO userDTO){
+        return User.builder()
+                .userId(userDTO.getUserId())
+                .userPw(userDTO.getUserPw())
+                .userType(userDTO.getUserType())
+                .userName(userDTO.getUserName())
+                .state(ApprovalState.WAIT)
+                .build();
+    }
 }

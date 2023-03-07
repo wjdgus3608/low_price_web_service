@@ -18,4 +18,12 @@ public class UserService {
     public ResponseEntity<?> signUp(UserDTO userDTO){
         return ResponseEntity.ok().build();
     }
+
+    public ResponseEntity<?> signIn(String userId, String userPw){
+        return ResponseEntity.ok().build();
+    }
+
+    public ResponseEntity<?> approval(String userId){
+        return ResponseEntity.ok().build();
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
 
 @Service
@@ -16,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
 
+    @Transactional
     public ResponseEntity<?> signUp(UserDTO userDTO){
+        userRepository.save(userDTO.dtoToEntity(userDTO));
         return ResponseEntity.ok().build();
     }
 
@@ -24,11 +27,12 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
+    @Transactional
     public ResponseEntity<?> approval(String userId){
         return ResponseEntity.ok().build();
     }
 
-    public User findUserById(String userId){
-        return null;
+    public List<User> findUserById(String userId){
+        return userRepository.findByUserId(userId);
     }
 }

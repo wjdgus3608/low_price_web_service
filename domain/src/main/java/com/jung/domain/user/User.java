@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Getter
+@Table(name = "myuser")
 public class User extends BaseEntity {
     @Id
     @Column(nullable = false)

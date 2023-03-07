@@ -10,6 +10,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -36,9 +38,9 @@ class UserServiceTest {
         //given
         userService.signUp(this.userDTO);
         //when
-        User findUser = userService.findUserById(this.userDTO.getUserId());
+        List<User> findUser = userService.findUserById(this.userDTO.getUserId());
         //than
-        assertEquals(findUser.getUserId(),this.userDTO.getUserId());
+        assertEquals(findUser.get(0).getUserId(),this.userDTO.getUserId());
 
     }
 

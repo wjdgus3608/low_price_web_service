@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +26,9 @@ public class UserService {
 
     public ResponseEntity<?> approval(String userId){
         return ResponseEntity.ok().build();
+    }
+
+    public User findUserById(String userId){
+        return null;
     }
 }

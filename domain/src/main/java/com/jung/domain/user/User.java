@@ -25,4 +25,8 @@ public class User extends BaseEntity {
     private UserType userType;
     @Enumerated(EnumType.STRING)
     private ApprovalState state;
+
+    public void approve(){
+        this.state = ApprovalState.ACCEPTED;
+    }
 }

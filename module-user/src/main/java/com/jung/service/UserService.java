@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -24,19 +25,28 @@ public class UserService {
     }
 
     public ResponseEntity<?> signIn(String userId, String userPw){
-        List<User> user = findUserById(userId);
-        if(user.size()!=0 && user.get(0).getUserPw().equals(userPw))
+
+        if(isIdAndPwCorrect(userId,userPw)){
             return ResponseEntity.ok().build();
+        }
 
         return ResponseEntity.badRequest().build();
     }
 
     @Transactional
-    public ResponseEntity<?> approval(String userId){
+    public ResponseEntity<?> approveUser(String userId){
+        List<User> user = userRepository.findByUserId(userId);
+        user.get(0).approve();
         return ResponseEntity.ok().build();
     }
 
     public List<User> findUserById(String userId){
         return userRepository.findByUserId(userId);
     }
+
+    private boolean isIdAndPwCorrect(String userId, String userPw){
+        List<User> user = findUserById(userId);
+        return user.size() != 0 && user.get(0).getUserPw().equals(userPw);
+    }
+
 }

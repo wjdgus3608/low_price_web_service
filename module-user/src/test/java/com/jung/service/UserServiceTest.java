@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.user.ApprovalState;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
@@ -32,17 +33,24 @@ class UserServiceTest {
                 .userName("John")
                 .userType(UserType.USER)
                 .build();
+        userService.signUp(this.userDTO);
     }
 
     @Test
     @DisplayName("회원가입 테스트")
     void signUp() {
         //given
-        userService.signUp(this.userDTO);
+        UserDTO dto = UserDTO.builder()
+                .userId("user2")
+                .userPw("pw2")
+                .userName("Cane")
+                .userType(UserType.USER)
+                .build();
+        userService.signUp(dto);
         //when
-        List<User> findUser = userService.findUserById(this.userDTO.getUserId());
+        List<User> findUser = userService.findUserById(dto.getUserId());
         //than
-        assertEquals(findUser.get(0).getUserId(),this.userDTO.getUserId());
+        assertEquals(findUser.get(0).getUserId(),dto.getUserId());
 
     }
 
@@ -50,7 +58,6 @@ class UserServiceTest {
     @DisplayName("로그인 테스트")
     void signIn() {
         //given
-        userService.signUp(this.userDTO);
         //when
         ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
         //than
@@ -61,7 +68,6 @@ class UserServiceTest {
     @DisplayName("로그인 실패 테스트")
     void signInFail() {
         //given
-        userService.signUp(this.userDTO);
         //when
         ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), "abc");
         //than
@@ -70,6 +76,12 @@ class UserServiceTest {
 
     @Test
     @DisplayName("승인처리 테스트")
-    void approval() {
+    void approve() {
+        //given
+        userService.approveUser(this.userDTO.getUserId());
+        //when
+        List<User> user = userService.findUserById(this.userDTO.getUserId());
+        //than
+        assertEquals(user.get(0).getState(), ApprovalState.ACCEPTED);
     }
 }

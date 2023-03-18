@@ -24,7 +24,11 @@ public class UserService {
     }
 
     public ResponseEntity<?> signIn(String userId, String userPw){
-        return ResponseEntity.ok().build();
+        List<User> user = findUserById(userId);
+        if(user.size()!=0 && user.get(0).getUserPw().equals(userPw))
+            return ResponseEntity.ok().build();
+
+        return ResponseEntity.badRequest().build();
     }
 
     @Transactional

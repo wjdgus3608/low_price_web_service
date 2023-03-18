@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.user.ApprovalState;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserRepository;
@@ -26,11 +27,14 @@ public class UserService {
 
     public ResponseEntity<?> signIn(String userId, String userPw){
 
-        if(isIdAndPwCorrect(userId,userPw)){
-            return ResponseEntity.ok().build();
+        if(!isIdAndPwCorrect(userId,userPw)){
+            return ResponseEntity.badRequest().build();
+        }
+        else if(!isApproved(userId)){
+            return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().build();
     }
 
     @Transactional
@@ -47,6 +51,11 @@ public class UserService {
     private boolean isIdAndPwCorrect(String userId, String userPw){
         List<User> user = findUserById(userId);
         return user.size() != 0 && user.get(0).getUserPw().equals(userPw);
+    }
+
+    private boolean isApproved(String userId){
+        List<User> user = findUserById(userId);
+        return user.get(0).getState()== ApprovalState.ACCEPTED;
     }
 
 }

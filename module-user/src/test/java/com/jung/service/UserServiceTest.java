@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -47,6 +49,12 @@ class UserServiceTest {
     @Test
     @DisplayName("로그인 테스트")
     void signIn() {
+        //given
+        userService.signUp(this.userDTO);
+        //when
+        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
+        //than
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
     }
 
     @Test

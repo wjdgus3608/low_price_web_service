@@ -18,7 +18,6 @@ public class UserDTO {
     private String userPw;
     @NotNull
     private String userName;
-    @NotNull
     private UserType userType;
 
     public User dtoToEntity(UserDTO userDTO){

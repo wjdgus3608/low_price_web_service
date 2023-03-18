@@ -58,6 +58,17 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("로그인 실패 테스트")
+    void signInFail() {
+        //given
+        userService.signUp(this.userDTO);
+        //when
+        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), "abc");
+        //than
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
+    }
+
+    @Test
     @DisplayName("승인처리 테스트")
     void approval() {
     }

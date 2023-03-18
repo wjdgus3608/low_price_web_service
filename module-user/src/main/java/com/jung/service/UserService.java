@@ -21,6 +21,9 @@ public class UserService {
 
     @Transactional
     public ResponseEntity<?> signUp(UserDTO userDTO){
+        if(isDupId(userDTO.getUserId()))
+            return ResponseEntity.badRequest().build();
+
         userRepository.save(userDTO.dtoToEntity(userDTO));
         return ResponseEntity.ok().build();
     }
@@ -56,6 +59,10 @@ public class UserService {
     private boolean isApproved(String userId){
         List<User> user = findUserById(userId);
         return user.get(0).getState()== ApprovalState.ACCEPTED;
+    }
+
+    private boolean isDupId(String userId){
+        return userRepository.findByUserId(userId).size()!=0;
     }
 
 }

@@ -53,6 +53,24 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("중복 ID 회원가입 테스트")
+    void signUpWithDup() {
+        //given
+        UserDTO dto = UserDTO.builder()
+                .userId("user1")
+                .userPw("pw2")
+                .userName("Cane")
+                .userType(UserType.USER)
+                .build();
+
+        //when
+        ResponseEntity<?> responseEntity = userService.signUp(dto);
+        //than
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+
+    }
+
+    @Test
     @DisplayName("로그인 실패(비번 불일치) 테스트")
     void signInPwFail() {
         //given

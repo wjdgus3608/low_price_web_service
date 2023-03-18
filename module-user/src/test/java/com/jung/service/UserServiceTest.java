@@ -4,10 +4,7 @@ import com.jung.domain.user.ApprovalState;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -19,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserServiceTest {
     @Autowired
     private UserService userService;
@@ -50,38 +48,52 @@ class UserServiceTest {
         //when
         List<User> findUser = userService.findUserById(dto.getUserId());
         //than
-        assertEquals(findUser.get(0).getUserId(),dto.getUserId());
+        assertEquals(dto.getUserId(),findUser.get(0).getUserId());
 
     }
 
     @Test
-    @DisplayName("로그인 테스트")
-    void signIn() {
-        //given
-        //when
-        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
-        //than
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
-    }
-
-    @Test
-    @DisplayName("로그인 실패 테스트")
-    void signInFail() {
+    @DisplayName("로그인 실패(비번 불일치) 테스트")
+    void signInPwFail() {
         //given
         //when
         ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), "abc");
         //than
-        assertEquals(responseEntity.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+    }
+
+    @Test
+    @DisplayName("로그인 실패(승인 안됨) 테스트")
+    @Order(1)
+    void signInApproveFail() {
+        //given
+        //when
+        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
+        //than
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+    }
+
+    @Test
+    @DisplayName("로그인 성공 테스트")
+    @Order(2)
+    void signIn() {
+        //given
+        userService.approveUser(this.userDTO.getUserId());
+        //when
+        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
+        //than
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }
 
     @Test
     @DisplayName("승인처리 테스트")
+    @Order(3)
     void approve() {
         //given
         userService.approveUser(this.userDTO.getUserId());
         //when
         List<User> user = userService.findUserById(this.userDTO.getUserId());
         //than
-        assertEquals(user.get(0).getState(), ApprovalState.ACCEPTED);
+        assertEquals(ApprovalState.ACCEPTED,user.get(0).getState());
     }
 }

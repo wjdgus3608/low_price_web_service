@@ -1,10 +1,14 @@
 package com.jung.controller;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,10 +27,16 @@ public class UserController {
     public ResponseEntity<?> signUp(@RequestBody @Valid UserDTO userDTO){
         return userService.signUp(userDTO);
     }
-//
-//    public ResponseEntity<?> signIn(){
-//
-//    }
+
+    @PostMapping("/user/auth")
+    public ResponseEntity<?> signIn(@RequestBody String loginInfo) throws ParseException {
+        JSONParser parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(loginInfo);
+        String userId = (String)obj.get("userId");
+        String userPw = (String)obj.get("userPw");
+
+        return userService.signIn(userId,userPw);
+    }
 //
 //    public ResponseEntity<?> approve(){
 //

@@ -1,10 +1,9 @@
 package com.jung.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
-import org.json.JSONObject;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -32,13 +31,21 @@ class UserControllerTest {
     private UserDTO userDTO;
 
     @BeforeAll
-    void init(){
+    void init() throws Exception {
         this.userDTO = UserDTO.builder()
                 .userId("user1")
                 .userPw("pw1")
                 .userName("John")
                 .userType(UserType.USER)
                 .build();
+        String strEntity = objectMapper.writeValueAsString(this.userDTO);
+        //when
+        mockMvc.perform(MockMvcRequestBuilders.post("/new-user")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test
@@ -46,7 +53,13 @@ class UserControllerTest {
     @Order(1)
     void signUp() throws Exception {
         //given
-        String strEntity = objectMapper.writeValueAsString(userDTO);
+        UserDTO dto = UserDTO.builder()
+                .userId("user2")
+                .userPw("pw2")
+                .userName("Mike")
+                .userType(UserType.USER)
+                .build();
+        String strEntity = objectMapper.writeValueAsString(dto);
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/new-user")
                 .content(strEntity)
@@ -70,7 +83,7 @@ class UserControllerTest {
     @Order(2)
     void signInWithWrong() throws Exception {
         //given
-        JSONObject obj = new JSONObject();
+        ObjectNode obj = objectMapper.createObjectNode();
         obj.put("userId","user1");
         obj.put("userPw","pw333");
         String strEntity = objectMapper.writeValueAsString(obj);

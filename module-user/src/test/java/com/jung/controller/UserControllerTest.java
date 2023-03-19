@@ -1,11 +1,11 @@
 package com.jung.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.json.JSONObject;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -41,6 +42,8 @@ class UserControllerTest {
     }
 
     @Test
+    @DisplayName("회원가입 테스트")
+    @Order(1)
     void signUp() throws Exception {
         //given
         String strEntity = objectMapper.writeValueAsString(userDTO);
@@ -61,12 +64,44 @@ class UserControllerTest {
                 .andDo(print());
     }
 
+
     @Test
-    void signIn() {
+    @DisplayName("로그인 실패(비번틀림) 테스트")
+    @Order(2)
+    void signInWithWrong() throws Exception {
+        //given
+        JSONObject obj = new JSONObject();
+        obj.put("userId","user1");
+        obj.put("userPw","pw333");
+        String strEntity = objectMapper.writeValueAsString(obj);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andDo(print());
     }
 
     @Test
+    @DisplayName("로그인 실패(승인전) 테스트")
+    @Order(3)
+    void signInWithNotApprove() {
+
+    }
+
+    @Test
+    @DisplayName("승인처리 테스트")
+    @Order(4)
     void approve() {
+    }
+
+    @Test
+    @DisplayName("로그인 성공 테스트")
+    @Order(5)
+    void signInSuccess() {
+
     }
 
 }

@@ -23,6 +23,8 @@ public class UserController {
 
     private final UserService userService;
 
+    private static final JSONParser parser = new JSONParser();
+
     @PostMapping("/new-user")
     public ResponseEntity<?> signUp(@RequestBody @Valid UserDTO userDTO){
         return userService.signUp(userDTO);
@@ -30,18 +32,20 @@ public class UserController {
 
     @PostMapping("/user/auth")
     public ResponseEntity<?> signIn(@RequestBody String loginInfo) throws ParseException {
-        JSONParser parser = new JSONParser();
         JSONObject obj = (JSONObject) parser.parse(loginInfo);
         String userId = (String)obj.get("userId");
         String userPw = (String)obj.get("userPw");
 
         return userService.signIn(userId,userPw);
     }
-//
-//    public ResponseEntity<?> approve(){
-//
-//    }
-//
+
+    @PostMapping("/user/approval")
+    public ResponseEntity<?> approve(@RequestBody String userInfo) throws ParseException {
+        JSONObject obj = (JSONObject) parser.parse(userInfo);
+        String userId = (String)obj.get("userId");
+        return userService.approveUser(userId);
+    }
+
     @PostMapping("/user")
     public ResponseEntity<?> findUser(@RequestBody String userId){
         List<User> user = userService.findUserById(userId);

@@ -100,8 +100,20 @@ class UserControllerTest {
     @Test
     @DisplayName("로그인 실패(승인전) 테스트")
     @Order(3)
-    void signInWithNotApprove() {
-
+    void signInWithNotApprove() throws Exception {
+        //given
+        ObjectNode obj = objectMapper.createObjectNode();
+        obj.put("userId","user1");
+        obj.put("userPw","pw1");
+        String strEntity = objectMapper.writeValueAsString(obj);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andDo(print());
     }
 
     @Test

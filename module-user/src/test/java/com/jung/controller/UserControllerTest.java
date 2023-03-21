@@ -119,7 +119,19 @@ class UserControllerTest {
     @Test
     @DisplayName("승인처리 테스트")
     @Order(4)
-    void approve() {
+    void approve() throws Exception {
+        //given
+        ObjectNode obj = objectMapper.createObjectNode();
+        obj.put("userId","user1");
+        String strEntity = objectMapper.writeValueAsString(obj);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/approval")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

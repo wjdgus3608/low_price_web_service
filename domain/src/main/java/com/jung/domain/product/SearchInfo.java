@@ -1,11 +1,9 @@
 package com.jung.domain.product;
 
-import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-@Embeddable
 public class SearchInfo {
     @NotNull
     private String query;

@@ -137,8 +137,20 @@ class UserControllerTest {
     @Test
     @DisplayName("로그인 성공 테스트")
     @Order(5)
-    void signInSuccess() {
-
+    void signInSuccess() throws Exception {
+        //given
+        ObjectNode obj = objectMapper.createObjectNode();
+        obj.put("userId","user1");
+        obj.put("userPw","pw1");
+        String strEntity = objectMapper.writeValueAsString(obj);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
 }

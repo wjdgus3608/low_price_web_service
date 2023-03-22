@@ -77,6 +77,18 @@ project(':module-api-usage') {
 	}
 }
 
+project(':module-product') {
+	dependencies {
+		implementation project(':common')
+		implementation project(':domain')
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+		implementation 'redis.clients:jedis:4.3.1'
+		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	}
+}
+
 project(':module-webpage') {
 	dependencies {
 		implementation project(':common')

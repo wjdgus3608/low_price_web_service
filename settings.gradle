@@ -1,8 +1,10 @@
 rootProject.name = 'lowprice'
 include 'module-user'
 include 'module-api-usage'
+include 'module-product'
 include 'module-webpage'
 include 'client'
 include 'domain'
 include 'common'
+include 'module_product'
 

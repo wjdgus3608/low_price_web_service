@@ -1,9 +1,12 @@
 package com.jung.domain.product;
 
+import lombok.Builder;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
+@Builder
 public class SearchInfo {
     @NotNull
     private String query;

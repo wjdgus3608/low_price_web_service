@@ -54,6 +54,25 @@ subprojects {
 	}
 }
 
+project(':common') {
+	dependencies {
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	}
+}
+
+project(':domain') {
+	dependencies {
+		implementation project(':common')
+//		implementation 'org.springframework.boot:spring-boot-starter-webflux'
+		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	}
+}
+
 project(':module-user') {
 	dependencies {
 		implementation project(':common')

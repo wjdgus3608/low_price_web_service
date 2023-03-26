@@ -3,5 +3,8 @@ package com.jung.domain.product;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ProductRepository extends CrudRepository {
+import java.util.List;
+
+public interface ProductRepository extends CrudRepository<Products,Long> {
+    List<Product> findByKeyword(String keyword);
 }

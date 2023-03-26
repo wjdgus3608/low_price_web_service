@@ -6,5 +6,6 @@ import java.util.List;
 
 @RedisHash("Products")
 public class Products {
+    private String keyword;
     private List<Product> productList;
 }

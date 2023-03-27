@@ -11,4 +11,6 @@ import lombok.*;
 public class ProductDTO {
     int responseCode;
     String responseMessage;
+
+
 }

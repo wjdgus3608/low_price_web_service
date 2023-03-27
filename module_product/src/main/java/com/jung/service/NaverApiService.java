@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -13,11 +14,13 @@ import java.util.Map;
 @Service
 public class NaverApiService {
     // 네이버 검색 API 예제 - 블로그 검색
+    @Value("${my.clientId}")
+    private String clientId;
+
+    @Value("${my.clientSecret}")
+    private String clientSecret;
 
         public void callApi() {
-            String clientId = "YOUR_CLIENT_ID"; //애플리케이션 클라이언트 아이디
-            String clientSecret = "YOUR_CLIENT_SECRET"; //애플리케이션 클라이언트 시크릿
-
 
             String text = null;
             try {

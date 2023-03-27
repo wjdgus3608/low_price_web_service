@@ -37,6 +37,20 @@ public class NaverApiService {
         return ProductDTO.jsonToProductList(responseBody);
     }
 
+    private String buildUrl(SearchInfo searchInfo){
+        String text = null;
+        try {
+            text = URLEncoder.encode(searchInfo.getQuery(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("검색어 인코딩 실패",e);
+        }
+        String url = "https://openapi.naver.com/v1/search/shop.json?query="+text
+                +"&display="+searchInfo.getDisplay()
+                +"&start="+searchInfo.getStart()
+                +"&sort="+searchInfo.getSort();
+        return url;
+    }
+
 
     private String get(String apiUrl, Map<String, String> requestHeaders){
         HttpURLConnection con = connect(apiUrl);

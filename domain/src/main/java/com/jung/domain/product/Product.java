@@ -8,11 +8,11 @@ import lombok.*;
 @Builder
 @Getter
 public class Product {
-    private int productId;
+    private long productId;
     private String productName;
     private String productLink;
     private String productImg;
-    private int lPrice;
+    private long lPrice;
     private String maker;
     private String brand;
 }

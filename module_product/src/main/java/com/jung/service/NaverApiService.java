@@ -4,6 +4,7 @@ import com.jung.domain.product.Product;
 import com.jung.domain.product.ProductDTO;
 import com.jung.domain.product.SearchInfo;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -24,10 +25,9 @@ public class NaverApiService {
     @Value("${my.clientSecret}")
     private String clientSecret;
 
-    public List<Product> callApi(SearchInfo searchInfo) {
+    public List<Product> callApi(SearchInfo searchInfo){
 
         String apiURL = buildUrl(searchInfo);    // JSON 결과
-
 
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);

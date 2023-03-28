@@ -2,6 +2,8 @@ package com.jung.domain.product;
 
 import lombok.*;
 
+import javax.persistence.Id;
+
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor

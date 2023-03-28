@@ -39,7 +39,7 @@ class ProductServiceTest {
         //given
 
         //when
-        List<Product> products = searchInfo.searchProduct(searchInfo);
+        List<Product> products = productService.searchProduct(searchInfo);
         //than
         assertEquals(100,products.size());
         assertEquals(true,products.get(0).getProductName().contains("삼겹살"));

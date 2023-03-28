@@ -1,6 +1,8 @@
 package com.jung.domain.product;
 
 import lombok.*;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,6 +17,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Log4j2
 public class ProductDTO {
     int responseCode;
     String responseMessage;
@@ -23,9 +26,11 @@ public class ProductDTO {
         List<Product> list = new ArrayList<>();
         JSONParser parser = new JSONParser();
         JSONObject obj = null;
+        log.log(Level.ALL,json);
         try {
             obj = (JSONObject) parser.parse(json);
         } catch (ParseException e) {
+            log.log(Level.ALL,e);
             e.printStackTrace();
         }
         JSONArray jsonArray = (JSONArray) obj.get("items");

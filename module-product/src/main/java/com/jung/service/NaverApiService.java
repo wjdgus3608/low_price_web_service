@@ -3,7 +3,10 @@ package com.jung.service;
 import com.jung.domain.product.Product;
 import com.jung.domain.product.ProductDTO;
 import com.jung.domain.product.SearchInfo;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -11,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +37,14 @@ public class NaverApiService {
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
 
+        /*List<Product> list = new ArrayList<>();
+        JSONParser parser = new JSONParser();
+        JSONObject obj = null;
+        try {
+            obj = (JSONObject) parser.parse(responseBody);
+        } catch (org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }*/
         return ProductDTO.jsonToProductList(responseBody);
     }
 

@@ -6,5 +6,5 @@ include 'module-webpage'
 include 'client'
 include 'domain'
 include 'common'
-include 'module_product'
+
 

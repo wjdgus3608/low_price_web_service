@@ -1,8 +1,7 @@
 package com.jung.domain.product;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.Level;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,31 +16,32 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Log4j2
+@Slf4j
 public class ProductDTO {
     int responseCode;
     String responseMessage;
 
     public static List<Product> jsonToProductList(String json) {
         List<Product> list = new ArrayList<>();
+        log.info(json);
         JSONParser parser = new JSONParser();
         JSONObject obj = null;
-        log.log(Level.ALL,json);
+        log.info(json);
         try {
             obj = (JSONObject) parser.parse(json);
         } catch (ParseException e) {
-            log.log(Level.ALL,e);
+            log.info(e.toString());
             e.printStackTrace();
         }
         JSONArray jsonArray = (JSONArray) obj.get("items");
         for(Object cur:jsonArray){
             JSONObject object = (JSONObject) cur;
             Product product = Product.builder()
-                    .productId((long)object.get("productId"))
+                    .productId(Long.parseLong((String) object.get("productId")))
                     .productName((String)object.get("title"))
                     .productLink((String)object.get("link"))
                     .productImg((String)object.get("image"))
-                    .lPrice((long)object.get("lprice"))
+                    .lPrice(Long.parseLong((String)object.get("lprice")))
                     .maker((String)object.get("maker"))
                     .brand((String)object.get("brand"))
                     .build();

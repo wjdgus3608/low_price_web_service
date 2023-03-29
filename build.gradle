@@ -104,7 +104,6 @@ project(':module-product') {
 		implementation 'redis.clients:jedis:4.3.1'
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-
 	}
 }
 

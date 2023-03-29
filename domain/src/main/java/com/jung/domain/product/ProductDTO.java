@@ -23,14 +23,11 @@ public class ProductDTO {
 
     public static List<Product> jsonToProductList(String json) {
         List<Product> list = new ArrayList<>();
-        log.info(json);
         JSONParser parser = new JSONParser();
         JSONObject obj = null;
-        log.info(json);
         try {
             obj = (JSONObject) parser.parse(json);
         } catch (ParseException e) {
-            log.info(e.toString());
             e.printStackTrace();
         }
         JSONArray jsonArray = (JSONArray) obj.get("items");

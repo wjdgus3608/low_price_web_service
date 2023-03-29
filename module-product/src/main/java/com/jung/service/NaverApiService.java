@@ -37,14 +37,6 @@ public class NaverApiService {
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
 
-        /*List<Product> list = new ArrayList<>();
-        JSONParser parser = new JSONParser();
-        JSONObject obj = null;
-        try {
-            obj = (JSONObject) parser.parse(responseBody);
-        } catch (org.json.simple.parser.ParseException e) {
-            e.printStackTrace();
-        }*/
         return ProductDTO.jsonToProductList(responseBody);
     }
 

@@ -20,13 +20,7 @@ import java.util.List;
 public class ProductDTO {
     int responseCode;
     String responseMessage;
-    private long productId;
-    private String productName;
-    private String productLink;
-    private String productImg;
-    private long lPrice;
-    private String maker;
-    private String brand;
+    List<Product> products;
 
     public static List<Product> jsonToProductList(String json) {
         List<Product> list = new ArrayList<>();

@@ -29,20 +29,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ProductControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
 
-    private SearchInfo searchInfo;
-//    private int display;
-//    private int start;
-//    @Enumerated(EnumType.STRING)
-//    private SortType sort;
-//    private String filter;
-//    private String exclude;
     @BeforeAll
     void init() throws Exception {
 
@@ -51,15 +43,21 @@ class ProductControllerTest {
     @DisplayName("상품조회 컨트롤러 테스트")
     void searchProducts() throws Exception {
         //given
-        String text = "삼겹살";
-        try {
-            text = URLEncoder.encode(searchInfo.getQuery(), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("검색어 인코딩 실패",e);
-        }
+        String queryString = buildQueryString();
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/products/"+text+"/100/1/sim"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/product"+queryString))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
+    }
+
+    private String buildQueryString(){
+        String text = "삼겹살";
+        StringBuilder sb = new StringBuilder();
+        return sb.append("?query=")
+                .append(text)
+                .append("&display=100")
+                .append("&start=1")
+                .append("&sort=sim")
+                .toString();
     }
 }

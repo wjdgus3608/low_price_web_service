@@ -1,5 +1,6 @@
 package com.jung.domain.product;
 
+import com.jung.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Id;

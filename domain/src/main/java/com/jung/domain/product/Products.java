@@ -1,11 +1,11 @@
 package com.jung.domain.product;
 
-import com.jung.domain.BaseEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.util.List;
 
+//캐시 5분동안만 유지
 @RedisHash(value = "Products",timeToLive = 300000L)
 public class Products {
     @Id

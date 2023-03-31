@@ -3,10 +3,9 @@ package com.jung.domain.comparecart;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,6 +18,8 @@ public class CompareCart {
     private long cartId;
     @Column(nullable = false)
     private String ownerId;
+    @OneToMany(mappedBy = "cartId")
+    private List<CartProduct> cartProducts = new ArrayList<CartProduct>();
     @ColumnDefault("0")
     private long totalCnt;
 }

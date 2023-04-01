@@ -1,5 +1,6 @@
 package com.jung.domain.comparecart;
 
+import com.jung.domain.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Getter
-public class CompareCart {
+public class CompareCart extends BaseEntity {
     @Id
     @GeneratedValue
     private long cartId;

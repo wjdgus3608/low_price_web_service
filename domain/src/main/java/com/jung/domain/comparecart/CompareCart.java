@@ -20,7 +20,7 @@ public class CompareCart extends BaseEntity {
     @Column(nullable = false)
     private String ownerId;
     @OneToMany(mappedBy = "cartId")
-    private List<CartProduct> cartProducts = new ArrayList<CartProduct>();
+    private List<CartProduct> cartProducts = new ArrayList<>();
     @ColumnDefault("0")
     private long totalCnt;
 }

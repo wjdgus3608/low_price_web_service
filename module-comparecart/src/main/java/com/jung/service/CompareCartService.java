@@ -12,11 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class CompareCartService {
     private final CompareCartRepository compareCartRepository;
 
+    /*
+    public ResponseEntity<?> generateCart(){
+
+    }
+
+    public ResponseEntity<?> removeCart(){
+
+    }
+
     public ResponseEntity<?> clearCart(){
 
     }
 
-    public ResponseEntity<?> searchCart(){
+    public CompareCart searchCart(){
 
     }
 
@@ -27,4 +36,6 @@ public class CompareCartService {
     public ResponseEntity<?> removeProductFromCart(){
 
     }
+
+     */
 }

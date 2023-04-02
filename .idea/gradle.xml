@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/module-api-usage" />
+            <option value="$PROJECT_DIR$/module-comparecart" />
             <option value="$PROJECT_DIR$/module-product" />
             <option value="$PROJECT_DIR$/module-user" />
             <option value="$PROJECT_DIR$/module-webpage" />

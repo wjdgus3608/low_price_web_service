@@ -3,8 +3,9 @@ include 'module-user'
 include 'module-api-usage'
 include 'module-product'
 include 'module-webpage'
+include 'module-comparecart'
 include 'client'
 include 'domain'
 include 'common'
-
+include 'module-comparecart'
 

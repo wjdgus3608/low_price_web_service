@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.comparecart.CompareCart;
 import com.jung.domain.comparecart.CompareCartRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class CompareCartService {
     private final CompareCartRepository compareCartRepository;
 
-    /*
-    public ResponseEntity<?> generateCart(){
+    public ResponseEntity<?> generateCart(String ownerId){
+        CompareCart entity = CompareCart.builder()
+                .ownerId(ownerId)
+                .build();
 
+        if(isDupId(ownerId)){
+            return ResponseEntity.badRequest().build();
+        }
+
+        compareCartRepository.save(entity);
+        return ResponseEntity.ok().build();
     }
+    /*
+
 
     public ResponseEntity<?> removeCart(){
 
@@ -38,4 +49,8 @@ public class CompareCartService {
     }
 
      */
+
+    private boolean isDupId(String ownerId){
+        return compareCartRepository.findByOwnerId(ownerId)!=null;
+    }
 }

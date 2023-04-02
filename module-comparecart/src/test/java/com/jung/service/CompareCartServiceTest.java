@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,6 +37,16 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 중복 생성")
+    void generateCartWithDup() {
+        //given
+        //when
+        ResponseEntity<?> responseEntity = compareCartService.generateCart("user1");
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+    }
+
+    @Test
     @DisplayName("비교카트 삭제")
     void removeCart() {
         //given
@@ -44,6 +55,16 @@ class CompareCartServiceTest {
         CompareCart searchedCart = compareCartService.searchCart("user1");
         //then
         assertNull(searchedCart);
+    }
+
+    @Test
+    @DisplayName("없는 비교카트 삭제")
+    void removeCartWithNotExists() {
+        //given
+        //when
+        ResponseEntity<?> responseEntity = compareCartService.removeCart("user2");
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
     }
 
     @Test

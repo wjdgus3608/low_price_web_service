@@ -27,15 +27,17 @@ public class CompareCartService {
         return ResponseEntity.ok().build();
     }
 
+    public ResponseEntity<?> removeCart(String ownerId){
+        return compareCartRepository.deleteByOwnerId(ownerId);
+    }
+
     public CompareCart searchCart(String ownerId){
         return compareCartRepository.findByOwnerId(ownerId);
     }
     /*
 
 
-    public ResponseEntity<?> removeCart(){
 
-    }
 
     public ResponseEntity<?> clearCart(){
 

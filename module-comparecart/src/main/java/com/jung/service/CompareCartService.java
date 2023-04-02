@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CompareCartService {
     private final CompareCartRepository compareCartRepository;
 
+    @Transactional
     public ResponseEntity<?> generateCart(String ownerId){
         CompareCart entity = CompareCart.builder()
                 .ownerId(ownerId)
@@ -25,6 +26,10 @@ public class CompareCartService {
         compareCartRepository.save(entity);
         return ResponseEntity.ok().build();
     }
+
+    public CompareCart searchCart(String ownerId){
+        return compareCartRepository.findByOwnerId(ownerId);
+    }
     /*
 
 
@@ -36,9 +41,7 @@ public class CompareCartService {
 
     }
 
-    public CompareCart searchCart(){
 
-    }
 
     public ResponseEntity<?> addProductToCart(){
 

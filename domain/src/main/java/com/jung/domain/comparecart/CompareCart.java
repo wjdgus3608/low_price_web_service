@@ -16,10 +16,11 @@ import java.util.List;
 public class CompareCart extends BaseEntity {
     @Id
     @GeneratedValue
+    @Column(name = "cart_id")
     private long cartId;
     @Column(nullable = false)
     private String ownerId;
-    @OneToMany(mappedBy = "cartId")
+    @OneToMany(mappedBy = "compareCart")
     private List<CartProduct> cartProducts = new ArrayList<>();
     @ColumnDefault("0")
     private long totalCnt;

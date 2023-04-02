@@ -14,9 +14,9 @@ public class CartProduct {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
-    @ManyToOne
-    private long cartId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private CompareCart compareCart;
     @Column(nullable = false)
     private long productId;
 

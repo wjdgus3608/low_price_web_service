@@ -44,7 +44,14 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 검색")
     void searchCart() {
+        //given
+        //when
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //then
+        assertNotNull(searchedCart);
+        assertEquals("user1",searchedCart.getOwnerId());
     }
 
     @Test

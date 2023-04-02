@@ -36,7 +36,14 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 삭제")
     void removeCart() {
+        //given
+        compareCartService.removeCart("user1");
+        //when
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //then
+        assertNull(searchedCart);
     }
 
     @Test

@@ -3,13 +3,14 @@ package com.jung.domain.comparecart;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
 @Getter
-public class CartProduct {
+public class CartProduct{
     @Id
     @GeneratedValue
     private long id;
@@ -20,4 +21,16 @@ public class CartProduct {
     @Column(nullable = false)
     private long productId;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CartProduct that = (CartProduct) o;
+        return productId == that.productId && compareCart.getOwnerId().equals(that.compareCart.getOwnerId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(compareCart.getOwnerId(), productId);
+    }
 }

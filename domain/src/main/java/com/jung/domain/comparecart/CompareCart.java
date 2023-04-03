@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,5 +32,18 @@ public class CompareCart extends BaseEntity {
             return false;
         this.cartProducts.add(cartProduct);
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CompareCart that = (CompareCart) o;
+        return ownerId.equals(that.ownerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ownerId);
     }
 }

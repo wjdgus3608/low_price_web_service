@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.comparecart.CartProduct;
 import com.jung.domain.comparecart.CompareCart;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -9,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 class CompareCartServiceTest {
 
     @Autowired
@@ -83,8 +86,20 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 상품추가")
+    @Transactional
     void addProductToCart() {
-
+        //given
+        CartProduct cartProduct = CartProduct.builder()
+                .productId(1L)
+                .build();
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //when
+        searchedCart.addProduct(cartProduct);
+        //then
+        assertEquals(1,searchedCart.getCartProducts().size());
+        assertEquals(1L,searchedCart.getCartProducts().get(0).getProductId());
+        assertEquals(searchedCart,searchedCart.getCartProducts().get(0).getCompareCart());
     }
 
     @Test

@@ -30,6 +30,7 @@ public class CompareCart extends BaseEntity {
     public boolean addProduct(CartProduct cartProduct){
         if(this.cartProducts.contains(cartProduct))
             return false;
+        cartProduct.connectCompareCart(this);
         this.cartProducts.add(cartProduct);
         return true;
     }

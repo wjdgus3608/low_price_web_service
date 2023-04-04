@@ -1,6 +1,7 @@
 package com.jung.domain.comparecart;
 
 import lombok.*;
+import org.springframework.http.ResponseEntity;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,6 +21,10 @@ public class CartProduct{
     private CompareCart compareCart;
     @Column(nullable = false)
     private long productId;
+
+    public void connectCompareCart(CompareCart compareCart){
+       this.compareCart=compareCart;
+    }
 
     @Override
     public boolean equals(Object o) {

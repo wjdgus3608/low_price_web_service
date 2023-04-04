@@ -90,9 +90,7 @@ class CompareCartServiceTest {
     @Transactional
     void addProductToCart() {
         //given
-        CartProduct cartProduct = CartProduct.builder()
-                .productId(1L)
-                .build();
+        CartProduct cartProduct = generateCartProduct(1L);
         CompareCart searchedCart = compareCartService.searchCart("user1");
         //when
         searchedCart.addProduct(cartProduct);
@@ -103,7 +101,27 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 상품추가(중복)")
+    @Transactional
+    void addProductToCartWithDup() {
+        //given
+        CartProduct cartProduct = generateCartProduct(1L);
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //when
+        searchedCart.addProduct(cartProduct);
+        //then
+        assertFalse(searchedCart.addProduct(cartProduct));
+        assertEquals(1,searchedCart.getCartProducts().size());
+    }
+
+    @Test
     void removeProductFromCart() {
+    }
+
+    private CartProduct generateCartProduct(long id){
+        return CartProduct.builder()
+                .productId(id)
+                .build();
     }
 
 

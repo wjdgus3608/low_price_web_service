@@ -35,6 +35,13 @@ public class CompareCart extends BaseEntity {
         return true;
     }
 
+    public boolean removeProduct(CartProduct cartProduct){
+        if (this.cartProducts.contains(cartProduct)) {
+
+            return true;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

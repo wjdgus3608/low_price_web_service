@@ -32,12 +32,14 @@ public class CompareCart extends BaseEntity {
             return false;
         cartProduct.connectCompareCart(this);
         cartProducts.add(cartProduct);
+        totalCnt=cartProducts.size();
         return true;
     }
 
     public boolean removeProduct(CartProduct cartProduct){
         if (cartProducts.contains(cartProduct)) {
             cartProducts.remove(cartProduct);
+            totalCnt=cartProducts.size();
             return true;
         }
         return false;

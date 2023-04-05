@@ -71,7 +71,14 @@ class CompareCartServiceTest {
     }
 
     @Test
+    @DisplayName("비교카트 비우기")
     void clearCart() {
+        //given
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //when
+        compareCartService.clearCart(searchedCart.getCartId());
+        //then
+        assertEquals(0,searchedCart.getCartProducts().size());
     }
 
     @Test
@@ -93,7 +100,7 @@ class CompareCartServiceTest {
         CartProduct cartProduct = generateCartProduct(1L);
         CompareCart searchedCart = compareCartService.searchCart("user1");
         //when
-        searchedCart.addProduct(cartProduct);
+        compareCartService.addProduct(cartProduct);
         //then
         assertEquals(1,searchedCart.getCartProducts().size());
         assertEquals(1L,searchedCart.getCartProducts().get(0).getProductId());
@@ -108,9 +115,10 @@ class CompareCartServiceTest {
         CartProduct cartProduct = generateCartProduct(1L);
         CompareCart searchedCart = compareCartService.searchCart("user1");
         //when
-        searchedCart.addProduct(cartProduct);
+        compareCartService.addProduct(cartProduct);
+        ResponseEntity<?> responseEntity = compareCartService.addProduct(cartProduct);
         //then
-        assertFalse(searchedCart.addProduct(cartProduct));
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
         assertEquals(1,searchedCart.getCartProducts().size());
     }
 
@@ -121,11 +129,11 @@ class CompareCartServiceTest {
         //given
         CartProduct cartProduct = generateCartProduct(1L);
         CompareCart searchedCart = compareCartService.searchCart("user1");
-        searchedCart.addProduct(cartProduct);
+        compareCartService.addProduct(cartProduct);
         //when
-        boolean isValid = searchedCart.removeProduct(cartProduct);
+        ResponseEntity<?> responseEntity = compareCartService.removeProduct(cartProduct);
         //then
-        assertTrue(isValid);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertEquals(0,searchedCart.getCartProducts().size());
     }
 
@@ -137,9 +145,9 @@ class CompareCartServiceTest {
         CartProduct cartProduct = generateCartProduct(1L);
         CompareCart searchedCart = compareCartService.searchCart("user1");
         //when
-        boolean isValid = searchedCart.removeProduct(cartProduct);
+        ResponseEntity<?> responseEntity = compareCartService.removeProduct(cartProduct);
         //then
-        assertFalse(isValid);
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
     }
 
     private CartProduct generateCartProduct(long id){

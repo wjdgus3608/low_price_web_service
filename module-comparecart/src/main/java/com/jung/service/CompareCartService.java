@@ -39,7 +39,7 @@ public class CompareCartService {
     public CompareCart searchCart(String ownerId){
         return compareCartRepository.findByOwnerId(ownerId);
     }
-    /*
+
 
 
 
@@ -60,7 +60,7 @@ public class CompareCartService {
 
     }
 
-     */
+
 
     private boolean isDupId(String ownerId){
         return compareCartRepository.findByOwnerId(ownerId)!=null;

@@ -28,18 +28,19 @@ public class CompareCart extends BaseEntity {
     private long totalCnt;
 
     public boolean addProduct(CartProduct cartProduct){
-        if(this.cartProducts.contains(cartProduct))
+        if(cartProducts.contains(cartProduct))
             return false;
         cartProduct.connectCompareCart(this);
-        this.cartProducts.add(cartProduct);
+        cartProducts.add(cartProduct);
         return true;
     }
 
     public boolean removeProduct(CartProduct cartProduct){
-        if (this.cartProducts.contains(cartProduct)) {
-
+        if (cartProducts.contains(cartProduct)) {
+            cartProducts.remove(cartProduct);
             return true;
         }
+        return false;
     }
 
     @Override

@@ -129,6 +129,19 @@ class CompareCartServiceTest {
         assertEquals(0,searchedCart.getCartProducts().size());
     }
 
+    @Test
+    @DisplayName("비교카트 상품제거(없는 상품제거시)")
+    @Transactional
+    void removeNotInProductFromCart() {
+        //given
+        CartProduct cartProduct = generateCartProduct(1L);
+        CompareCart searchedCart = compareCartService.searchCart("user1");
+        //when
+        boolean isValid = searchedCart.removeProduct(cartProduct);
+        //then
+        assertFalse(isValid);
+    }
+
     private CartProduct generateCartProduct(long id){
         return CartProduct.builder()
                 .productId(id)

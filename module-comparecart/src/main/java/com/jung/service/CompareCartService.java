@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.comparecart.CartProduct;
 import com.jung.domain.comparecart.CompareCart;
 import com.jung.domain.comparecart.CompareCartRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,20 +45,30 @@ public class CompareCartService {
 
 
     @Transactional
-    public ResponseEntity<?> clearCart(){
-
+    public ResponseEntity<?> clearCart(String ownerId){
+        CompareCart searchedCart = searchCart(ownerId);
+        searchedCart.clearCart();
+        return ResponseEntity.ok().build();
     }
 
 
 
     @Transactional
-    public ResponseEntity<?> addProductToCart(){
-
+    public ResponseEntity<?> addProductToCart(CartProduct cartProduct){
+        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId());
+        boolean isSuccess = searchedCart.addProduct(cartProduct);
+        if (isSuccess)
+            return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 
     @Transactional
-    public ResponseEntity<?> removeProductFromCart(){
-
+    public ResponseEntity<?> removeProductFromCart(CartProduct cartProduct){
+        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId());
+        boolean isSuccess = searchedCart.removeProduct(cartProduct);
+        if (isSuccess)
+            return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 
 

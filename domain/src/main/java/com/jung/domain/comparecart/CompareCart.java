@@ -43,6 +43,11 @@ public class CompareCart extends BaseEntity {
         return false;
     }
 
+    public void clearCart(){
+        cartProducts.clear();
+        totalCnt=0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

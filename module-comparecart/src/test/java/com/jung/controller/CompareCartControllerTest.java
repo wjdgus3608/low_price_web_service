@@ -32,11 +32,12 @@ class CompareCartControllerTest {
     @BeforeAll
     @DisplayName("비교카트 테스트 초기 설정")
     void initCart() throws Exception {
+
         firstCompareCart = CompareCart.builder()
                 .ownerId("user1")
                 .build();
         String strEntity = objectMapper.writeValueAsString(firstCompareCart);
-        //when
+
         mockMvc.perform(MockMvcRequestBuilders.post("/compare-cart")
                 .content(strEntity)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -46,7 +47,20 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 생성")
-    void generateCart() {
+    void generateCart() throws Exception {
+        //given
+        CompareCart secondCart = CompareCart.builder()
+                .ownerId("user2")
+                .build();
+        String strEntity = objectMapper.writeValueAsString(secondCart);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/compare-cart")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

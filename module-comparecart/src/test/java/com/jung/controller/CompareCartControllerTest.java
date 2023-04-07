@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -36,10 +37,9 @@ class CompareCartControllerTest {
         firstCompareCart = CompareCart.builder()
                 .ownerId("user1")
                 .build();
-        String strEntity = objectMapper.writeValueAsString(firstCompareCart);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/compare-cart")
-                .content(strEntity)
+                .content(firstCompareCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print());
@@ -52,11 +52,10 @@ class CompareCartControllerTest {
         CompareCart secondCart = CompareCart.builder()
                 .ownerId("user2")
                 .build();
-        String strEntity = objectMapper.writeValueAsString(secondCart);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/compare-cart")
-                .content(strEntity)
+                .content(secondCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -65,7 +64,21 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 삭제")
-    void removeCart() {
+    @Transactional
+    void removeCart() throws Exception {
+        //given
+        CompareCart secondCart = CompareCart.builder()
+                .ownerId("user1")
+                .build();
+        String strEntity = objectMapper.writeValueAsString(secondCart);
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/compare-cart")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

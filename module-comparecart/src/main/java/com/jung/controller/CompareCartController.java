@@ -1,6 +1,5 @@
 package com.jung.controller;
 
-import com.jung.domain.comparecart.GenerateCompareCartDTO;
 import com.jung.service.CompareCartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +14,8 @@ public class CompareCartController {
     private final CompareCartService compareCartService;
 
     @PostMapping("/compare-cart")
-    public ResponseEntity<?> generateCart(@RequestBody GenerateCompareCartDTO generateCompareCartDTO){
-        return compareCartService.generateCart(generateCompareCartDTO.getOwnerId());
+    public ResponseEntity<?> generateCart(@RequestBody String ownerId){
+        return compareCartService.generateCart(ownerId);
     }
 /*
     public ResponseEntity<?> removeCart(){

@@ -11,10 +11,10 @@ public class CompareCartController {
 
     private final CompareCartService compareCartService;
 
-/*    public ResponseEntity<?> generateCart(){
-
+    public ResponseEntity<?> generateCart(){
+        compareCartService.generateCart()
     }
-
+/*
     public ResponseEntity<?> removeCart(){
 
     }

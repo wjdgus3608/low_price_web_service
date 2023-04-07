@@ -64,7 +64,7 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 삭제")
-    @Transactional
+//    @Transactional
     void removeCart() throws Exception {
         //given
         CompareCart secondCart = CompareCart.builder()

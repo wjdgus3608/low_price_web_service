@@ -89,7 +89,8 @@ class CompareCartControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .header("ownerId",firstCompareCart.getOwnerId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("ownerId").value(equalTo(firstCompareCart.getOwnerId())))
+                .andExpect(MockMvcResultMatchers.jsonPath("ownerId")
+                        .value(equalTo(firstCompareCart.getOwnerId())))
                 .andDo(print());
     }
 

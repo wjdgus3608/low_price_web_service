@@ -58,7 +58,10 @@ public class CompareCartService {
     public ResponseEntity<?> addProductToCart(CartProduct cartProduct){
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
-        searchedCart.addProduct(cartProduct);
+        //throw로 처리해야 하나...
+        boolean isSuccess = searchedCart.addProduct(cartProduct);
+        if(!isSuccess)
+            return ResponseEntity.badRequest().build();
 
         return ResponseEntity.ok().build();
     }
@@ -67,7 +70,10 @@ public class CompareCartService {
     public ResponseEntity<?> removeProductFromCart(CartProduct cartProduct){
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
-        searchedCart.removeProduct(cartProduct);
+        //throw로 처리해야 하나...
+        boolean isSuccess = searchedCart.removeProduct(cartProduct);
+        if(!isSuccess)
+            return ResponseEntity.badRequest().build();
 
         return ResponseEntity.ok().build();
     }

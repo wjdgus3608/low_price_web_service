@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,6 +62,7 @@ class CompareCartServiceTest {
         assertFalse(searchedCart.isPresent());
     }
 
+
     @Test
     @DisplayName("비교카트 비우기")
     void clearCart() {
@@ -106,13 +106,13 @@ class CompareCartServiceTest {
     void addProductToCartWithDup() {
         //given
         CartProduct cartProduct = buildCartProduct(1L,"user1");
-        Optional<CompareCart> searchCart = compareCartService.searchCart("user1");
+        Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
         //when
-        compareCartService.addProductToCart(cartProduct);
-//        ResponseEntity<?> responseEntity = compareCartService.addProductToCart(cartProduct);
+        compareCartService.addProductToCart(cartProduct).getStatusCode();
         //then
-//        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
-//        assertEquals(1,searchedCart.getCartProducts().size());
+        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.addProductToCart(cartProduct).getStatusCode());
+        assertTrue(searchedCart.isPresent());
+        assertEquals(1,searchedCart.get().getCartProducts().size());
     }
 
     @Test
@@ -129,6 +129,16 @@ class CompareCartServiceTest {
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertTrue(searchedCart.isPresent());
         assertEquals(0,searchedCart.get().getCartProducts().size());
+    }
+
+    @Test
+    @DisplayName("비교카트 상품제거(없는 상품제거시)")
+    void removeNotInProductFromCart() {
+        //given
+        CartProduct cartProduct = buildCartProduct(3L,"user1");
+        //when
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.removeProductFromCart(cartProduct).getStatusCode());
     }
 
     private CartProduct buildCartProduct(long id, String ownerId){

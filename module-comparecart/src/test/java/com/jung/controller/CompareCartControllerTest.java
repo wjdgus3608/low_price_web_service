@@ -96,7 +96,16 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 비우기")
-    void clearCart() {
+    void clearCart() throws Exception {
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-products")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("ownerId",firstCompareCart.getOwnerId()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -64,27 +65,32 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 삭제")
-//    @Transactional
+    @Transactional
     void removeCart() throws Exception {
         //given
-        CompareCart secondCart = CompareCart.builder()
-                .ownerId("user1")
-                .build();
-        String strEntity = objectMapper.writeValueAsString(secondCart);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/compare-cart")
-                .content(strEntity)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .header("ownerId",secondCart.getOwnerId()))
+                .header("ownerId",firstCompareCart.getOwnerId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
     }
 
     @Test
     @DisplayName("비교카트 검색")
-    void searchCart() {
+    void searchCart() throws Exception {
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("/compare-cart")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("ownerId",firstCompareCart.getOwnerId()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("ownerId").value(equalTo(firstCompareCart.getOwnerId())))
+                .andDo(print());
     }
 
     @Test

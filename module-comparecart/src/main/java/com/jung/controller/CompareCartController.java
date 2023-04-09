@@ -20,10 +20,13 @@ public class CompareCartController {
     public ResponseEntity<?> removeCart(@RequestHeader("ownerId") String ownerId){
         return compareCartService.removeCart(ownerId);
     }
-/*
-    public ResponseEntity<?> searchCart(){
 
+    @GetMapping("/compare-cart")
+    public ResponseEntity<?> searchCart(@RequestHeader("ownerId") String ownerId){
+        return ResponseEntity.ok(compareCartService.searchCart(ownerId));
     }
+/*
+
 
     public ResponseEntity<?> clearCart(){
 

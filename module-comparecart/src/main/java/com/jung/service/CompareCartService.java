@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -30,14 +33,11 @@ public class CompareCartService {
 
     @Transactional
     public ResponseEntity<?> removeCart(String ownerId){
-        if(!compareCartRepository.existsByOwnerId(ownerId))
-            return ResponseEntity.badRequest().build();
-
         compareCartRepository.deleteByOwnerId(ownerId);
         return ResponseEntity.ok().build();
     }
 
-    public CompareCart searchCart(String ownerId){
+    public Optional<CompareCart> searchCart(String ownerId){
         return compareCartRepository.findByOwnerId(ownerId);
     }
 
@@ -46,7 +46,8 @@ public class CompareCartService {
 
     @Transactional
     public ResponseEntity<?> clearCart(String ownerId){
-        CompareCart searchedCart = searchCart(ownerId);
+        CompareCart searchedCart = searchCart(ownerId)
+                .orElseThrow(()->new NoSuchElementException(""));
         searchedCart.clearCart();
         return ResponseEntity.ok().build();
     }
@@ -55,25 +56,25 @@ public class CompareCartService {
 
     @Transactional
     public ResponseEntity<?> addProductToCart(CartProduct cartProduct){
-        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId());
-        boolean isSuccess = searchedCart.addProduct(cartProduct);
-        if (isSuccess)
-            return ResponseEntity.ok().build();
-        return ResponseEntity.badRequest().build();
+        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
+                .orElseThrow(()->new NoSuchElementException(""));
+        searchedCart.addProduct(cartProduct);
+
+        return ResponseEntity.ok().build();
     }
 
     @Transactional
     public ResponseEntity<?> removeProductFromCart(CartProduct cartProduct){
-        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId());
-        boolean isSuccess = searchedCart.removeProduct(cartProduct);
-        if (isSuccess)
-            return ResponseEntity.ok().build();
-        return ResponseEntity.badRequest().build();
+        CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
+                .orElseThrow(()->new NoSuchElementException(""));
+        searchedCart.removeProduct(cartProduct);
+
+        return ResponseEntity.ok().build();
     }
 
 
 
     private boolean isDupId(String ownerId){
-        return compareCartRepository.findByOwnerId(ownerId)!=null;
+        return compareCartRepository.findByOwnerId(ownerId).isPresent();
     }
 }

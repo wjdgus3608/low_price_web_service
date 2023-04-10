@@ -7,7 +7,7 @@ public class CartUtil {
                 .build();
     }
 
-    public CartProduct generateCartProduct(long id, String ownerId){
+    public static CartProduct generateCartProduct(long id, String ownerId){
 
         return CartProduct.builder()
                 .productId(id)

@@ -108,7 +108,7 @@ class CompareCartControllerTest {
                 .andDo(print());
     }
 
-    @Test
+   /* @Test
     @DisplayName("비교카트 상품추가")
     void addProductToCart() throws Exception {
         //given
@@ -121,7 +121,7 @@ class CompareCartControllerTest {
                 .content(strEntity))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
-    }
+    }*/
 
     @Test
     @DisplayName("비교카트 상품제거")

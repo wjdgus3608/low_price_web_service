@@ -1,6 +1,7 @@
 package com.jung.service;
 
 import com.jung.domain.comparecart.CartProduct;
+import com.jung.domain.comparecart.CartUtil;
 import com.jung.domain.comparecart.CompareCart;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -90,7 +91,7 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품추가")
     void addProductToCart() {
         //given
-        CartProduct cartProduct = buildCartProduct(1L,"user1");
+        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
         //when
         compareCartService.addProductToCart(cartProduct);
@@ -105,7 +106,7 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품추가(중복)")
     void addProductToCartWithDup() {
         //given
-        CartProduct cartProduct = buildCartProduct(1L,"user1");
+        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
         //when
         compareCartService.addProductToCart(cartProduct).getStatusCode();
@@ -119,7 +120,7 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품제거")
     void removeProductFromCart() {
         //given
-        CartProduct cartProduct = buildCartProduct(1L,"user1");
+        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
         compareCartService.addProductToCart(cartProduct);
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
 
@@ -135,7 +136,7 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품제거(없는 상품제거시)")
     void removeNotInProductFromCart() {
         //given
-        CartProduct cartProduct = buildCartProduct(3L,"user1");
+        CartProduct cartProduct = CartUtil.generateCartProduct(3L,"user1");
         //when
         //then
         assertEquals(HttpStatus.BAD_REQUEST,compareCartService.removeProductFromCart(cartProduct).getStatusCode());

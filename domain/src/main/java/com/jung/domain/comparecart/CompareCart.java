@@ -50,6 +50,8 @@ public class CompareCart extends BaseEntity {
         totalCnt=0;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

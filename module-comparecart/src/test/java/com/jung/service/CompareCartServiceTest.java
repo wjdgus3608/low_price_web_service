@@ -141,19 +141,9 @@ class CompareCartServiceTest {
         assertEquals(HttpStatus.BAD_REQUEST,compareCartService.removeProductFromCart(cartProduct).getStatusCode());
     }
 
-    private CartProduct buildCartProduct(long id, String ownerId){
 
-        return CartProduct.builder()
-                .productId(id)
-                .compareCart(buildCompareCart(ownerId))
-                .build();
-    }
 
-    private CompareCart buildCompareCart(String ownerId){
-        return CompareCart.builder()
-                .ownerId(ownerId)
-                .build();
-    }
+
 
 
 }

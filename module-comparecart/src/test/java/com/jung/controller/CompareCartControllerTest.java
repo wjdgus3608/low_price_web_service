@@ -110,7 +110,17 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 상품추가")
-    void addProductToCart() {
+    void addProductToCart() throws Exception {
+        //given
+        //when
+        String strEntity = objectMapper.writeValueAsString(responseEntity.getBody());
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/cart-products")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(strEntity))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

@@ -26,6 +26,8 @@ public class CartProduct{
        this.compareCart=compareCart;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

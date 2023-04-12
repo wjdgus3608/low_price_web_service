@@ -1,5 +1,6 @@
 package com.jung.service;
 
+import com.jung.domain.comparecart.CartProductDTO;
 import com.jung.domain.comparecart.CartProduct;
 import com.jung.domain.comparecart.CartUtil;
 import com.jung.domain.comparecart.CompareCart;
@@ -91,10 +92,13 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품추가")
     void addProductToCart() {
         //given
-        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
+        CartProductDTO dto = CartProductDTO.builder()
+                                .productId(1L)
+                                .ownerId("user1")
+                                .build();
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
         //when
-        compareCartService.addProductToCart(cartProduct);
+        compareCartService.addProductToCart(dto);
         //then
         assertTrue(searchedCart.isPresent());
         assertEquals(1,searchedCart.get().getCartProducts().size());
@@ -106,12 +110,15 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품추가(중복)")
     void addProductToCartWithDup() {
         //given
-        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
+        CartProductDTO dto = CartProductDTO.builder()
+                .productId(1L)
+                .ownerId("user1")
+                .build();
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
         //when
-        compareCartService.addProductToCart(cartProduct).getStatusCode();
+        compareCartService.addProductToCart(dto);
         //then
-        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.addProductToCart(cartProduct).getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.addProductToCart(dto).getStatusCode());
         assertTrue(searchedCart.isPresent());
         assertEquals(1,searchedCart.get().getCartProducts().size());
     }
@@ -120,12 +127,15 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품제거")
     void removeProductFromCart() {
         //given
-        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
-        compareCartService.addProductToCart(cartProduct);
+        CartProductDTO dto = CartProductDTO.builder()
+                .productId(1L)
+                .ownerId("user1")
+                .build();
+        compareCartService.addProductToCart(dto);
         Optional<CompareCart> searchedCart = compareCartService.searchCart("user1");
 
         //when
-        ResponseEntity<?> responseEntity = compareCartService.removeProductFromCart(cartProduct);
+        ResponseEntity<?> responseEntity = compareCartService.removeProductFromCart(dto);
         //then
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertTrue(searchedCart.isPresent());
@@ -136,10 +146,13 @@ class CompareCartServiceTest {
     @DisplayName("비교카트 상품제거(없는 상품제거시)")
     void removeNotInProductFromCart() {
         //given
-        CartProduct cartProduct = CartUtil.generateCartProduct(3L,"user1");
+        CartProductDTO dto = CartProductDTO.builder()
+                .productId(3L)
+                .ownerId("user1")
+                .build();
         //when
         //then
-        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.removeProductFromCart(cartProduct).getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST,compareCartService.removeProductFromCart(dto).getStatusCode());
     }
 
 

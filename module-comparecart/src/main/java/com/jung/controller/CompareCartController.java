@@ -1,9 +1,12 @@
 package com.jung.controller;
 
+import com.jung.domain.comparecart.CartProductDTO;
 import com.jung.service.CompareCartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,8 +35,8 @@ public class CompareCartController {
     }
 
     @PostMapping("/cart-product")
-    public ResponseEntity<?> addProductToCart(@RequestBody ){
-
+    public ResponseEntity<?> addProductToCart(@RequestBody @Valid CartProductDTO cartProductDTO){
+        return compareCartService.addProductToCart(cartProductDTO);
     }
 /*
 

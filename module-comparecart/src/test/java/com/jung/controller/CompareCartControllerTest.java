@@ -1,9 +1,7 @@
 package com.jung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jung.domain.comparecart.AddCartProductDTO;
-import com.jung.domain.comparecart.CartProduct;
-import com.jung.domain.comparecart.CartUtil;
+import com.jung.domain.comparecart.CartProductDTO;
 import com.jung.domain.comparecart.CompareCart;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -19,7 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -115,7 +112,7 @@ class CompareCartControllerTest {
     @DisplayName("비교카트 상품추가")
     void addProductToCart() throws Exception {
         //given
-        AddCartProductDTO dto = AddCartProductDTO.builder()
+        CartProductDTO dto = CartProductDTO.builder()
                                 .ownerId("user1")
                                 .productId(1L)
                                 .build();

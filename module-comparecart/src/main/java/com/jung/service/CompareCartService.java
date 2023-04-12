@@ -1,8 +1,6 @@
 package com.jung.service;
 
-import com.jung.domain.comparecart.CartProduct;
-import com.jung.domain.comparecart.CompareCart;
-import com.jung.domain.comparecart.CompareCartRepository;
+import com.jung.domain.comparecart.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -55,7 +53,8 @@ public class CompareCartService {
 
 
     @Transactional
-    public ResponseEntity<?> addProductToCart(CartProduct cartProduct){
+    public ResponseEntity<?> addProductToCart(CartProductDTO cartProductDTO){
+        CartProduct cartProduct = cartProductDTO.toEntity();
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
         //throw로 처리해야 하나...
@@ -67,7 +66,8 @@ public class CompareCartService {
     }
 
     @Transactional
-    public ResponseEntity<?> removeProductFromCart(CartProduct cartProduct){
+    public ResponseEntity<?> removeProductFromCart(CartProductDTO cartProductDTO){
+        CartProduct cartProduct = cartProductDTO.toEntity();
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
         //throw로 처리해야 하나...

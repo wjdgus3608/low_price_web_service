@@ -1,5 +1,6 @@
 package com.jung.domain.comparecart;
 
+import com.jung.domain.RequestDTO;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -9,11 +10,17 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddCartProductDTO {
+public class CartProductDTO implements RequestDTO<CartProduct> {
     private int responseCode;
     private String responseMessage;
     @NotNull
     private String ownerId;
     @NotNull
     private long productId;
+
+
+    @Override
+    public CartProduct toEntity() {
+        return CartUtil.generateCartProduct(this.getProductId(),this.getOwnerId());
+    }
 }

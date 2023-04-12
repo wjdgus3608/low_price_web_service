@@ -1,6 +1,8 @@
 package com.jung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jung.domain.comparecart.CartProduct;
+import com.jung.domain.comparecart.CartUtil;
 import com.jung.domain.comparecart.CompareCart;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -108,12 +110,13 @@ class CompareCartControllerTest {
                 .andDo(print());
     }
 
-   /* @Test
+    @Test
     @DisplayName("비교카트 상품추가")
     void addProductToCart() throws Exception {
         //given
+        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
         //when
-        String strEntity = objectMapper.writeValueAsString(responseEntity.getBody());
+        String strEntity = objectMapper.writeValueAsString(cartProduct);
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/cart-products")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -121,7 +124,7 @@ class CompareCartControllerTest {
                 .content(strEntity))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
-    }*/
+    }
 
     @Test
     @DisplayName("비교카트 상품제거")

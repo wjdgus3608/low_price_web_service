@@ -18,9 +18,9 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class ProductDTO {
-    int responseCode;
-    String responseMessage;
-    List<Product> products;
+    private int responseCode;
+    private String responseMessage;
+    private List<Product> products;
 
     public static List<Product> jsonToProductList(String json) {
         List<Product> list = new ArrayList<>();

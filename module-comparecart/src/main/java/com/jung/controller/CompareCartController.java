@@ -30,13 +30,16 @@ public class CompareCartController {
     public ResponseEntity<?> clearCart(@RequestHeader("ownerId") String ownerId){
         return compareCartService.clearCart(ownerId);
     }
+
+    @PostMapping("/cart-product")
+    public ResponseEntity<?> addProductToCart(@RequestBody ){
+
+    }
 /*
 
 
 
-    public ResponseEntity<?> addProductToCart(){
 
-    }
     public ResponseEntity<?> removeProductFromCart(){
 
     }*/

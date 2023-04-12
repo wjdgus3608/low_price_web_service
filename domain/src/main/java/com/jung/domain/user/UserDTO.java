@@ -10,8 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    int responseCode;
-    String responseMessage;
+    private int responseCode;
+    private String responseMessage;
     @NotNull
     private String userId;
     @NotNull

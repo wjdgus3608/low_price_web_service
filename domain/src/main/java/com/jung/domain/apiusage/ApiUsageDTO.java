@@ -10,14 +10,14 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiUsageDTO {
-    int responseCode;
-    String responseMessage;
+    private int responseCode;
+    private String responseMessage;
     @NotNull
-    ApiType apiType;
+    private ApiType apiType;
     @NotNull
-    long currentUsage;
+    private long currentUsage;
     @NotNull
-    long maxUsage;
+    private long maxUsage;
 
     public ApiUsage dtoToEntity(ApiUsageDTO apiUsageDTO){
         return ApiUsage.builder()

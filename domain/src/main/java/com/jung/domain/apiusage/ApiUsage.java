@@ -20,17 +20,17 @@ public class ApiUsage extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue
-    long id;
+    private long id;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    ApiType apiType;
+    private ApiType apiType;
 
     @Column(nullable = false)
-    long currentUsage;
+    private long currentUsage;
 
     @Column(nullable = false)
-    long maxUsage;
+    private long maxUsage;
 
 
     public void increaseUsage(){

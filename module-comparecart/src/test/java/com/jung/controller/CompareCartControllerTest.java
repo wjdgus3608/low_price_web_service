@@ -1,6 +1,7 @@
 package com.jung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jung.domain.comparecart.AddCartProductDTO;
 import com.jung.domain.comparecart.CartProduct;
 import com.jung.domain.comparecart.CartUtil;
 import com.jung.domain.comparecart.CompareCart;
@@ -114,9 +115,12 @@ class CompareCartControllerTest {
     @DisplayName("비교카트 상품추가")
     void addProductToCart() throws Exception {
         //given
-        CartProduct cartProduct = CartUtil.generateCartProduct(1L,"user1");
+        AddCartProductDTO dto = AddCartProductDTO.builder()
+                                .ownerId("user1")
+                                .productId(1L)
+                                .build();
         //when
-        String strEntity = objectMapper.writeValueAsString(cartProduct);
+        String strEntity = objectMapper.writeValueAsString(dto);
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/cart-products")
                 .contentType(MediaType.APPLICATION_JSON)

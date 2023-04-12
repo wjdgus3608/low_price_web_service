@@ -1,5 +1,6 @@
 package com.jung.domain.comparecart;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 @Setter
@@ -9,6 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddCartProductDTO {
-    String ownerId;
-    long productId;
+    private int responseCode;
+    private String responseMessage;
+    @NotNull
+    private String ownerId;
+    @NotNull
+    private long productId;
 }

@@ -68,6 +68,7 @@ public class CompareCartService {
     @Transactional
     public ResponseEntity<?> removeProductFromCart(CartProductDTO cartProductDTO){
         CartProduct cartProduct = cartProductDTO.toEntity();
+        System.out.println("cartProduct = " + cartProduct.toString());
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
         //throw로 처리해야 하나...

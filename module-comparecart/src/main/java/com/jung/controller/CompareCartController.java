@@ -1,6 +1,7 @@
 package com.jung.controller;
 
 import com.jung.domain.comparecart.CartProductDTO;
+import com.jung.domain.comparecart.CartUtil;
 import com.jung.service.CompareCartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,12 +39,12 @@ public class CompareCartController {
     public ResponseEntity<?> addProductToCart(@RequestBody @Valid CartProductDTO cartProductDTO){
         return compareCartService.addProductToCart(cartProductDTO);
     }
-/*
 
-
-
-
-    public ResponseEntity<?> removeProductFromCart(){
-
-    }*/
+    @DeleteMapping("/cart-product/{ownerId}/{productId}")
+    public ResponseEntity<?> removeProductFromCart(@PathVariable String ownerId, @PathVariable String productId){
+        return compareCartService.removeProductFromCart(CartProductDTO.builder()
+                .ownerId(ownerId)
+                .productId(Long.parseLong(productId))
+                .build());
+    }
 }

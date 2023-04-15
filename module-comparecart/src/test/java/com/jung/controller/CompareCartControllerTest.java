@@ -100,17 +100,15 @@ class CompareCartControllerTest {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-products")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-products/"+firstCompareCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .header("ownerId",firstCompareCart.getOwnerId()))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
     }
 
     @Test
     @DisplayName("비교카트 상품추가")
-
     void addProductToCart() throws Exception {
         //given
         CartProductDTO dto = CartProductDTO.builder()

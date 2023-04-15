@@ -20,8 +20,8 @@ public class CompareCartController {
         return compareCartService.generateCart(ownerId);
     }
 
-    @DeleteMapping("/compare-cart")
-    public ResponseEntity<?> removeCart(@RequestHeader("ownerId") String ownerId){
+    @DeleteMapping("/compare-cart/{ownerId}")
+    public ResponseEntity<?> removeCart(@PathVariable String ownerId){
         return compareCartService.removeCart(ownerId);
     }
 

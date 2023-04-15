@@ -41,10 +41,10 @@ public class CompareCartController {
     }
 
     @DeleteMapping("/cart-product/{ownerId}/{productId}")
-    public ResponseEntity<?> removeProductFromCart(@PathVariable String ownerId, @PathVariable String productId){
+    public ResponseEntity<?> removeProductFromCart(@PathVariable String ownerId, @PathVariable long productId){
         return compareCartService.removeProductFromCart(CartProductDTO.builder()
                 .ownerId(ownerId)
-                .productId(Long.parseLong(productId))
+                .productId(productId)
                 .build());
     }
 }

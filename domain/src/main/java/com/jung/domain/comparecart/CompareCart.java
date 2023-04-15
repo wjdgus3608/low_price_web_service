@@ -2,6 +2,7 @@ package com.jung.domain.comparecart;
 
 import com.jung.domain.BaseEntity;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.http.ResponseEntity;
 

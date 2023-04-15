@@ -2,6 +2,7 @@ package com.jung.service;
 
 import com.jung.domain.comparecart.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,7 +69,6 @@ public class CompareCartService {
     @Transactional
     public ResponseEntity<?> removeProductFromCart(CartProductDTO cartProductDTO){
         CartProduct cartProduct = cartProductDTO.toEntity();
-        System.out.println("cartProduct = " + cartProduct.toString());
         CompareCart searchedCart = searchCart(cartProduct.getCompareCart().getOwnerId())
                 .orElseThrow(()->new NoSuchElementException(""));
         //throw로 처리해야 하나...

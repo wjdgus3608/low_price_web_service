@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 class CompareCartControllerTest {
 
     @Autowired
@@ -65,7 +66,6 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 삭제")
-    @Transactional
     void removeCart() throws Exception {
         //given
         //when
@@ -110,6 +110,7 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 상품추가")
+
     void addProductToCart() throws Exception {
         //given
         CartProductDTO dto = CartProductDTO.builder()
@@ -130,8 +131,9 @@ class CompareCartControllerTest {
     @Test
     @DisplayName("비교카트 상품제거")
     void removeProductFromCart() throws Exception {
-        addProductToCart();
         //given
+        addProductToCart();
+
         CartProductDTO dto = CartProductDTO.builder()
                 .ownerId("user1")
                 .productId(1L)

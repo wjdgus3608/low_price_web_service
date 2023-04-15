@@ -119,7 +119,7 @@ class CompareCartControllerTest {
         //when
         String strEntity = objectMapper.writeValueAsString(dto);
         //then
-        mockMvc.perform(MockMvcRequestBuilders.post("/cart-products")
+        mockMvc.perform(MockMvcRequestBuilders.post("/cart-product")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(strEntity))
@@ -129,6 +129,21 @@ class CompareCartControllerTest {
 
     @Test
     @DisplayName("비교카트 상품제거")
-    void removeProductFromCart() {
+    void removeProductFromCart() throws Exception {
+        addProductToCart();
+        //given
+        CartProductDTO dto = CartProductDTO.builder()
+                .ownerId("user1")
+                .productId(1L)
+                .build();
+        //when
+        String strEntity = objectMapper.writeValueAsString(dto);
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-product")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(strEntity))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 }

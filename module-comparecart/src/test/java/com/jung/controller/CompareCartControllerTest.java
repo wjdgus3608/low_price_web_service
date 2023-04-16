@@ -83,10 +83,9 @@ class CompareCartControllerTest {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/compare-cart")
+        mockMvc.perform(MockMvcRequestBuilders.get("/compare-cart/"+firstCompareCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .header("ownerId",firstCompareCart.getOwnerId()))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("ownerId")
                         .value(equalTo(firstCompareCart.getOwnerId())))

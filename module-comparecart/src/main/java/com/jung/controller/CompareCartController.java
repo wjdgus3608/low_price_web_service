@@ -25,8 +25,8 @@ public class CompareCartController {
         return compareCartService.removeCart(ownerId);
     }
 
-    @GetMapping("/compare-cart")
-    public ResponseEntity<?> searchCart(@RequestHeader("ownerId") String ownerId){
+    @GetMapping("/compare-cart/{ownerId}")
+    public ResponseEntity<?> searchCart(@PathVariable String ownerId){
         return ResponseEntity.ok(compareCartService.searchCart(ownerId));
     }
 

@@ -19,7 +19,7 @@ public class ExcludeKeyword extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "filter_keyword_id")
     private FilterKeyword filterKeyword;
-    
+
     public void connectFilterKeyword(FilterKeyword filterKeyword){
         this.filterKeyword=filterKeyword;
     }

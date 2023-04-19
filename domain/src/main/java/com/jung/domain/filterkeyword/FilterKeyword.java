@@ -25,4 +25,12 @@ public class FilterKeyword extends BaseEntity {
     List<ExcludeKeyword> keywordList = new ArrayList<>();
     @ColumnDefault("0")
     private long totalCnt;
+
+    public boolean addExcludeKeyword(ExcludeKeyword excludeKeyword){
+        if(keywordList.contains(excludeKeyword))
+            return false;
+        excludeKeyword.connectFilterKeyword(this);
+        keywordList.add(excludeKeyword);
+        return true;
+    }
 }

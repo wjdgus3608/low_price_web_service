@@ -4,6 +4,7 @@ import com.jung.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,5 +23,18 @@ public class ExcludeKeyword extends BaseEntity {
 
     public void connectFilterKeyword(FilterKeyword filterKeyword){
         this.filterKeyword=filterKeyword;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExcludeKeyword that = (ExcludeKeyword) o;
+        return keyword.equals(that.keyword) && filterKeyword.equals(that.filterKeyword);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(keyword, filterKeyword);
     }
 }

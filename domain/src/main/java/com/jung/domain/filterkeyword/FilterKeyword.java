@@ -1,5 +1,6 @@
 package com.jung.domain.filterkeyword;
 
+import com.jung.domain.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Getter
-public class FilterKeyword {
+public class FilterKeyword extends BaseEntity {
     @Id
     @GeneratedValue
     private long filterKeywordId;

@@ -15,6 +15,7 @@
         <module name="lowprice.module-product.main" />
         <module name="lowprice.module-api-usage.main" />
         <module name="lowprice.common.main" />
+        <module name="lowprice.module-filterkeyword.main" />
         <module name="lowprice.client.main" />
       </profile>
     </annotationProcessing>

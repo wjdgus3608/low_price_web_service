@@ -106,7 +106,13 @@ project(':module-comparecart') {
 	dependencies {
 		implementation project(':common')
 		implementation project(':domain')
-		implementation 'redis.clients:jedis:4.3.1'
+	}
+}
+
+project(':module-filterkeyword') {
+	dependencies {
+		implementation project(':common')
+		implementation project(':domain')
 	}
 }
 

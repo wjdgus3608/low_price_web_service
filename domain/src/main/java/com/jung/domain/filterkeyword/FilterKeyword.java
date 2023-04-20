@@ -41,4 +41,9 @@ public class FilterKeyword extends BaseEntity {
         totalCnt = keywordList.size();
         return true;
     }
+
+    public void clearExcludeKeyword(){
+        keywordList.clear();
+        totalCnt = 0;
+    }
 }

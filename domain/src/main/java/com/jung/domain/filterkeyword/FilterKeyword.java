@@ -34,5 +34,11 @@ public class FilterKeyword extends BaseEntity {
         return true;
     }
 
-
+    public boolean removeExcludeKeyword(ExcludeKeyword excludeKeyword){
+        if(keywordList.contains(excludeKeyword))
+            return false;
+        keywordList.remove(excludeKeyword);
+        totalCnt = keywordList.size();
+        return true;
+    }
 }

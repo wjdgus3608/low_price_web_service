@@ -1,6 +1,7 @@
 package com.jung.service;
 
 import com.jung.domain.filterkeyword.FilterKeyword;
+import com.jung.domain.filterkeyword.KeywordSearchInfo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,10 +21,14 @@ class FilterKeywordServiceTest {
     @Autowired
     private FilterKeywordService filterKeywordService;
 
-    private Search
+    private KeywordSearchInfo keywordSearchInfo;
 
     @BeforeAll
     void setFilterKeyword(){
+        keywordSearchInfo = KeywordSearchInfo.builder()
+                .searchKeyword("keyword1")
+                .ownerId("user1")
+                .build();
 //        filterKeywordService.generateFilterKeyword("user1");
     }
 
@@ -32,7 +37,7 @@ class FilterKeywordServiceTest {
     void searchFilterKeyword(){
         //given
         //when
-        Optional<FilterKeyword> findKeyword = filterKeywordService.searchFilterKeyword(searchInfo);
+        Optional<FilterKeyword> findKeyword = filterKeywordService.searchFilterKeyword(keywordSearchInfo);
         //then
         assertTrue(findKeyword.isPresent());
         assertEquals("user1",findKeyword.get().getOwnerId());

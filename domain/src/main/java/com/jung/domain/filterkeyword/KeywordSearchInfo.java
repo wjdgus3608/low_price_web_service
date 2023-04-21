@@ -10,5 +10,6 @@ import javax.validation.constraints.NotNull;
 public class KeywordSearchInfo {
     @NotNull
     private final String searchKeyword;
+    @NotNull
     private final String ownerId;
 }

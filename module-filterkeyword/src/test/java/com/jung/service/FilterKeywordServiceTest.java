@@ -37,7 +37,7 @@ class FilterKeywordServiceTest {
     void searchFilterKeyword(){
         //given
         //when
-        Optional<FilterKeyword> findKeyword = filterKeywordService.searchFilterKeyword(keywordSearchInfo);
+        Optional<FilterKeyword> findKeyword = filterKeywordService.searchKeywordByInfo(keywordSearchInfo);
         //then
         assertTrue(findKeyword.isPresent());
         assertEquals("user1",findKeyword.get().getOwnerId());

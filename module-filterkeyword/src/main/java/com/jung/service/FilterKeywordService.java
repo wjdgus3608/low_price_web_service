@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,13 @@ import java.util.List;
 public class FilterKeywordService {
     private final FilterKeywordRepository filterKeywordRepository;
 
-    public ResponseEntity<?> generateFilterKeyword(){
+    public Optional<FilterKeyword> searchKeywordByInfo(KeywordSearchInfo keywordSearchInfo){
+        return filterKeywordRepository.findByOwnerIdAndSearchKeyword(
+                keywordSearchInfo.getOwnerId(),
+                keywordSearchInfo.getSearchKeyword());
+    }
+
+   /* public ResponseEntity<?> generateFilterKeyword(){
 
     }
 
@@ -24,10 +31,7 @@ public class FilterKeywordService {
 
     }
 
-    public ResponseEntity<?> searchFilterKeyword(KeywordSearchInfo keywordSearchInfo){
-        List<FilterKeyword> keywordList = filterKeywordRepository.findByOwnerId(keywordSearchInfo.getOwnerId());
 
-    }
 
     public ResponseEntity<?> addExcludeKeywordToFilterKeyword(){
 
@@ -35,5 +39,5 @@ public class FilterKeywordService {
 
     public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(){
 
-    }
+    }*/
 }

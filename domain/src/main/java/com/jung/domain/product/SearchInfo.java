@@ -11,11 +11,11 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class SearchInfo {
     @NotNull
-    private String query;
-    private int display;
-    private int start;
+    private final String query;
+    private final int display;
+    private final int start;
     @Enumerated(EnumType.STRING)
-    private SortType sort;
-    private String filter;
-    private String exclude;
+    private final SortType sort;
+    private final String filter;
+    private final String exclude;
 }

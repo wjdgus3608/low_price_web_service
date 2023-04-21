@@ -20,6 +20,8 @@ class FilterKeywordServiceTest {
     @Autowired
     private FilterKeywordService filterKeywordService;
 
+    private Search
+
     @BeforeAll
     void setFilterKeyword(){
 //        filterKeywordService.generateFilterKeyword("user1");

@@ -11,8 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartProductDTO implements RequestDTO<CartProduct> {
-    private int responseCode;
-    private String responseMessage;
     @NotNull
     private String ownerId;
     @NotNull

@@ -45,7 +45,12 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("필터키워드 생성")
     void generateFilterKeyword() {
+        //given
+        //when
+        filterKeywordService.generateFilterKeyword(keywordSearchInfo);
+        //then
     }
 
     @Test

@@ -25,7 +25,8 @@ public class FilterKeywordService {
                 keywordSearchInfo.getSearchKeyword());
     }
 
-   public ResponseEntity<?> generateFilterKeyword(FilterKeywordDTO keywordDTO){
+    @Transactional
+    public ResponseEntity<?> generateFilterKeyword(FilterKeywordDTO keywordDTO){
         KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()
                 .searchKeyword(keywordDTO.getSearchKeyword())
                 .ownerId(keywordDTO.getOwnerId())
@@ -38,7 +39,7 @@ public class FilterKeywordService {
         return ResponseEntity.ok().build();
     }
 
-
+    @Transactional
     public ResponseEntity<?> deleteFilterKeyword(FilterKeywordDTO filterKeywordDTO){
         KeywordSearchInfo searchInfo = filterKeywordDTO.toSearchInfo();
         FilterKeyword filterKeyword = searchKeywordByInfo(searchInfo).orElseThrow(()->new NoSuchElementException(""));

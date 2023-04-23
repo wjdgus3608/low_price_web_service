@@ -17,6 +17,13 @@ public class FilterKeywordDTO implements RequestDTO<FilterKeyword> {
     @NotNull
     private String ownerId;
 
+    public KeywordSearchInfo toSearchInfo(){
+        return KeywordSearchInfo.builder()
+                .ownerId(this.ownerId)
+                .searchKeyword(this.searchKeyword)
+                .build();
+    }
+
     @Override
     public FilterKeyword toEntity() {
         return FilterKeyword.builder()

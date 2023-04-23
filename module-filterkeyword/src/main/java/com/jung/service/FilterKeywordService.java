@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -36,12 +37,16 @@ public class FilterKeywordService {
         filterKeywordRepository.save(keywordDTO.toEntity());
         return ResponseEntity.ok().build();
     }
-    /*
 
-    public ResponseEntity<?> deleteFilterKeyword(){
 
+    public ResponseEntity<?> deleteFilterKeyword(FilterKeywordDTO filterKeywordDTO){
+        KeywordSearchInfo searchInfo = filterKeywordDTO.toSearchInfo();
+        FilterKeyword filterKeyword = searchKeywordByInfo(searchInfo).orElseThrow(()->new NoSuchElementException(""));
+
+        filterKeywordRepository.delete(filterKeyword);
+        return ResponseEntity.ok().build();
     }
-
+    /*
 
 
     public ResponseEntity<?> addExcludeKeywordToFilterKeyword(){

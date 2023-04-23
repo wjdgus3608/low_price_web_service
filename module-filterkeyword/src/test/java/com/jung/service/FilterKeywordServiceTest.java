@@ -73,7 +73,14 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("필터키워드 삭제")
     void deleteFilterKeyword() {
+        //given
+        //when
+        filterKeywordService.deleteFilterKeyword(baseDTO);
+        Optional<FilterKeyword> findKeyword = filterKeywordService.searchKeywordByInfo(keywordSearchInfo);
+        //then
+        assertFalse(findKeyword.isPresent());
     }
 
     @Test

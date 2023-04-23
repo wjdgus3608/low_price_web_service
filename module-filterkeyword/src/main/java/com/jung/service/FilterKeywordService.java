@@ -45,9 +45,9 @@ public class FilterKeywordService {
         return ResponseEntity.ok().build();
     }
 
-    public Optional<ExcludeKeyword> searchExcludeKeyword(KeywordSearchInfo keywordSearchInfo, String excludeKeyword){
-
-    }
+//    public Optional<ExcludeKeyword> searchExcludeKeyword(ExcludeSearchInfo searchInfo){
+//        return filterKeywordRepository
+//    }
 
     /*
 

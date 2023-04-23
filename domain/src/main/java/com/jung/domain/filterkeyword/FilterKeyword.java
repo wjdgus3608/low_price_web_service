@@ -5,9 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,22 +21,24 @@ public class FilterKeyword extends BaseEntity {
     @Column(nullable = false)
     private String ownerId;
     @OneToMany(mappedBy = "filterKeyword")
-    List<ExcludeKeyword> keywordList = new ArrayList<>();
+    Map<String,ExcludeKeyword> keywordList = new HashMap<>();
     @ColumnDefault("0")
     private long totalCnt;
 
     public boolean addExcludeKeyword(ExcludeKeyword excludeKeyword){
-        if(keywordList.contains(excludeKeyword))
+        String key = excludeKeyword.getKeyword();
+        if(keywordList.containsKey(key))
             return false;
         excludeKeyword.connectFilterKeyword(this);
-        keywordList.add(excludeKeyword);
+        keywordList.put(key,excludeKeyword);
         return true;
     }
 
     public boolean removeExcludeKeyword(ExcludeKeyword excludeKeyword){
-        if(keywordList.contains(excludeKeyword))
+        String key = excludeKeyword.getKeyword();
+        if(keywordList.containsKey(key))
             return false;
-        keywordList.remove(excludeKeyword);
+        keywordList.remove(key);
         totalCnt = keywordList.size();
         return true;
     }

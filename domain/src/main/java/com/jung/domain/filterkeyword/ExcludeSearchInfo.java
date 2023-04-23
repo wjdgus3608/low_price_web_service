@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class ExcludeSearchInfo {
     @NotNull
-    private final String keyword;
+    private final KeywordSearchInfo keywordSearchInfo;
     @NotNull
-    private final String ownerId;
+    private final String excludeKeyword;
 }

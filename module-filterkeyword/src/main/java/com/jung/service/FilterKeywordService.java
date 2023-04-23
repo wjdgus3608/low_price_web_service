@@ -1,9 +1,6 @@
 package com.jung.service;
 
-import com.jung.domain.filterkeyword.FilterKeyword;
-import com.jung.domain.filterkeyword.FilterKeywordDTO;
-import com.jung.domain.filterkeyword.FilterKeywordRepository;
-import com.jung.domain.filterkeyword.KeywordSearchInfo;
+import com.jung.domain.filterkeyword.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -47,6 +44,11 @@ public class FilterKeywordService {
         filterKeywordRepository.delete(filterKeyword);
         return ResponseEntity.ok().build();
     }
+
+    public Optional<ExcludeKeyword> searchExcludeKeyword(KeywordSearchInfo keywordSearchInfo, String excludeKeyword){
+
+    }
+
     /*
 
 

@@ -1,8 +1,6 @@
 package com.jung.service;
 
-import com.jung.domain.filterkeyword.FilterKeyword;
-import com.jung.domain.filterkeyword.FilterKeywordDTO;
-import com.jung.domain.filterkeyword.KeywordSearchInfo;
+import com.jung.domain.filterkeyword.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,6 +21,7 @@ class FilterKeywordServiceTest {
     private FilterKeywordService filterKeywordService;
 
     private KeywordSearchInfo keywordSearchInfo;
+    private ExcludeSearchInfo excludeSearchInfo;
     private FilterKeywordDTO baseDTO;
 
     @BeforeAll
@@ -36,7 +35,11 @@ class FilterKeywordServiceTest {
                 .searchKeyword("keyword1")
                 .ownerId("user1")
                 .build();
-//        filterKeywordService.generateFilterKeyword("user1");
+        excludeSearchInfo = ExcludeSearchInfo.builder()
+                .keywordSearchInfo(keywordSearchInfo)
+                .excludeKeyword("excludeKeyword1")
+                .build();
+//        filterKeywordService.addExcludeKeywordToFilterKeyword()
     }
 
     @Test
@@ -84,10 +87,22 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("제외키워드 검색")
+    void searchExcludeKeyword(){
+        //given
+        //when
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeSearchInfo);
+        //then
+        assertTrue(excludeKeyword.isPresent());
+        assertEquals(excludeSearchInfo.getExcludeKeyword(),excludeKeyword.get().getKeyword());
+    }
+
+    @Test
     @DisplayName("제외키워드 추가")
     void addExcludeKeywordToFilterKeyword() {
         //given
         //when
+//        filterKeywordService.searchExcludeKeyword()
         //then
     }
 

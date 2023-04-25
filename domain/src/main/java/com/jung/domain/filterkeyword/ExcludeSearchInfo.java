@@ -12,4 +12,5 @@ public class ExcludeSearchInfo {
     private final KeywordSearchInfo keywordSearchInfo;
     @NotNull
     private final String excludeKeyword;
+
 }

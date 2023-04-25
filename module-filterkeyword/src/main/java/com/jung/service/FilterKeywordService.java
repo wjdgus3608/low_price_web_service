@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -45,9 +46,13 @@ public class FilterKeywordService {
         return ResponseEntity.ok().build();
     }
 
-//    public Optional<ExcludeKeyword> searchExcludeKeyword(ExcludeSearchInfo searchInfo){
-//        return filterKeywordRepository
-//    }
+    public Optional<ExcludeKeyword> searchExcludeKeyword(ExcludeSearchInfo searchInfo){
+        KeywordSearchInfo keywordSearchInfo = searchInfo.getKeywordSearchInfo();
+        Optional<FilterKeyword> filterKeyword = filterKeywordRepository.findByOwnerIdAndSearchKeyword(keywordSearchInfo.getOwnerId(),
+                keywordSearchInfo.getSearchKeyword());
+
+        return filterKeyword.map(keyword -> keyword.getKeywordList().get(searchInfo.getExcludeKeyword()));
+    }
 
     /*
 

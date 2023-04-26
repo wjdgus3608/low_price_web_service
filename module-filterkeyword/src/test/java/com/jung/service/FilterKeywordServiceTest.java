@@ -92,6 +92,7 @@ class FilterKeywordServiceTest {
     @DisplayName("제외키워드 검색")
     void searchExcludeKeyword(){
         //given
+        filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
         //when
         Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then

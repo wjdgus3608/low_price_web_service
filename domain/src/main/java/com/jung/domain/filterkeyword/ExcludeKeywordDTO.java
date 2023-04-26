@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter
-public class ExcludeSearchInfo {
+public class ExcludeKeywordDTO {
     @NotNull
     private final KeywordSearchInfo keywordSearchInfo;
     @NotNull

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -21,7 +23,7 @@ class FilterKeywordServiceTest {
     private FilterKeywordService filterKeywordService;
 
     private KeywordSearchInfo keywordSearchInfo;
-    private ExcludeSearchInfo excludeSearchInfo;
+    private ExcludeKeywordDTO excludeKeywordDTO;
     private FilterKeywordDTO baseDTO;
 
     @BeforeAll
@@ -35,7 +37,7 @@ class FilterKeywordServiceTest {
                 .searchKeyword("keyword1")
                 .ownerId("user1")
                 .build();
-        excludeSearchInfo = ExcludeSearchInfo.builder()
+        excludeKeywordDTO = ExcludeKeywordDTO.builder()
                 .keywordSearchInfo(keywordSearchInfo)
                 .excludeKeyword("excludeKeyword1")
                 .build();
@@ -91,10 +93,10 @@ class FilterKeywordServiceTest {
     void searchExcludeKeyword(){
         //given
         //when
-        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeSearchInfo);
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then
         assertTrue(excludeKeyword.isPresent());
-        assertEquals(excludeSearchInfo.getExcludeKeyword(),excludeKeyword.get().getKeyword());
+        assertEquals(excludeKeywordDTO.getExcludeKeyword(),excludeKeyword.get().getKeyword());
     }
 
     @Test
@@ -102,8 +104,12 @@ class FilterKeywordServiceTest {
     void addExcludeKeywordToFilterKeyword() {
         //given
         //when
-//        filterKeywordService.searchExcludeKeyword()
+        ResponseEntity<?> responseEntity = filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertTrue(excludeKeyword.isPresent());
+        assertEquals(excludeKeywordDTO.getExcludeKeyword(),excludeKeyword.get().getKeyword());
     }
 
     @Test

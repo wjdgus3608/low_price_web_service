@@ -54,9 +54,8 @@ public class FilterKeywordService {
     @Transactional
     public ResponseEntity<?> addExcludeKeywordToFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
         KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();
-        Optional<FilterKeyword> filterKeyword = filterKeywordRepository.findByOwnerIdAndSearchKeyword(keywordSearchInfo.getOwnerId(),
-                keywordSearchInfo.getSearchKeyword());
-
+        Optional<FilterKeyword> filterKeyword = searchKeywordByInfo(keywordSearchInfo);
+        filterKeyword.ifPresent(filterKeyword1 -> filterKeyword1.addExcludeKeyword(excludeKeywordDTO));
 
     }
 

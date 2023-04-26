@@ -44,20 +44,26 @@ public class FilterKeywordService {
         return ResponseEntity.ok().build();
     }
 
-    public Optional<ExcludeKeyword> searchExcludeKeyword(ExcludeKeywordDTO searchInfo){
-        KeywordSearchInfo keywordSearchInfo = searchInfo.getKeywordSearchInfo();
+    public Optional<ExcludeKeyword> searchExcludeKeyword(ExcludeKeywordDTO excludeKeywordDTO){
+        KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();
+        Optional<FilterKeyword> filterKeyword = searchKeywordByInfo(keywordSearchInfo);
+
+        return filterKeyword.map(keyword -> keyword.getKeywordList().get(excludeKeywordDTO.getExcludeKeyword()));
+    }
+
+    @Transactional
+    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
+        KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();
         Optional<FilterKeyword> filterKeyword = filterKeywordRepository.findByOwnerIdAndSearchKeyword(keywordSearchInfo.getOwnerId(),
                 keywordSearchInfo.getSearchKeyword());
 
-        return filterKeyword.map(keyword -> keyword.getKeywordList().get(searchInfo.getExcludeKeyword()));
+
     }
 
     /*
 
 
-    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(){
 
-    }
 
     public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(){
 

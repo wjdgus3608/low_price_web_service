@@ -41,7 +41,8 @@ class FilterKeywordServiceTest {
                 .keywordSearchInfo(keywordSearchInfo)
                 .excludeKeyword("excludeKeyword1")
                 .build();
-//        filterKeywordService.addExcludeKeywordToFilterKeyword()
+
+        filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
     }
 
     @Test
@@ -92,7 +93,6 @@ class FilterKeywordServiceTest {
     @DisplayName("제외키워드 검색")
     void searchExcludeKeyword(){
         //given
-        filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
         //when
         Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then
@@ -104,9 +104,13 @@ class FilterKeywordServiceTest {
     @DisplayName("제외키워드 추가")
     void addExcludeKeywordToFilterKeyword() {
         //given
+        ExcludeKeywordDTO dto = ExcludeKeywordDTO.builder()
+                .keywordSearchInfo(keywordSearchInfo)
+                .excludeKeyword("excludeKeyword1")
+                .build();
         //when
-        ResponseEntity<?> responseEntity = filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
-        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
+        ResponseEntity<?> responseEntity = filterKeywordService.addExcludeKeywordToFilterKeyword(dto);
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(dto);
         //then
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertTrue(excludeKeyword.isPresent());
@@ -114,6 +118,14 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("제외키워드 삭제")
     void removeExcludeKeywordFromFilterKeyword() {
+        //given
+        //when
+        ResponseEntity<?> responseEntity = filterKeywordService.removeExcludeKeywordFromFilterKeyword(excludeKeywordDTO);
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+        assertFalse(excludeKeyword.isPresent());
     }
 }

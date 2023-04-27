@@ -41,7 +41,6 @@ class FilterKeywordServiceTest {
                 .keywordSearchInfo(keywordSearchInfo)
                 .excludeKeyword("excludeKeyword1")
                 .build();
-
         filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
     }
 
@@ -93,6 +92,7 @@ class FilterKeywordServiceTest {
     @DisplayName("제외키워드 검색")
     void searchExcludeKeyword(){
         //given
+
         //when
         Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then
@@ -106,7 +106,7 @@ class FilterKeywordServiceTest {
         //given
         ExcludeKeywordDTO dto = ExcludeKeywordDTO.builder()
                 .keywordSearchInfo(keywordSearchInfo)
-                .excludeKeyword("excludeKeyword1")
+                .excludeKeyword("excludeKeyword2")
                 .build();
         //when
         ResponseEntity<?> responseEntity = filterKeywordService.addExcludeKeywordToFilterKeyword(dto);
@@ -114,7 +114,7 @@ class FilterKeywordServiceTest {
         //then
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertTrue(excludeKeyword.isPresent());
-        assertEquals(excludeKeywordDTO.getExcludeKeyword(),excludeKeyword.get().getKeyword());
+        assertEquals(dto.getExcludeKeyword(),excludeKeyword.get().getKeyword());
     }
 
     @Test
@@ -125,7 +125,7 @@ class FilterKeywordServiceTest {
         ResponseEntity<?> responseEntity = filterKeywordService.removeExcludeKeywordFromFilterKeyword(excludeKeywordDTO);
         Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         //then
-        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertFalse(excludeKeyword.isPresent());
     }
 }

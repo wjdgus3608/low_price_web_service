@@ -20,7 +20,7 @@ public class FilterKeyword extends BaseEntity {
     private String searchKeyword;
     @Column(nullable = false)
     private String ownerId;
-    @OneToMany(mappedBy = "filterKeyword")
+    @OneToMany(mappedBy = "filterKeyword", cascade = CascadeType.ALL)
     Map<String,ExcludeKeyword> keywordList = new HashMap<>();
     @ColumnDefault("0")
     private long totalCnt;
@@ -36,7 +36,7 @@ public class FilterKeyword extends BaseEntity {
 
     public boolean removeExcludeKeyword(ExcludeKeyword excludeKeyword){
         String key = excludeKeyword.getKeyword();
-        if(keywordList.containsKey(key))
+        if(!keywordList.containsKey(key))
             return false;
         keywordList.remove(key);
         totalCnt = keywordList.size();

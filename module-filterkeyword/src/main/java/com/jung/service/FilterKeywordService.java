@@ -62,10 +62,6 @@ public class FilterKeywordService {
         return ResponseEntity.badRequest().build();
     }
 
-
-
-
-
     @Transactional
     public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
         KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();

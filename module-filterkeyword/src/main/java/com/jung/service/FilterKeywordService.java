@@ -56,18 +56,26 @@ public class FilterKeywordService {
         KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();
         FilterKeyword filterKeyword = searchKeywordByInfo(keywordSearchInfo).orElseThrow(()->new NoSuchElementException(""));
 
-        filterKeyword.addExcludeKeyword(excludeKeywordDTO.toEntity());
-        return ResponseEntity.ok().build();
+        boolean isSuccess = filterKeyword.addExcludeKeyword(excludeKeywordDTO.toEntity());
+        if (isSuccess)
+            return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
     }
 
-    /*
 
 
 
 
-    public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(){
+    @Transactional
+    public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
+        KeywordSearchInfo keywordSearchInfo = excludeKeywordDTO.getKeywordSearchInfo();
+        FilterKeyword filterKeyword = searchKeywordByInfo(keywordSearchInfo).orElseThrow(()->new NoSuchElementException(""));
 
-    }*/
+        boolean isSuccess = filterKeyword.removeExcludeKeyword(excludeKeywordDTO.toEntity());
+        if (isSuccess)
+            return ResponseEntity.ok().build();
+        return ResponseEntity.badRequest().build();
+    }
 
     private boolean isDupKeyword(KeywordSearchInfo searchInfo){
         return searchKeywordByInfo(searchInfo).isPresent();

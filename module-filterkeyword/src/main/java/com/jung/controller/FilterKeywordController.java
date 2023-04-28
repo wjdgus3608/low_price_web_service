@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class FilterKeywordController {
     private final FilterKeywordService filterKeywordService;
-/*
-    public ResponseEntity<?> searchKeywordByInfo(){
+
+    /*public ResponseEntity<?> searchKeywordByInfo(){
 
     }
     public ResponseEntity<?> generateFilterKeyword(){

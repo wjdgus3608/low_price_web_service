@@ -9,10 +9,14 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
@@ -42,8 +46,18 @@ class FilterKeywordControllerTest {
     }
 
     @Test
-    void generateFilterKeyword() {
-
+    @DisplayName("필터키워드 생성")
+    void generateFilterKeyword() throws Exception {
+        //given
+        //when
+        String dto = objectMapper.writeValueAsString(filterKeywordDTO);
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/filterkeyword")
+                .content(dto)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

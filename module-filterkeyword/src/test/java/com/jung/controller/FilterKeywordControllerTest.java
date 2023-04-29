@@ -38,6 +38,12 @@ class FilterKeywordControllerTest {
         filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO("user1","keyword1");
         keywordSearchInfo = KeywordUtil.generateKeywordSearchInfo("user1","keyword1");
         excludeKeywordDTO = KeywordUtil.generateExcludeKeywordDTO("excludekeyword1",keywordSearchInfo);
+
+        String dto = objectMapper.writeValueAsString(filterKeywordDTO);
+        mockMvc.perform(MockMvcRequestBuilders.post("/filterkeyword")
+                .content(dto)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -49,11 +55,12 @@ class FilterKeywordControllerTest {
     @DisplayName("필터키워드 생성")
     void generateFilterKeyword() throws Exception {
         //given
+        FilterKeywordDTO dto = KeywordUtil.generateFilterKeywordDTO("user2", "keyword2");
         //when
-        String dto = objectMapper.writeValueAsString(filterKeywordDTO);
+        String strDTO = objectMapper.writeValueAsString(dto);
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/filterkeyword")
-                .content(dto)
+                .content(strDTO)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

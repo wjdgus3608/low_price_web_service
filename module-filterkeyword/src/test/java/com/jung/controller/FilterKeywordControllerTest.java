@@ -1,10 +1,7 @@
 package com.jung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jung.domain.filterkeyword.ExcludeKeyword;
-import com.jung.domain.filterkeyword.ExcludeKeywordDTO;
-import com.jung.domain.filterkeyword.FilterKeyword;
-import com.jung.domain.filterkeyword.FilterKeywordDTO;
+import com.jung.domain.filterkeyword.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,12 +25,15 @@ class FilterKeywordControllerTest {
     private ObjectMapper objectMapper;
 
     private FilterKeywordDTO filterKeywordDTO;
+    private KeywordSearchInfo keywordSearchInfo;
     private ExcludeKeywordDTO excludeKeywordDTO;
 
     @BeforeAll
     @DisplayName("필터키워드 컨트롤러 테스트 초기 설정")
     void initKeyword() throws Exception {
-
+        filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO("user1","keyword1");
+        keywordSearchInfo = KeywordUtil.generateKeywordSearchInfo("user1","keyword1");
+        excludeKeywordDTO = KeywordUtil.generateExcludeKeywordDTO("excludekeyword1",keywordSearchInfo);
     }
 
     @Test

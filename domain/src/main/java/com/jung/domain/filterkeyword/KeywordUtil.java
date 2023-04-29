@@ -14,4 +14,11 @@ public class KeywordUtil {
                 .keywordSearchInfo(searchInfo)
                 .build();
     }
+
+    public static KeywordSearchInfo generateKeywordSearchInfo(String ownerId, String searchKeyword){
+        return KeywordSearchInfo.builder()
+                .ownerId(ownerId)
+                .searchKeyword(searchKeyword)
+                .build();
+    }
 }

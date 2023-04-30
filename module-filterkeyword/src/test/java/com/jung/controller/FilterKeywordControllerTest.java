@@ -68,8 +68,17 @@ class FilterKeywordControllerTest {
     }
 
     @Test
-    void deleteFilterKeyword() {
-
+    @DisplayName("필터키워드 삭제")
+    void deleteFilterKeyword() throws Exception {
+        //given
+        FilterKeywordDTO dto = KeywordUtil.generateFilterKeywordDTO("user1", "keyword1");
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/filterkeyword/"+dto.getOwnerId()+"/"+dto.getSearchKeyword())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

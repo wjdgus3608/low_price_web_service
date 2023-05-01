@@ -1,12 +1,11 @@
 package com.jung.controller;
 
 import com.jung.domain.filterkeyword.FilterKeywordDTO;
+import com.jung.domain.filterkeyword.KeywordUtil;
 import com.jung.service.FilterKeywordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,13 +17,17 @@ public class FilterKeywordController {
         return filterKeywordService.generateFilterKeyword(keywordDTO);
     }
 
+    @DeleteMapping("/filterkeyword/{ownerId}/{keyword}")
+    public ResponseEntity<?> deleteFilterKeyword(@PathVariable String ownerId, @PathVariable String keyword){
+        FilterKeywordDTO filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword);
+        return filterKeywordService.deleteFilterKeyword(filterKeywordDTO);
+    }
+
     /*public ResponseEntity<?> searchKeywordByInfo(){
 
     }
 
-    public ResponseEntity<?> deleteFilterKeyword(){
 
-    }
     public ResponseEntity<?> searchExcludeKeyword(){
 
     }

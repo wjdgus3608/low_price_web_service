@@ -101,7 +101,7 @@ class FilterKeywordControllerTest {
         //when
         String strDTO = objectMapper.writeValueAsString(dto);
         //then
-        mockMvc.perform(MockMvcRequestBuilders.post("/excludekeyword/")
+        mockMvc.perform(MockMvcRequestBuilders.post("/excludekeyword")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(strDTO)
                 .accept(MediaType.APPLICATION_JSON))
@@ -110,8 +110,19 @@ class FilterKeywordControllerTest {
     }
 
     @Test
-    void removeExcludeKeywordFromFilterKeyword() {
-
+    @DisplayName("제외키워드 삭제")
+    void removeExcludeKeywordFromFilterKeyword() throws Exception {
+        //given
+        //when
+        String strDTO = objectMapper.writeValueAsString(excludeKeywordDTO);
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/excludekeyword/" +
+                    excludeKeywordDTO.getExcludeKeyword()+"/" +
+                    excludeKeywordDTO.getKeywordSearchInfo())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
 

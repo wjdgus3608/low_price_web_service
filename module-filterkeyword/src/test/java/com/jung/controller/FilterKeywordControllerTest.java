@@ -111,14 +111,13 @@ class FilterKeywordControllerTest {
 
     @Test
     @DisplayName("제외키워드 삭제")
+    //구구절절하게 정보를 전달할게 아니라 pk값을 얻어서 삭제해야하는것은 아닌가..?
     void removeExcludeKeywordFromFilterKeyword() throws Exception {
         //given
         //when
-        String strDTO = objectMapper.writeValueAsString(excludeKeywordDTO);
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/excludekeyword/" +
-                    excludeKeywordDTO.getExcludeKeyword()+"/" +
-                    excludeKeywordDTO.getKeywordSearchInfo())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/excludekeyword")
+                .header("excludeKeywordDTO",excludeKeywordDTO)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

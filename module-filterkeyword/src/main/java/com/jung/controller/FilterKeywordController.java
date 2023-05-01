@@ -1,14 +1,12 @@
 package com.jung.controller;
 
-import com.jung.domain.filterkeyword.FilterKeyword;
-import com.jung.domain.filterkeyword.FilterKeywordDTO;
-import com.jung.domain.filterkeyword.KeywordSearchInfo;
-import com.jung.domain.filterkeyword.KeywordUtil;
+import com.jung.domain.filterkeyword.*;
 import com.jung.service.FilterKeywordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -36,15 +34,19 @@ public class FilterKeywordController {
 
         return ResponseEntity.ok(filterKeyword);
     }
+
+    @PostMapping("/excludekeyword")
+    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
+        return filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
+    }
+
     /*
 
 
     public ResponseEntity<?> searchExcludeKeyword(){
 
     }
-    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(){
 
-    }
     public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(){
 
     }*/

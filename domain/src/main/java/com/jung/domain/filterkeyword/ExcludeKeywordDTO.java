@@ -3,18 +3,21 @@ package com.jung.domain.filterkeyword;
 import com.jung.domain.BaseDTO;
 import com.jung.domain.RequestDTO;
 import com.jung.domain.comparecart.CartProduct;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
-@Builder
+@Setter
 @Getter
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExcludeKeywordDTO implements RequestDTO<ExcludeKeyword> {
     @NotNull
-    private final KeywordSearchInfo keywordSearchInfo;
+    private KeywordSearchInfo keywordSearchInfo;
     @NotNull
-    private final String excludeKeyword;
+    private String excludeKeyword;
 
     @Override
     public ExcludeKeyword toEntity() {

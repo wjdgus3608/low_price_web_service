@@ -1,15 +1,18 @@
 package com.jung.domain.filterkeyword;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 
-@Builder
+@Setter
 @Getter
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class KeywordSearchInfo {
     @NotNull
-    private final String searchKeyword;
+    private String searchKeyword;
     @NotNull
-    private final String ownerId;
+    private String ownerId;
 }

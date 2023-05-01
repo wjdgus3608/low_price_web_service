@@ -14,18 +14,18 @@ import java.util.Optional;
 public class FilterKeywordController {
     private final FilterKeywordService filterKeywordService;
 
-    @PostMapping("/filterkeyword")
+    @PostMapping("/filter-keyword")
     public ResponseEntity<?> generateFilterKeyword(@RequestBody FilterKeywordDTO keywordDTO){
         return filterKeywordService.generateFilterKeyword(keywordDTO);
     }
 
-    @DeleteMapping("/filterkeyword/{ownerId}/{keyword}")
+    @DeleteMapping("/filter-keyword/{ownerId}/exclude-keyword/{keyword}")
     public ResponseEntity<?> deleteFilterKeyword(@PathVariable String ownerId, @PathVariable String keyword){
         FilterKeywordDTO filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword);
         return filterKeywordService.deleteFilterKeyword(filterKeywordDTO);
     }
 
-    @GetMapping("/filterkeyword/{ownerId}/{keyword}")
+    @GetMapping("/filter-keyword/{ownerId}/exclude-keyword/{keyword}")
     public ResponseEntity<?> searchKeywordByInfo(@PathVariable String ownerId, @PathVariable String keyword){
         KeywordSearchInfo searchInfo = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword).toSearchInfo();
         Optional<FilterKeyword> filterKeyword = filterKeywordService.searchKeywordByInfo(searchInfo);
@@ -35,8 +35,8 @@ public class FilterKeywordController {
         return ResponseEntity.ok(filterKeyword);
     }
 
-    @PostMapping("/excludekeyword")
-    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(ExcludeKeywordDTO excludeKeywordDTO){
+    @PostMapping("/exclude-keyword")
+    public ResponseEntity<?> addExcludeKeywordToFilterKeyword(@RequestBody ExcludeKeywordDTO excludeKeywordDTO){
         return filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
     }
 

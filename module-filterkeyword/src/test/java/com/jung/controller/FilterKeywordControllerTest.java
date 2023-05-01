@@ -94,8 +94,19 @@ class FilterKeywordControllerTest {
     }
 
     @Test
-    void addExcludeKeywordToFilterKeyword() {
-
+    @DisplayName("제외키워드 추가")
+    void addExcludeKeywordToFilterKeyword() throws Exception {
+        //given
+        ExcludeKeywordDTO dto = KeywordUtil.generateExcludeKeywordDTO("excludekeyword2", keywordSearchInfo);
+        //when
+        String strDTO = objectMapper.writeValueAsString(dto);
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/excludekeyword/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(strDTO)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
     }
 
     @Test

@@ -3,9 +3,14 @@ package com.jung.controller;
 import com.jung.domain.filterkeyword.*;
 import com.jung.service.FilterKeywordService;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -40,6 +45,12 @@ public class FilterKeywordController {
         return filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
     }
 
+    @DeleteMapping("/exclude-keyword")
+    public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(@RequestHeader HttpHeaders headers){
+
+        return filterKeywordService.removeExcludeKeywordFromFilterKeyword()
+    }
+
     /*
 
 
@@ -47,7 +58,17 @@ public class FilterKeywordController {
 
     }
 
-    public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(){
+    */
 
-    }*/
+    private ExcludeKeywordDTO parseHeaderToExcludeKeyword(HttpHeaders headers){
+        KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()
+                .ownerId(headers.get("ownerId").get(0))
+                .searchKeyword(headers.get("searchKeyword").get(0))
+                .build();
+
+        return ExcludeKeywordDTO.builder()
+                .excludeKeyword(headers.get("excludeKeyword").get(0))
+                .keywordSearchInfo(keywordSearchInfo)
+                .build();
+    }
 }

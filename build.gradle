@@ -113,6 +113,7 @@ project(':module-filterkeyword') {
 	dependencies {
 		implementation project(':common')
 		implementation project(':domain')
+		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	}
 }
 

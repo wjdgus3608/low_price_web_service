@@ -9,11 +9,16 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -44,6 +49,8 @@ class FilterKeywordControllerTest {
                 .content(dto)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
+
+        
     }
 
     @Test
@@ -113,10 +120,14 @@ class FilterKeywordControllerTest {
     @DisplayName("제외키워드 삭제")
     void removeExcludeKeywordFromFilterKeyword() throws Exception {
         //given
+        HttpHeaders headers = new HttpHeaders();
+        headers.put("excludeKeyword", Collections.singletonList(excludeKeywordDTO.getExcludeKeyword()));
+        headers.put("searchKeyword", Collections.singletonList(excludeKeywordDTO.getKeywordSearchInfo().getSearchKeyword()));
+        headers.put("ownerId", Collections.singletonList(excludeKeywordDTO.getKeywordSearchInfo().getOwnerId()));
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/exclude-keyword")
-                .header("excludeKeywordDTO",excludeKeywordDTO)
+                .headers(headers)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

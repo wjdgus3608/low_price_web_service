@@ -47,8 +47,8 @@ public class FilterKeywordController {
 
     @DeleteMapping("/exclude-keyword")
     public ResponseEntity<?> removeExcludeKeywordFromFilterKeyword(@RequestHeader HttpHeaders headers){
-
-        return filterKeywordService.removeExcludeKeywordFromFilterKeyword()
+        ExcludeKeywordDTO excludeKeywordDTO = parseHeaderToExcludeKeyword(headers);
+        return filterKeywordService.removeExcludeKeywordFromFilterKeyword(excludeKeywordDTO);
     }
 
     /*

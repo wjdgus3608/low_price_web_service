@@ -61,11 +61,6 @@ class FilterKeywordControllerTest {
     }
 
     @Test
-    void searchKeywordByInfo() {
-
-    }
-
-    @Test
     @DisplayName("필터키워드 생성")
     void generateFilterKeyword() throws Exception {
         //given
@@ -96,7 +91,7 @@ class FilterKeywordControllerTest {
 
     @Test
     @DisplayName("필터키워드 검색")
-    void searchExcludeKeyword() throws Exception {
+    void searchFilterKeyword() throws Exception {
         //given
         //when
         //then
@@ -135,6 +130,22 @@ class FilterKeywordControllerTest {
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/exclude-keyword")
                 .headers(headers)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("제외키워드 검색")
+    void searchExcludeKeyword() throws Exception{
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("/filter-keyword/"+
+                        filterKeywordDTO.getOwnerId()+
+                        "/"+filterKeywordDTO.getSearchKeyword()+
+                        "/exclude-keyword/"+excludeKeywordDTO.getExcludeKeyword())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

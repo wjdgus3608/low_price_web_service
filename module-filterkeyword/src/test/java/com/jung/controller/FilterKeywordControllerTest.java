@@ -50,7 +50,15 @@ class FilterKeywordControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
 
-        
+        String strDTO = objectMapper.writeValueAsString(excludeKeywordDTO);
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/exclude-keyword")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(strDTO)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(print());
+
     }
 
     @Test

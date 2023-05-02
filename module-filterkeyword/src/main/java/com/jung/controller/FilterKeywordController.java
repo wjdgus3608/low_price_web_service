@@ -22,13 +22,13 @@ public class FilterKeywordController {
         return filterKeywordService.generateFilterKeyword(keywordDTO);
     }
 
-    @DeleteMapping("/filter-keyword/{ownerId}/exclude-keyword/{keyword}")
+    @DeleteMapping("/filter-keyword/{ownerId}/{keyword}")
     public ResponseEntity<?> deleteFilterKeyword(@PathVariable String ownerId, @PathVariable String keyword){
         FilterKeywordDTO filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword);
         return filterKeywordService.deleteFilterKeyword(filterKeywordDTO);
     }
 
-    @GetMapping("/filter-keyword/{ownerId}/exclude-keyword/{keyword}")
+    @GetMapping("/filter-keyword/{ownerId}/{keyword}")
     public ResponseEntity<?> searchKeywordByInfo(@PathVariable String ownerId, @PathVariable String keyword){
         KeywordSearchInfo searchInfo = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword).toSearchInfo();
         Optional<FilterKeyword> filterKeyword = filterKeywordService.searchKeywordByInfo(searchInfo);

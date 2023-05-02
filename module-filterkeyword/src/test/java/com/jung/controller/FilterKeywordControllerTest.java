@@ -87,7 +87,7 @@ class FilterKeywordControllerTest {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/filter-keyword/"+filterKeywordDTO.getOwnerId()+"/exclude-keyword/"+filterKeywordDTO.getSearchKeyword())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/filter-keyword/"+filterKeywordDTO.getOwnerId()+"/"+filterKeywordDTO.getSearchKeyword())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -100,7 +100,7 @@ class FilterKeywordControllerTest {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/filter-keyword/"+filterKeywordDTO.getOwnerId()+"/exclude-keyword/"+filterKeywordDTO.getSearchKeyword())
+        mockMvc.perform(MockMvcRequestBuilders.get("/filter-keyword/"+filterKeywordDTO.getOwnerId()+"/"+filterKeywordDTO.getSearchKeyword())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

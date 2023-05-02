@@ -1,5 +1,7 @@
 package com.jung.domain.filterkeyword;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.jung.domain.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -20,7 +22,8 @@ public class FilterKeyword extends BaseEntity {
     private String searchKeyword;
     @Column(nullable = false)
     private String ownerId;
-    @OneToMany(mappedBy = "filterKeyword", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "filterKeyword", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
     Map<String,ExcludeKeyword> keywordList = new HashMap<>();
     @ColumnDefault("0")
     private long totalCnt;

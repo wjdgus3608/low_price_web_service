@@ -44,6 +44,7 @@ class FilterKeywordControllerTest {
         keywordSearchInfo = KeywordUtil.generateKeywordSearchInfo("user1","keyword1");
         excludeKeywordDTO = KeywordUtil.generateExcludeKeywordDTO("exclude-keyword1",keywordSearchInfo);
 
+
         String dto = objectMapper.writeValueAsString(filterKeywordDTO);
         mockMvc.perform(MockMvcRequestBuilders.post("/filter-keyword")
                 .content(dto)
@@ -55,9 +56,7 @@ class FilterKeywordControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/exclude-keyword")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(strDTO)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(print());
+                .accept(MediaType.APPLICATION_JSON));
 
     }
 

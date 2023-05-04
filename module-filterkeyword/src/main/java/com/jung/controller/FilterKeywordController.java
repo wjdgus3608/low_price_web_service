@@ -49,14 +49,19 @@ public class FilterKeywordController {
         return filterKeywordService.removeExcludeKeywordFromFilterKeyword(excludeKeywordDTO);
     }
 
-    /*
+    @GetMapping("/filter-keyword/{ownerId}/{searchKeyword}/exclude-keyword/{excludeKeyword}")
+    public ResponseEntity<?> searchExcludeKeyword(@PathVariable String ownerId,
+                                                  @PathVariable String searchKeyword,
+                                                  @PathVariable String excludeKeyword){
 
-
-    public ResponseEntity<?> searchExcludeKeyword(){
-
+        KeywordSearchInfo searchInfo = KeywordUtil.generateKeywordSearchInfo(ownerId, searchKeyword);
+        ExcludeKeywordDTO excludeKeywordDTO = KeywordUtil.generateExcludeKeywordDTO(excludeKeyword,searchInfo);
+        Optional<ExcludeKeyword> searchedKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
+        if(searchedKeyword.isEmpty())
+            return ResponseEntity.badRequest().build();
+        
+        return ResponseEntity.ok(searchedKeyword);
     }
-
-    */
 
     private ExcludeKeywordDTO parseHeaderToExcludeKeyword(HttpHeaders headers){
         KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()

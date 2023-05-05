@@ -32,7 +32,7 @@ public class CompareCartController {
         return ResponseEntity.ok(compareCartService.searchCart(ownerId));
     }
 
-    @DeleteMapping("/cart-products/{ownerId}")
+    @DeleteMapping("/compare-cart/{ownerId}/cart-products")
     public ResponseEntity<?> clearCart(@PathVariable String ownerId){
         return compareCartService.clearCart(ownerId);
     }

@@ -99,7 +99,8 @@ class CompareCartControllerTest {
         //given
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/compare-cart/"+firstCompareCart.getOwnerId()+"/cart-products")
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-products")
+                .header("ownerId",firstCompareCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())

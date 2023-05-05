@@ -3,13 +3,11 @@ package com.jung.controller;
 import com.jung.domain.filterkeyword.*;
 import com.jung.service.FilterKeywordService;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -59,18 +57,18 @@ public class FilterKeywordController {
         Optional<ExcludeKeyword> searchedKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);
         if(searchedKeyword.isEmpty())
             return ResponseEntity.badRequest().build();
-        
+
         return ResponseEntity.ok(searchedKeyword);
     }
 
     private ExcludeKeywordDTO parseHeaderToExcludeKeyword(HttpHeaders headers){
         KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()
-                .ownerId(headers.get("ownerId").get(0))
-                .searchKeyword(headers.get("searchKeyword").get(0))
+                .ownerId(Objects.requireNonNull(headers.get("ownerId")).get(0))
+                .searchKeyword(Objects.requireNonNull(headers.get("searchKeyword")).get(0))
                 .build();
 
         return ExcludeKeywordDTO.builder()
-                .excludeKeyword(headers.get("excludeKeyword").get(0))
+                .excludeKeyword(Objects.requireNonNull(headers.get("excludeKeyword")).get(0))
                 .keywordSearchInfo(keywordSearchInfo)
                 .build();
     }

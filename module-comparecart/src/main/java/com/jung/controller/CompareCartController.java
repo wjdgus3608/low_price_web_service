@@ -4,10 +4,12 @@ import com.jung.domain.comparecart.CartProductDTO;
 import com.jung.domain.comparecart.CartUtil;
 import com.jung.service.CompareCartService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,9 +22,9 @@ public class CompareCartController {
         return compareCartService.generateCart(ownerId);
     }
 
-    @DeleteMapping("/compare-cart/{ownerId}")
-    public ResponseEntity<?> removeCart(@PathVariable String ownerId){
-        return compareCartService.removeCart(ownerId);
+    @DeleteMapping("/compare-cart")
+    public ResponseEntity<?> removeCart(@RequestHeader HttpHeaders headers){
+        return compareCartService.removeCart(Objects.requireNonNull(headers.get("ownerId")).get(0));
     }
 
     @GetMapping("/compare-cart/{ownerId}")

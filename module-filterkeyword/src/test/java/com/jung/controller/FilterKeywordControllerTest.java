@@ -124,15 +124,12 @@ class FilterKeywordControllerTest {
     @DisplayName("제외키워드 삭제")
     void removeExcludeKeywordFromFilterKeyword() throws Exception {
         //given
-        HttpHeaders headers = new HttpHeaders();
-        headers.put("excludeKeyword", Collections.singletonList(excludeKeywordDTO.getExcludeKeyword()));
-        headers.put("searchKeyword", Collections.singletonList(excludeKeywordDTO.getKeywordSearchInfo().getSearchKeyword()));
-        headers.put("ownerId", Collections.singletonList(excludeKeywordDTO.getKeywordSearchInfo().getOwnerId()));
         //when
+        String strDTO = objectMapper.writeValueAsString(excludeKeywordDTO);
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/exclude-keyword")
-                .headers(headers)
                 .contentType(MediaType.APPLICATION_JSON)
+                .content(strDTO)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());

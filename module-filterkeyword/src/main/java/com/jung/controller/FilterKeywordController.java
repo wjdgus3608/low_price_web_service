@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -20,9 +21,8 @@ public class FilterKeywordController {
         return filterKeywordService.generateFilterKeyword(keywordDTO);
     }
 
-    @DeleteMapping("/filter-keyword/{ownerId}/{keyword}")
-    public ResponseEntity<?> deleteFilterKeyword(@PathVariable String ownerId, @PathVariable String keyword){
-        FilterKeywordDTO filterKeywordDTO = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword);
+    @DeleteMapping("/filter-keyword")
+    public ResponseEntity<?> deleteFilterKeyword(@RequestBody @Valid FilterKeywordDTO filterKeywordDTO){
         return filterKeywordService.deleteFilterKeyword(filterKeywordDTO);
     }
 

@@ -81,9 +81,11 @@ class FilterKeywordControllerTest {
     void deleteFilterKeyword() throws Exception {
         //given
         //when
+        String strDTO = objectMapper.writeValueAsString(filterKeywordDTO);
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/filter-keyword/"+filterKeywordDTO.getOwnerId()+"/"+filterKeywordDTO.getSearchKeyword())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/filter-keyword")
                 .contentType(MediaType.APPLICATION_JSON)
+                .content(strDTO)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());

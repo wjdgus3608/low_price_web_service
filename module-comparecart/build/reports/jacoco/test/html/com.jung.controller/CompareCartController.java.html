@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompareCartController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">module-comparecart</a> &gt; <a href="index.source.html" class="el_package">com.jung.controller</a> &gt; <span class="el_source">CompareCartController.java</span></div><h1>CompareCartController.java</h1><pre class="source lang-java linenums">package com.jung.controller;
+
+import com.jung.domain.comparecart.CartProductDTO;
+import com.jung.domain.comparecart.CartUtil;
+import com.jung.service.CompareCartService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Objects;
+
+@RestController
+<span class="fc" id="L15">@RequiredArgsConstructor</span>
+public class CompareCartController {
+
+    private final CompareCartService compareCartService;
+
+    @PostMapping(&quot;/compare-cart&quot;)
+    public ResponseEntity&lt;?&gt; generateCart(@RequestBody String ownerId){
+<span class="fc" id="L22">        return compareCartService.generateCart(ownerId);</span>
+    }
+
+    @DeleteMapping(&quot;/compare-cart&quot;)
+    public ResponseEntity&lt;?&gt; removeCart(@RequestBody String ownerId){
+<span class="fc" id="L27">        return compareCartService.removeCart(ownerId);</span>
+    }
+
+    @GetMapping(&quot;/compare-cart/{ownerId}&quot;)
+    public ResponseEntity&lt;?&gt; searchCart(@PathVariable String ownerId){
+<span class="fc" id="L32">        return ResponseEntity.ok(compareCartService.searchCart(ownerId));</span>
+    }
+
+    @DeleteMapping(&quot;/cart-products&quot;)
+    public ResponseEntity&lt;?&gt; clearCart(@RequestBody String ownerId){
+<span class="fc" id="L37">        return compareCartService.clearCart(ownerId);</span>
+    }
+
+    @PostMapping(&quot;/cart-product&quot;)
+    public ResponseEntity&lt;?&gt; addProductToCart(@RequestBody @Valid CartProductDTO cartProductDTO){
+<span class="fc" id="L42">        return compareCartService.addProductToCart(cartProductDTO);</span>
+    }
+
+    @DeleteMapping(&quot;/cart-product&quot;)
+    public ResponseEntity&lt;?&gt; removeProductFromCart(@RequestBody @Valid CartProductDTO cartProductDTO){
+<span class="fc" id="L47">        return compareCartService.removeProductFromCart(cartProductDTO);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

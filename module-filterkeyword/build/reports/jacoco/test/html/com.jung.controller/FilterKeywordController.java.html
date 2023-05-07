@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FilterKeywordController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">module-filterkeyword</a> &gt; <a href="index.source.html" class="el_package">com.jung.controller</a> &gt; <span class="el_source">FilterKeywordController.java</span></div><h1>FilterKeywordController.java</h1><pre class="source lang-java linenums">package com.jung.controller;
+
+import com.jung.domain.filterkeyword.*;
+import com.jung.service.FilterKeywordService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Objects;
+import java.util.Optional;
+
+@RestController
+<span class="fc" id="L15">@RequiredArgsConstructor</span>
+public class FilterKeywordController {
+    private final FilterKeywordService filterKeywordService;
+
+    @PostMapping(&quot;/filter-keyword&quot;)
+    public ResponseEntity&lt;?&gt; generateFilterKeyword(@RequestBody FilterKeywordDTO keywordDTO){
+<span class="fc" id="L21">        return filterKeywordService.generateFilterKeyword(keywordDTO);</span>
+    }
+
+    @DeleteMapping(&quot;/filter-keyword&quot;)
+    public ResponseEntity&lt;?&gt; deleteFilterKeyword(@RequestBody @Valid FilterKeywordDTO filterKeywordDTO){
+<span class="fc" id="L26">        return filterKeywordService.deleteFilterKeyword(filterKeywordDTO);</span>
+    }
+
+    @GetMapping(&quot;/filter-keyword/{ownerId}/{keyword}&quot;)
+    public ResponseEntity&lt;?&gt; searchKeywordByInfo(@PathVariable String ownerId, @PathVariable String keyword){
+<span class="fc" id="L31">        KeywordSearchInfo searchInfo = KeywordUtil.generateFilterKeywordDTO(ownerId, keyword).toSearchInfo();</span>
+<span class="fc" id="L32">        Optional&lt;FilterKeyword&gt; filterKeyword = filterKeywordService.searchKeywordByInfo(searchInfo);</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if(filterKeyword.isEmpty())</span>
+<span class="nc" id="L34">            return ResponseEntity.badRequest().build();</span>
+
+<span class="fc" id="L36">        return ResponseEntity.ok(filterKeyword);</span>
+    }
+
+    @PostMapping(&quot;/exclude-keyword&quot;)
+    public ResponseEntity&lt;?&gt; addExcludeKeywordToFilterKeyword(@RequestBody ExcludeKeywordDTO excludeKeywordDTO){
+<span class="fc" id="L41">        return filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);</span>
+    }
+
+    @DeleteMapping(&quot;/exclude-keyword&quot;)
+    public ResponseEntity&lt;?&gt; removeExcludeKeywordFromFilterKeyword(@RequestBody ExcludeKeywordDTO excludeKeywordDTO){
+<span class="fc" id="L46">        return filterKeywordService.removeExcludeKeywordFromFilterKeyword(excludeKeywordDTO);</span>
+    }
+
+    @GetMapping(&quot;/filter-keyword/{ownerId}/{searchKeyword}/exclude-keyword/{excludeKeyword}&quot;)
+    public ResponseEntity&lt;?&gt; searchExcludeKeyword(@PathVariable String ownerId,
+                                                  @PathVariable String searchKeyword,
+                                                  @PathVariable String excludeKeyword){
+
+<span class="fc" id="L54">        KeywordSearchInfo searchInfo = KeywordUtil.generateKeywordSearchInfo(ownerId, searchKeyword);</span>
+<span class="fc" id="L55">        ExcludeKeywordDTO excludeKeywordDTO = KeywordUtil.generateExcludeKeywordDTO(excludeKeyword,searchInfo);</span>
+<span class="fc" id="L56">        Optional&lt;ExcludeKeyword&gt; searchedKeyword = filterKeywordService.searchExcludeKeyword(excludeKeywordDTO);</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        if(searchedKeyword.isEmpty())</span>
+<span class="nc" id="L58">            return ResponseEntity.badRequest().build();</span>
+
+<span class="fc" id="L60">        return ResponseEntity.ok(searchedKeyword);</span>
+    }
+
+    private ExcludeKeywordDTO parseHeaderToExcludeKeyword(HttpHeaders headers){
+<span class="nc" id="L64">        KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()</span>
+<span class="nc" id="L65">                .ownerId(Objects.requireNonNull(headers.get(&quot;ownerId&quot;)).get(0))</span>
+<span class="nc" id="L66">                .searchKeyword(Objects.requireNonNull(headers.get(&quot;searchKeyword&quot;)).get(0))</span>
+<span class="nc" id="L67">                .build();</span>
+
+<span class="nc" id="L69">        return ExcludeKeywordDTO.builder()</span>
+<span class="nc" id="L70">                .excludeKeyword(Objects.requireNonNull(headers.get(&quot;excludeKeyword&quot;)).get(0))</span>
+<span class="nc" id="L71">                .keywordSearchInfo(keywordSearchInfo)</span>
+<span class="nc" id="L72">                .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

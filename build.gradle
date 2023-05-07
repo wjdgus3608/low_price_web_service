@@ -1,7 +1,12 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'java'
+	id 'jacoco'
 }
+
+
+
+
 
 
 repositories {
@@ -21,6 +26,7 @@ subprojects {
 	apply plugin: 'org.springframework.boot'
 	// spring boot dependency를 사용하여 사용중인 부트 버전에서 자동으로 의존성을 가져온다.
 	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'jacoco'
 
 	configurations {
 		compileOnly {
@@ -51,6 +57,34 @@ subprojects {
 
 	test {
 		useJUnitPlatform()
+		finalizedBy 'jacocoTestReport'
+	}
+
+	jacoco {
+		toolVersion = '0.8.9'
+	}
+
+	jacocoTestReport {
+		reports {
+			html.enabled true
+			xml.enabled false
+			csv.enabled false
+		}
+		finalizedBy 'jacocoTestCoverageVerification'
+	}
+
+	jacocoTestCoverageVerification {
+		violationRules {
+			rule {
+				element = 'CLASS'
+
+				limit {
+					counter = 'BRANCH'
+					value = 'COVEREDRATIO'
+					minimum = 0.70
+				}
+			}
+		}
 	}
 }
 

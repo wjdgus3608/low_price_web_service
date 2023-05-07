@@ -23,8 +23,8 @@ public class CompareCartController {
     }
 
     @DeleteMapping("/compare-cart")
-    public ResponseEntity<?> removeCart(@RequestHeader HttpHeaders headers){
-        return compareCartService.removeCart(Objects.requireNonNull(headers.get("ownerId")).get(0));
+    public ResponseEntity<?> removeCart(@RequestBody String ownerId){
+        return compareCartService.removeCart(ownerId);
     }
 
     @GetMapping("/compare-cart/{ownerId}")

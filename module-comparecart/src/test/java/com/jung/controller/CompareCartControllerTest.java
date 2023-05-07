@@ -69,11 +69,10 @@ class CompareCartControllerTest {
     void removeCart() throws Exception {
         //given
         //when
-        String strDTO = objectMapper.writeValueAsString(firstCompareCart);
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/compare-cart")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(strDTO)
+                .content(firstCompareCart.getOwnerId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
@@ -101,8 +100,8 @@ class CompareCartControllerTest {
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.delete("/cart-products")
-                .header("ownerId",firstCompareCart.getOwnerId())
                 .contentType(MediaType.APPLICATION_JSON)
+                .content(firstCompareCart.getOwnerId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());

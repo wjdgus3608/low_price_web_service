@@ -33,8 +33,8 @@ public class CompareCartController {
     }
 
     @DeleteMapping("/cart-products")
-    public ResponseEntity<?> clearCart(@RequestHeader HttpHeaders headers){
-        return compareCartService.clearCart(Objects.requireNonNull(headers.get("ownerId")).get(0));
+    public ResponseEntity<?> clearCart(@RequestBody String ownerId){
+        return compareCartService.clearCart(ownerId);
     }
 
     @PostMapping("/cart-product")

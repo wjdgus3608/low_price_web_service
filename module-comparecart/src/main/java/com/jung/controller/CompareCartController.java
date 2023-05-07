@@ -42,11 +42,8 @@ public class CompareCartController {
         return compareCartService.addProductToCart(cartProductDTO);
     }
 
-    @DeleteMapping("/cart-product/{ownerId}/{productId}")
-    public ResponseEntity<?> removeProductFromCart(@PathVariable String ownerId, @PathVariable long productId){
-        return compareCartService.removeProductFromCart(CartProductDTO.builder()
-                .ownerId(ownerId)
-                .productId(productId)
-                .build());
+    @DeleteMapping("/cart-product")
+    public ResponseEntity<?> removeProductFromCart(@RequestBody @Valid CartProductDTO cartProductDTO){
+        return compareCartService.removeProductFromCart(cartProductDTO);
     }
 }

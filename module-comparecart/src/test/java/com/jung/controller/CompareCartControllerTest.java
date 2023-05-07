@@ -136,11 +136,13 @@ class CompareCartControllerTest {
                 .ownerId("user1")
                 .productId(1L)
                 .build();
-
         //when
+        String strDTO = objectMapper.writeValueAsString(dto);
+
         //then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-product/"+dto.getOwnerId()+"/"+dto.getProductId())
+        mockMvc.perform(MockMvcRequestBuilders.delete("/cart-product")
                 .contentType(MediaType.APPLICATION_JSON)
+                .content(strDTO)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());

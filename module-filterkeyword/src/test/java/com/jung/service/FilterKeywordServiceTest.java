@@ -78,6 +78,16 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("필터키워드 생성(중복실패)")
+    void generateFilterKeywordWithDup() {
+        //given
+        //when
+        ResponseEntity<?> response = filterKeywordService.generateFilterKeyword(baseDTO);
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,response.getStatusCode());
+    }
+
+    @Test
     @DisplayName("필터키워드 삭제")
     void deleteFilterKeyword() {
         //given

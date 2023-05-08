@@ -105,6 +105,19 @@ class FilterKeywordControllerTest {
     }
 
     @Test
+    @DisplayName("필터키워드 검색(미존재)")
+    void searchFilterKeywordNoData() throws Exception {
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("/filter-keyword/user3/keyword3")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andDo(print());
+    }
+
+    @Test
     @DisplayName("제외키워드 추가")
     void addExcludeKeywordToFilterKeyword() throws Exception {
         //given

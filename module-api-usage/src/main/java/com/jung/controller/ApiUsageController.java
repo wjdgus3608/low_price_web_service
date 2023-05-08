@@ -17,7 +17,7 @@ public class ApiUsageController {
     private final ApiUsageService apiUsageService;
 
     @GetMapping("/api")
-    public ResponseEntity<?> getApiInfo(){
+    public ResponseEntity<?> getCurrentUsage(){
         ApiUsage apiUsage = apiUsageService.getApiInfo();
         ApiUsageDTO apiUsageDTO = ApiUsageDTO.builder()
                 .responseCode(0)

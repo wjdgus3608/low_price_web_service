@@ -128,6 +128,16 @@ class FilterKeywordServiceTest {
     }
 
     @Test
+    @DisplayName("제외키워드 추가(중복실패)")
+    void addExcludeKeywordToFilterKeywordWithDup() {
+        //given
+        //when
+        ResponseEntity<?> responseEntity = filterKeywordService.addExcludeKeywordToFilterKeyword(excludeKeywordDTO);
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+    }
+
+    @Test
     @DisplayName("제외키워드 삭제")
     void removeExcludeKeywordFromFilterKeyword() {
         //given

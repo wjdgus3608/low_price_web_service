@@ -2,6 +2,7 @@ package com.jung.service;
 
 import com.jung.domain.product.Product;
 import com.jung.domain.product.ProductRepository;
+import com.jung.domain.product.Products;
 import com.jung.domain.product.SearchInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public class ProductService {
         if(products.size()!=0){
             return products;
         }
-        return naverApiService.callApi(searchInfo);
+
+        List<Product> searchedProducts = naverApiService.callApi(searchInfo);
+        Products resultProducts = Products.builder()
+                .keyword(searchInfo.getQuery())
+                .productList(searchedProducts)
+                .build();
+        productRepository.save(resultProducts);
+        return searchedProducts;
     }
 }

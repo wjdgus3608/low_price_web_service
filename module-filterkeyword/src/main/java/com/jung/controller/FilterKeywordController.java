@@ -2,6 +2,7 @@ package com.jung.controller;
 
 import com.jung.domain.filterkeyword.*;
 import com.jung.service.FilterKeywordService;
+import lombok.Generated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -60,6 +61,7 @@ public class FilterKeywordController {
         return ResponseEntity.ok(searchedKeyword);
     }
 
+    @Generated
     private ExcludeKeywordDTO parseHeaderToExcludeKeyword(HttpHeaders headers){
         KeywordSearchInfo keywordSearchInfo = KeywordSearchInfo.builder()
                 .ownerId(Objects.requireNonNull(headers.get("ownerId")).get(0))

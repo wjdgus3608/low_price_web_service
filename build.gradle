@@ -131,6 +131,7 @@ project(':module-product') {
 		implementation project(':common')
 		implementation project(':domain')
 		implementation 'redis.clients:jedis:4.3.1'
+		implementation 'com.h2database:h2:2.1.214'
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	}

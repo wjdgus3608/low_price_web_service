@@ -23,4 +23,6 @@
 hs_err_pid*
 
 # custom
-application-prod.properties
+application-prod.propertie
+test-results
+reports

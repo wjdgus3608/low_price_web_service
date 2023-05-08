@@ -148,4 +148,20 @@ class FilterKeywordServiceTest {
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
         assertFalse(excludeKeyword.isPresent());
     }
+
+    @Test
+    @DisplayName("제외키워드 삭제(미존재)")
+    void removeExcludeKeywordFromFilterKeywordWithEmpty() {
+        //given
+        ExcludeKeywordDTO dto = ExcludeKeywordDTO.builder()
+                .keywordSearchInfo(keywordSearchInfo)
+                .excludeKeyword("excludeKeyword2")
+                .build();
+        //when
+        ResponseEntity<?> responseEntity = filterKeywordService.removeExcludeKeywordFromFilterKeyword(dto);
+        Optional<ExcludeKeyword> excludeKeyword = filterKeywordService.searchExcludeKeyword(dto);
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+        assertTrue(excludeKeyword.isEmpty());
+    }
 }

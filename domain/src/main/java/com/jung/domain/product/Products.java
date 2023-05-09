@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 //캐시 5분동안만 유지
-@RedisHash(value = "Products",timeToLive = 5L)
+@RedisHash(value = "Products",timeToLive = 300L)
 @Builder
 @Getter
 public class Products {

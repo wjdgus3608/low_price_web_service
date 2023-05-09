@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import javax.transaction.Transactional;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -21,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Transactional
 class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -50,7 +52,6 @@ class UserControllerTest {
 
     @Test
     @DisplayName("회원가입 테스트")
-    @Order(1)
     void signUp() throws Exception {
         //given
         UserDTO dto = UserDTO.builder()
@@ -68,19 +69,17 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
         //then
-        mockMvc.perform(MockMvcRequestBuilders.post("/user")
-                .content("user1")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/"+dto.getUserId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("userId").value(equalTo("user1")))
+                .andExpect(MockMvcResultMatchers.jsonPath("userId").value(equalTo(dto.getUserId())))
                 .andDo(print());
     }
 
 
     @Test
     @DisplayName("로그인 실패(비번틀림) 테스트")
-    @Order(2)
     void signInWithWrong() throws Exception {
         //given
         ObjectNode obj = objectMapper.createObjectNode();
@@ -99,7 +98,6 @@ class UserControllerTest {
 
     @Test
     @DisplayName("로그인 실패(승인전) 테스트")
-    @Order(3)
     void signInWithNotApprove() throws Exception {
         //given
         ObjectNode obj = objectMapper.createObjectNode();
@@ -118,7 +116,6 @@ class UserControllerTest {
 
     @Test
     @DisplayName("승인처리 테스트")
-    @Order(4)
     void approve() throws Exception {
         //given
         ObjectNode obj = objectMapper.createObjectNode();
@@ -136,13 +133,21 @@ class UserControllerTest {
 
     @Test
     @DisplayName("로그인 성공 테스트")
-    @Order(5)
     void signInSuccess() throws Exception {
+
         //given
         ObjectNode obj = objectMapper.createObjectNode();
         obj.put("userId","user1");
-        obj.put("userPw","pw1");
         String strEntity = objectMapper.writeValueAsString(obj);
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/approval")
+                .content(strEntity)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+
+        obj = objectMapper.createObjectNode();
+        obj.put("userId","user1");
+        obj.put("userPw","pw1");
+        strEntity = objectMapper.writeValueAsString(obj);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
@@ -171,9 +176,15 @@ class UserControllerTest {
     @DisplayName("회원 검색 테스트(미존재)")
     void findUserNoData() throws Exception {
         //given
+        UserDTO tempUser = UserDTO.builder()
+                .userId("user3")
+                .userPw("pw1")
+                .userName("John")
+                .userType(UserType.USER)
+                .build();
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/"+this.userDTO.getUserId())
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/"+tempUser.getUserId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())

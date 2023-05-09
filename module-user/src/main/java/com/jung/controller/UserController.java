@@ -10,9 +10,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -46,8 +44,8 @@ public class UserController {
         return userService.approveUser(userId);
     }
 
-    @PostMapping("/user")
-    public ResponseEntity<?> findUser(@RequestBody String userId){
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> findUser(@PathVariable String userId){
         List<User> user = userService.findUserById(userId);
         if(user.size()==0)
             return ResponseEntity.badRequest().build();

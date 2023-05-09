@@ -166,4 +166,17 @@ class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("userId").value(equalTo("user1")))
                 .andDo(print());
     }
+
+    @Test
+    @DisplayName("회원 검색 테스트(미존재)")
+    void findUserNoData() throws Exception {
+        //given
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/"+this.userDTO.getUserId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andDo(print());
+    }
 }

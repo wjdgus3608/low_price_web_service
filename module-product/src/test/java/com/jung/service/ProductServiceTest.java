@@ -29,7 +29,7 @@ class ProductServiceTest {
     @BeforeAll
     void setSearchInfo(){
         searchInfo = SearchInfo.builder()
-                .query("meat")
+                .query("삼겹살")
                 .display(100)
                 .start(1)
                 .sort(SortType.sim)
@@ -44,7 +44,7 @@ class ProductServiceTest {
         List<Product> products = productService.searchProduct(searchInfo);
         //then
         assertEquals(100,products.size());
-        assertTrue(products.get(0).getProductName().contains("meat"));
+        assertTrue(products.get(0).getProductName().contains("삼겹살"));
     }
 
     @Test

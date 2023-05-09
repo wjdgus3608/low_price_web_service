@@ -2,8 +2,10 @@ package com.jung.domain.product;
 
 import com.jung.domain.BaseEntity;
 import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

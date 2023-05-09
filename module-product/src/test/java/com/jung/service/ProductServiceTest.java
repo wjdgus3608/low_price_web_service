@@ -10,12 +10,14 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
 class ProductServiceTest {
 
 
@@ -27,7 +29,7 @@ class ProductServiceTest {
     @BeforeAll
     void setSearchInfo(){
         searchInfo = SearchInfo.builder()
-                .query("abc")
+                .query("meat")
                 .display(100)
                 .start(1)
                 .sort(SortType.sim)
@@ -42,7 +44,7 @@ class ProductServiceTest {
         List<Product> products = productService.searchProduct(searchInfo);
         //then
         assertEquals(100,products.size());
-        assertTrue(products.get(0).getProductName().contains("abc"));
+        assertTrue(products.get(0).getProductName().contains("meat"));
     }
 
     @Test

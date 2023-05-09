@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ProductServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ProductServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.jung.service.html">com.jung.service</a> &gt; ProductServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.950s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">50%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="searchProduct()"></a>
+<h3 class="failures">상품검색 테스트</h3>
+<span class="code">
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;
+	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at app//org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
+	at app//org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:179)
+	at app//com.jung.service.ProductServiceTest.searchProduct(ProductServiceTest.java:47)
+	at java.base@19.0.1/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base@19.0.1/java.lang.reflect.Method.invoke(Method.java:578)
+	at app//org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at app//org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at app//org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at app//org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at app//org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at app//org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base@19.0.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base@19.0.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at app//org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at app//org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at app//org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at app//org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at app//org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at app//org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62)
+	at java.base@19.0.1/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base@19.0.1/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy2/jdk.proxy2.$Proxy5.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65)
+	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">상품검색 테스트</td>
+<td class="failures">searchProduct()</td>
+<td class="failures">0.308s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">상품검색 캐시 테스트</td>
+<td class="success">searchTestWithRedis()</td>
+<td class="success">0.642s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2023-05-08 18:10:16.576  INFO 80353 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jung.service.ProductServiceTest], using SpringBootContextLoader
+2023-05-08 18:10:16.576  INFO 80353 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.jung.service.ProductServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-05-08 18:10:16.577  INFO 80353 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.jung.service.ProductServiceTest]: ProductServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-05-08 18:10:16.582  INFO 80353 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.jung.ProductApplication for test class com.jung.service.ProductServiceTest
+2023-05-08 18:10:16.583  INFO 80353 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-05-08 18:10:16.583  INFO 80353 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@344e665a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@161f63a3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@26a6be0f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@69bb796a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2e80aeb1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@436fc2b9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@502a5a1d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6268095b, org.springframework.test.context.event.EventPublishingTestExecutionListener@4936d681, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7471bf14, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7689e935, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5489046e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2b7442a0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5284c1c5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6bfd5ae1]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.0)
+
+2023-05-08 18:10:16.597  WARN 80353 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/Users/zeropaybiz/.gradle/caches/modules-2/files-2.1/org.json/json/20220320/6df2c050972619466f6dcef7654ef9bcc01dfd0/json-20220320.jar!/org/json/JSONObject.class
+	jar:file:/Users/zeropaybiz/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-05-08 18:10:16.598  INFO 80353 --- [    Test worker] com.jung.service.ProductServiceTest      : Starting ProductServiceTest using Java 19.0.1 on 0275.local with PID 80353 (started by zeropaybiz in /Users/zeropaybiz/workspace/low_price_web_service/module-product)
+2023-05-08 18:10:16.598  INFO 80353 --- [    Test worker] com.jung.service.ProductServiceTest      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-05-08 18:10:16.675  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-08 18:10:16.675  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-08 18:10:16.676  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2023-05-08 18:10:16.698  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-08 18:10:16.698  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 18:10:16.702  INFO 80353 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.jung.domain.product.ProductRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2023-05-08 18:10:16.704  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 4 JPA repository interfaces.
+2023-05-08 18:10:16.707  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-08 18:10:16.707  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-08 18:10:16.710  INFO 80353 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.comparecart.CompareCartRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 18:10:16.710  INFO 80353 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.filterkeyword.FilterKeywordRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 18:10:16.710  INFO 80353 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.user.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 18:10:16.710  INFO 80353 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.apiusage.ApiUsageRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 18:10:16.712  INFO 80353 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 1 Redis repository interfaces.
+2023-05-08 18:10:16.792  INFO 80353 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 18:10:16.794  INFO 80353 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-05-08 18:10:16.797  INFO 80353 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-05-08 18:10:16.797  INFO 80353 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    drop table if exists api_usage CASCADE 
+Hibernate: 
+    
+    drop table if exists cart_product CASCADE 
+Hibernate: 
+    
+    drop table if exists compare_cart CASCADE 
+Hibernate: 
+    
+    drop table if exists exclude_keyword CASCADE 
+Hibernate: 
+    
+    drop table if exists filter_keyword CASCADE 
+Hibernate: 
+    
+    drop table if exists myuser CASCADE 
+Hibernate: 
+    
+    drop sequence if exists hibernate_sequence
+Hibernate: create sequence hibernate_sequence start with 1 increment by 1
+Hibernate: 
+    
+    create table api_usage (
+       id bigint not null,
+        created_at timestamp,
+        updated_at timestamp,
+        api_type varchar(255) not null,
+        current_usage bigint not null,
+        max_usage bigint not null,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table cart_product (
+       id bigint not null,
+        product_id bigint not null,
+        cart_id bigint,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table compare_cart (
+       cart_id bigint not null,
+        created_at timestamp,
+        updated_at timestamp,
+        owner_id varchar(255) not null,
+        total_cnt bigint default 0 not null,
+        primary key (cart_id)
+    )
+Hibernate: 
+    
+    create table exclude_keyword (
+       id bigint not null,
+        created_at timestamp,
+        updated_at timestamp,
+        keyword varchar(255) not null,
+        filter_keyword_id bigint,
+        keyword_list_key varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table filter_keyword (
+       filter_keyword_id bigint not null,
+        created_at timestamp,
+        updated_at timestamp,
+        owner_id varchar(255) not null,
+        search_keyword varchar(255) not null,
+        total_cnt bigint default 0 not null,
+        primary key (filter_keyword_id)
+    )
+Hibernate: 
+    
+    create table myuser (
+       user_id varchar(255) not null,
+        created_at timestamp,
+        updated_at timestamp,
+        state varchar(255),
+        user_name varchar(255) not null,
+        user_pw varchar(255) not null,
+        user_type varchar(255),
+        primary key (user_id)
+    )
+Hibernate: 
+    
+    alter table cart_product 
+       add constraint FKl5v8kpnp2t3jvldiyss8u264e 
+       foreign key (cart_id) 
+       references compare_cart
+Hibernate: 
+    
+    alter table exclude_keyword 
+       add constraint FK4n8vwxbm7iopw0m7g31dgfaw6 
+       foreign key (filter_keyword_id) 
+       references filter_keyword
+2023-05-08 18:10:16.876  INFO 80353 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 18:10:16.877  INFO 80353 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 18:10:16.956  WARN 80353 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 18:10:17.008  INFO 80353 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:1055d8e9-c74c-4e7f-8c01-4549d8bfc55b'
+2023-05-08 18:10:17.162  INFO 80353 --- [    Test worker] com.jung.service.ProductServiceTest      : Started ProductServiceTest in 0.578 seconds (JVM running for 17.843)
+2023-05-08 18:10:17.169  INFO 80353 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@74b54264 testClass = ProductServiceTest, testInstance = com.jung.service.ProductServiceTest@4abfc82e, testMethod = searchTestWithRedis@ProductServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2d7d77d3 testClass = ProductServiceTest, locations = '{}', classes = '{class com.jung.ProductApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@32f0c7f8, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1da4b6b3, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@451882b2, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3e84111a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@27a97e08, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@3b956878], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6e57680b]; rollback [true]
+[com.jung.domain.product.Product@678abe43, com.jung.domain.product.Product@1bd89be8, com.jung.domain.product.Product@16291cc0, com.jung.domain.product.Product@3b5ed82e, com.jung.domain.product.Product@91411a0, com.jung.domain.product.Product@564cdcb1, com.jung.domain.product.Product@8dd15a4, com.jung.domain.product.Product@450f3339, com.jung.domain.product.Product@6cbfa329, com.jung.domain.product.Product@5ca6435b, com.jung.domain.product.Product@3cb60d5e, com.jung.domain.product.Product@9c670a, com.jung.domain.product.Product@112b3adb, com.jung.domain.product.Product@7ff90f3e, com.jung.domain.product.Product@73a93162, com.jung.domain.product.Product@106eac2a, com.jung.domain.product.Product@585bb11e, com.jung.domain.product.Product@6fecd5d4, com.jung.domain.product.Product@55f4cb6a, com.jung.domain.product.Product@309e2202, com.jung.domain.product.Product@3548a64e, com.jung.domain.product.Product@3c838746, com.jung.domain.product.Product@4f5fb427, com.jung.domain.product.Product@e9001fc, com.jung.domain.product.Product@7e1aacb6, com.jung.domain.product.Product@5e83bd84, com.jung.domain.product.Product@6ccfd4ff, com.jung.domain.product.Product@62dea77b, com.jung.domain.product.Product@498ad88a, com.jung.domain.product.Product@a2633a2, com.jung.domain.product.Product@185c7635, com.jung.domain.product.Product@faeef3a, com.jung.domain.product.Product@107f28cd, com.jung.domain.product.Product@2bffa243, com.jung.domain.product.Product@50e984d7, com.jung.domain.product.Product@284666cf, com.jung.domain.product.Product@41161a4a, com.jung.domain.product.Product@17ad4591, com.jung.domain.product.Product@b7eb48f, com.jung.domain.product.Product@1015db31, com.jung.domain.product.Product@61205733, com.jung.domain.product.Product@1cdc074b, com.jung.domain.product.Product@62f80293, com.jung.domain.product.Product@5c8a91ae, com.jung.domain.product.Product@3ff0dcc3, com.jung.domain.product.Product@436a6229, com.jung.domain.product.Product@61241c4d, com.jung.domain.product.Product@69abe626, com.jung.domain.product.Product@50043914, com.jung.domain.product.Product@406f7217, com.jung.domain.product.Product@168d823, com.jung.domain.product.Product@37c494fe, com.jung.domain.product.Product@46f9c78b, com.jung.domain.product.Product@7dbdea89, com.jung.domain.product.Product@3a538cdd, com.jung.domain.product.Product@29238c0d, com.jung.domain.product.Product@21eed33d, com.jung.domain.product.Product@33959c2b, com.jung.domain.product.Product@1506dbe0, com.jung.domain.product.Product@20707ea9, com.jung.domain.product.Product@775036a1, com.jung.domain.product.Product@683b88a4, com.jung.domain.product.Product@4bc18798, com.jung.domain.product.Product@68e73d7f, com.jung.domain.product.Product@1ef4fbfc, com.jung.domain.product.Product@2a3e2e2e, com.jung.domain.product.Product@6d8481b6, com.jung.domain.product.Product@3c5955bc, com.jung.domain.product.Product@5cb62d0, com.jung.domain.product.Product@5edf6319, com.jung.domain.product.Product@179fc045, com.jung.domain.product.Product@619d83bf, com.jung.domain.product.Product@3f9ea0be, com.jung.domain.product.Product@1a7ccbff, com.jung.domain.product.Product@7308bd1d, com.jung.domain.product.Product@7e8558b8, com.jung.domain.product.Product@34d48c86, com.jung.domain.product.Product@480b9ad0, com.jung.domain.product.Product@7e5d3699, com.jung.domain.product.Product@2ac9e172, com.jung.domain.product.Product@3ae9f811, com.jung.domain.product.Product@2ea03886, com.jung.domain.product.Product@39de3a35, com.jung.domain.product.Product@5cf98e0d, com.jung.domain.product.Product@29a5ccf3, com.jung.domain.product.Product@66eb549, com.jung.domain.product.Product@4ea92823, com.jung.domain.product.Product@5e305e1d, com.jung.domain.product.Product@5975d37c, com.jung.domain.product.Product@2ac2e1e6, com.jung.domain.product.Product@2dad3cad, com.jung.domain.product.Product@71315fb3, com.jung.domain.product.Product@6289cda, com.jung.domain.product.Product@3bd88028, com.jung.domain.product.Product@7f549baa, com.jung.domain.product.Product@4e38f34, com.jung.domain.product.Product@466f1d3e, com.jung.domain.product.Product@39491c1b, com.jung.domain.product.Product@629b5953, com.jung.domain.product.Product@7a99e01b]
+341
+[com.jung.domain.product.Product@582d797c, com.jung.domain.product.Product@773f469, com.jung.domain.product.Product@48912b12, com.jung.domain.product.Product@64907e0a, com.jung.domain.product.Product@57c51d7d, com.jung.domain.product.Product@4f8d7b50, com.jung.domain.product.Product@e851008, com.jung.domain.product.Product@69825ffc, com.jung.domain.product.Product@16d38944, com.jung.domain.product.Product@32202735, com.jung.domain.product.Product@14036429, com.jung.domain.product.Product@6f05b4ea, com.jung.domain.product.Product@651699e7, com.jung.domain.product.Product@56bc03ff, com.jung.domain.product.Product@5911172d, com.jung.domain.product.Product@1b715a01, com.jung.domain.product.Product@4a793129, com.jung.domain.product.Product@7cec6062, com.jung.domain.product.Product@2d95b8ad, com.jung.domain.product.Product@3c255e4c, com.jung.domain.product.Product@3f56c098, com.jung.domain.product.Product@20a65860, com.jung.domain.product.Product@20f6dc09, com.jung.domain.product.Product@36b73165, com.jung.domain.product.Product@3f6c752b, com.jung.domain.product.Product@2d1b4ffe, com.jung.domain.product.Product@3b9bc8c0, com.jung.domain.product.Product@34a8facf, com.jung.domain.product.Product@6831045c, com.jung.domain.product.Product@1fa2c21b, com.jung.domain.product.Product@7a1ad4e7, com.jung.domain.product.Product@99727e9, com.jung.domain.product.Product@69e4c163, com.jung.domain.product.Product@605f745e, com.jung.domain.product.Product@4c4e395e, com.jung.domain.product.Product@7cd6f751, com.jung.domain.product.Product@33f6ce71, com.jung.domain.product.Product@2810a1d5, com.jung.domain.product.Product@15a9f940, com.jung.domain.product.Product@5e0ef8db, com.jung.domain.product.Product@5b8e302d, com.jung.domain.product.Product@76bd2c80, com.jung.domain.product.Product@2c04b8ee, com.jung.domain.product.Product@5e54595, com.jung.domain.product.Product@2fc0025c, com.jung.domain.product.Product@3086e208, com.jung.domain.product.Product@39ccef3e, com.jung.domain.product.Product@16aadc7f, com.jung.domain.product.Product@39d7ee14, com.jung.domain.product.Product@3e46cd84, com.jung.domain.product.Product@602d706d, com.jung.domain.product.Product@20241133, com.jung.domain.product.Product@2685fc6d, com.jung.domain.product.Product@2e273fd4, com.jung.domain.product.Product@25829c65, com.jung.domain.product.Product@252fac6f, com.jung.domain.product.Product@2c404a33, com.jung.domain.product.Product@3b0e19f0, com.jung.domain.product.Product@adecb40, com.jung.domain.product.Product@524a42a0, com.jung.domain.product.Product@7cf58b08, com.jung.domain.product.Product@377fccff, com.jung.domain.product.Product@4b87959b, com.jung.domain.product.Product@4bd89109, com.jung.domain.product.Product@1b25eeb1, com.jung.domain.product.Product@5274d11e, com.jung.domain.product.Product@25a8ad86, com.jung.domain.product.Product@2af720e3, com.jung.domain.product.Product@1e13136a, com.jung.domain.product.Product@6a9bdd97, com.jung.domain.product.Product@a3f99df, com.jung.domain.product.Product@195c4043, com.jung.domain.product.Product@1fd28841, com.jung.domain.product.Product@2b919949, com.jung.domain.product.Product@5d160c85, com.jung.domain.product.Product@26b3013c, com.jung.domain.product.Product@2da8052b, com.jung.domain.product.Product@a548a06, com.jung.domain.product.Product@67cbcded, com.jung.domain.product.Product@594f9ac9, com.jung.domain.product.Product@34a34d96, com.jung.domain.product.Product@1a89f5be, com.jung.domain.product.Product@2314f7a7, com.jung.domain.product.Product@6a8b8de, com.jung.domain.product.Product@28498a60, com.jung.domain.product.Product@7d38aed2, com.jung.domain.product.Product@7915c71d, com.jung.domain.product.Product@3a38fea9, com.jung.domain.product.Product@5e467904, com.jung.domain.product.Product@66b01220, com.jung.domain.product.Product@31ca1cc4, com.jung.domain.product.Product@4c7a61e2, com.jung.domain.product.Product@2119bf30, com.jung.domain.product.Product@47de9821, com.jung.domain.product.Product@26938022, com.jung.domain.product.Product@39798063, com.jung.domain.product.Product@55f54843, com.jung.domain.product.Product@6659dd4c, com.jung.domain.product.Product@5c71d335, com.jung.domain.product.Product@297e2a40]
+291
+2023-05-08 18:10:17.805  INFO 80353 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@74b54264 testClass = ProductServiceTest, testInstance = com.jung.service.ProductServiceTest@4abfc82e, testMethod = searchTestWithRedis@ProductServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2d7d77d3 testClass = ProductServiceTest, locations = '{}', classes = '{class com.jung.ProductApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@32f0c7f8, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1da4b6b3, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@451882b2, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3e84111a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@27a97e08, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@3b956878], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2023-05-08 18:10:17.807  INFO 80353 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@74b54264 testClass = ProductServiceTest, testInstance = com.jung.service.ProductServiceTest@4abfc82e, testMethod = searchProduct@ProductServiceTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2d7d77d3 testClass = ProductServiceTest, locations = '{}', classes = '{class com.jung.ProductApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@32f0c7f8, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1da4b6b3, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@451882b2, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3e84111a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@27a97e08, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@3b956878], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6e57680b]; rollback [true]
+2023-05-08 18:10:18.112  INFO 80353 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@74b54264 testClass = ProductServiceTest, testInstance = com.jung.service.ProductServiceTest@4abfc82e, testMethod = searchProduct@ProductServiceTest, testException = org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;, mergedContextConfiguration = [WebMergedContextConfiguration@2d7d77d3 testClass = ProductServiceTest, locations = '{}', classes = '{class com.jung.ProductApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@32f0c7f8, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1da4b6b3, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@451882b2, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3e84111a, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@27a97e08, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@3b956878], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.6</a> at 2023. 5. 8. 오후 6:10:18</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.jung.service.ApiUsageServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-05-08T06:32:46" hostname="0275.local" time="0.039">
+<testsuite name="com.jung.service.ApiUsageServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-05-08T08:55:59" hostname="0275.local" time="0.036">
   <properties/>
-  <testcase name="Redis 캐시 속도 테스트" classname="com.jung.service.ApiUsageServiceTest" time="0.014"/>
-  <testcase name="api 사용량 증가" classname="com.jung.service.ApiUsageServiceTest" time="0.009"/>
-  <testcase name="api 현재 사용량 초기화" classname="com.jung.service.ApiUsageServiceTest" time="0.01"/>
-  <testcase name="api 조회" classname="com.jung.service.ApiUsageServiceTest" time="0.005"/>
-  <system-out><![CDATA[2023-05-08 15:32:45.421  INFO 78220 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jung.service.ApiUsageServiceTest], using SpringBootContextLoader
-2023-05-08 15:32:45.422  INFO 78220 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.jung.service.ApiUsageServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2023-05-08 15:32:45.422  INFO 78220 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.jung.service.ApiUsageServiceTest]: ApiUsageServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2023-05-08 15:32:45.427  INFO 78220 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.jung.ApiApplication for test class com.jung.service.ApiUsageServiceTest
-2023-05-08 15:32:45.428  INFO 78220 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2023-05-08 15:32:45.428  INFO 78220 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@77469184, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1915eeb9, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5d7ed410, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6650679f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@25d91060, org.springframework.test.context.support.DirtiesContextTestExecutionListener@130f5244, org.springframework.test.context.transaction.TransactionalTestExecutionListener@38faca61, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5d732e7e, org.springframework.test.context.event.EventPublishingTestExecutionListener@30c46fa0, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@59b0968e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3777f61b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@73b32e55, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6099e6ec, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3d400897, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@350ff60a]
+  <testcase name="Redis 캐시 속도 테스트" classname="com.jung.service.ApiUsageServiceTest" time="0.013"/>
+  <testcase name="api 사용량 증가" classname="com.jung.service.ApiUsageServiceTest" time="0.008"/>
+  <testcase name="api 현재 사용량 초기화" classname="com.jung.service.ApiUsageServiceTest" time="0.009"/>
+  <testcase name="api 조회" classname="com.jung.service.ApiUsageServiceTest" time="0.004"/>
+  <system-out><![CDATA[2023-05-08 17:55:58.227  INFO 79955 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jung.service.ApiUsageServiceTest], using SpringBootContextLoader
+2023-05-08 17:55:58.228  INFO 79955 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.jung.service.ApiUsageServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-05-08 17:55:58.228  INFO 79955 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.jung.service.ApiUsageServiceTest]: ApiUsageServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-05-08 17:55:58.234  INFO 79955 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.jung.ApiApplication for test class com.jung.service.ApiUsageServiceTest
+2023-05-08 17:55:58.235  INFO 79955 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-05-08 17:55:58.235  INFO 79955 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1f8ff9c5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@33c04aed, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@344c9e8c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1d8aaa96, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7d2b3933, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4c8d9359, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1c65ccba, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@54f31bba, org.springframework.test.context.event.EventPublishingTestExecutionListener@70b542b6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@500200a2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@62b00604, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2ed2ef23, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@74a8b8bd, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@346fb19a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@560d1135]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -20,7 +20,7 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.7.0)
 
-2023-05-08 15:32:45.443  WARN 78220 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+2023-05-08 17:55:58.250  WARN 79955 --- [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
 
 Found multiple occurrences of org.json.JSONObject on the class path:
 
@@ -29,35 +29,35 @@ Found multiple occurrences of org.json.JSONObject on the class path:
 
 You may wish to exclude one of them to ensure predictable runtime behavior
 
-2023-05-08 15:32:45.443  INFO 78220 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : Starting ApiUsageServiceTest using Java 19.0.1 on 0275.local with PID 78220 (started by zeropaybiz in /Users/zeropaybiz/workspace/low_price_web_service/module-api-usage)
-2023-05-08 15:32:45.443  INFO 78220 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : No active profile set, falling back to 1 default profile: "default"
-2023-05-08 15:32:45.576  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2023-05-08 15:32:45.576  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-05-08 15:32:45.580  INFO 78220 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.jung.domain.product.ProductRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
-2023-05-08 15:32:45.582  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 4 JPA repository interfaces.
-2023-05-08 15:32:45.586  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2023-05-08 15:32:45.586  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2023-05-08 15:32:45.589  INFO 78220 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.comparecart.CompareCartRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
-2023-05-08 15:32:45.589  INFO 78220 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.filterkeyword.FilterKeywordRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
-2023-05-08 15:32:45.589  INFO 78220 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.user.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
-2023-05-08 15:32:45.590  INFO 78220 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.apiusage.ApiUsageRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
-2023-05-08 15:32:45.591  INFO 78220 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 Redis repository interfaces.
-2023-05-08 15:32:45.704  INFO 78220 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2023-05-08 15:32:45.706  INFO 78220 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2023-05-08 15:32:45.753  INFO 78220 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-05-08 15:32:45.756  INFO 78220 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2023-05-08 15:32:45.837  INFO 78220 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-05-08 15:32:45.837  INFO 78220 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-05-08 15:32:45.957  WARN 78220 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-05-08 15:32:46.015  INFO 78220 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:8403e72d-4d66-4e82-ab8a-07740b049ce6'
-2023-05-08 15:32:46.082  WARN 78220 --- [    Test worker] o.s.b.a.batch.JpaBatchConfigurer         : JPA does not support custom isolation levels, so locks may not be taken when launching Jobs. To silence this warning, set 'spring.batch.jdbc.isolation-level-for-create' to 'default'.
-2023-05-08 15:32:46.082  INFO 78220 --- [    Test worker] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
-2023-05-08 15:32:46.083  INFO 78220 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
-2023-05-08 15:32:46.205  INFO 78220 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+2023-05-08 17:55:58.250  INFO 79955 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : Starting ApiUsageServiceTest using Java 19.0.1 on 0275.local with PID 79955 (started by zeropaybiz in /Users/zeropaybiz/workspace/low_price_web_service/module-api-usage)
+2023-05-08 17:55:58.250  INFO 79955 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : No active profile set, falling back to 1 default profile: "default"
+2023-05-08 17:55:58.382  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-08 17:55:58.382  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-08 17:55:58.387  INFO 79955 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.jung.domain.product.ProductRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2023-05-08 17:55:58.390  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 4 JPA repository interfaces.
+2023-05-08 17:55:58.394  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-05-08 17:55:58.394  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-05-08 17:55:58.396  INFO 79955 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.comparecart.CompareCartRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 17:55:58.397  INFO 79955 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.filterkeyword.FilterKeywordRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 17:55:58.397  INFO 79955 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.user.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 17:55:58.397  INFO 79955 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.jung.domain.apiusage.ApiUsageRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2023-05-08 17:55:58.399  INFO 79955 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 Redis repository interfaces.
+2023-05-08 17:55:58.505  INFO 79955 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-05-08 17:55:58.507  INFO 79955 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-05-08 17:55:58.550  INFO 79955 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-08 17:55:58.553  INFO 79955 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2023-05-08 17:55:58.633  INFO 79955 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-08 17:55:58.633  INFO 79955 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-08 17:55:58.754  WARN 79955 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-08 17:55:58.821  INFO 79955 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:3da64255-a569-40e6-b658-9350324fffea'
+2023-05-08 17:55:58.890  WARN 79955 --- [    Test worker] o.s.b.a.batch.JpaBatchConfigurer         : JPA does not support custom isolation levels, so locks may not be taken when launching Jobs. To silence this warning, set 'spring.batch.jdbc.isolation-level-for-create' to 'default'.
+2023-05-08 17:55:58.891  INFO 79955 --- [    Test worker] o.s.b.c.r.s.JobRepositoryFactoryBean     : No database type set, using meta data indicating: H2
+2023-05-08 17:55:58.891  INFO 79955 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : No TaskExecutor has been set, defaulting to synchronous executor.
+2023-05-08 17:55:59.030  INFO 79955 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -65,16 +65,16 @@ You may wish to exclude one of them to ensure predictable runtime behavior
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
-2023-05-08 15:32:46.209  INFO 78220 --- [    Test worker] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@45e7c66d
-2023-05-08 15:32:46.230  INFO 78220 --- [    Test worker] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
-2023-05-08 15:32:46.230  INFO 78220 --- [    Test worker] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
-2023-05-08 15:32:46.232  INFO 78220 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : Started ApiUsageServiceTest in 0.803 seconds (JVM running for 18.944)
-2023-05-08 15:32:46.233  INFO 78220 --- [    Test worker] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
-2023-05-08 15:32:46.237  INFO 78220 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=apiUsageBatchJob]] launched with the following parameters: [{}]
-2023-05-08 15:32:46.241  INFO 78220 --- [    Test worker] o.s.batch.core.job.SimpleStepHandler     : Executing step: [apiUsageBatchStep]
-2023-05-08 15:32:46.249 ERROR 78220 --- [    Test worker] o.s.batch.core.step.AbstractStep         : Encountered an error executing step apiUsageBatchStep in job apiUsageBatchJob
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2023-05-08 17:55:59.031  INFO 79955 --- [    Test worker] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@49c8a738
+2023-05-08 17:55:59.053  INFO 79955 --- [    Test worker] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2023-05-08 17:55:59.053  INFO 79955 --- [    Test worker] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-05-08 17:55:59.056  INFO 79955 --- [    Test worker] com.jung.service.ApiUsageServiceTest     : Started ApiUsageServiceTest in 0.819 seconds (JVM running for 19.179)
+2023-05-08 17:55:59.056  INFO 79955 --- [    Test worker] o.s.b.a.b.JobLauncherApplicationRunner   : Running default command line with: []
+2023-05-08 17:55:59.060  INFO 79955 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=apiUsageBatchJob]] launched with the following parameters: [{}]
+2023-05-08 17:55:59.065  INFO 79955 --- [    Test worker] o.s.batch.core.job.SimpleStepHandler     : Executing step: [apiUsageBatchStep]
+2023-05-08 17:55:59.074 ERROR 79955 --- [    Test worker] o.s.batch.core.step.AbstractStep         : Encountered an error executing step apiUsageBatchStep in job apiUsageBatchJob
 
 java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100) ~[na:na]
@@ -101,7 +101,7 @@ java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.20.jar:5.3.20]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763) ~[spring-aop-5.3.20.jar:5.3.20]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708) ~[spring-aop-5.3.20.jar:5.3.20]
-	at com.jung.service.ApiUsageService$$EnhancerBySpringCGLIB$$8e0e4b71.initUsage(<generated>) ~[main/:na]
+	at com.jung.service.ApiUsageService$$EnhancerBySpringCGLIB$$8d72eb60.initUsage(<generated>) ~[main/:na]
 	at com.jung.batch.tasklets.ApiUsageBatchTasklet.execute(ApiUsageBatchTasklet.java:23) ~[main/:na]
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407) ~[spring-batch-core-4.3.6.jar:4.3.6]
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331) ~[spring-batch-core-4.3.6.jar:4.3.6]
@@ -219,19 +219,19 @@ java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2023-05-08 15:32:46.252  INFO 78220 --- [    Test worker] o.s.batch.core.step.AbstractStep         : Step: [apiUsageBatchStep] executed in 11ms
-2023-05-08 15:32:46.255  INFO 78220 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=apiUsageBatchJob]] completed with the following parameters: [{}] and the following status: [FAILED] in 17ms
-com.jung.domain.apiusage.ApiUsage@1a1b22c8
-com.jung.domain.apiusage.ApiUsage@5da731dd
-com.jung.domain.apiusage.ApiUsage@14be34fa
-com.jung.domain.apiusage.ApiUsage@3dfe6f92
-com.jung.domain.apiusage.ApiUsage@7e300787
+2023-05-08 17:55:59.076  INFO 79955 --- [    Test worker] o.s.batch.core.step.AbstractStep         : Step: [apiUsageBatchStep] executed in 11ms
+2023-05-08 17:55:59.080  INFO 79955 --- [    Test worker] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=apiUsageBatchJob]] completed with the following parameters: [{}] and the following status: [FAILED] in 18ms
+com.jung.domain.apiusage.ApiUsage@50de40b7
+com.jung.domain.apiusage.ApiUsage@4a710cfb
+com.jung.domain.apiusage.ApiUsage@4f39cee4
+com.jung.domain.apiusage.ApiUsage@39cef377
+com.jung.domain.apiusage.ApiUsage@1b37d701
 7
-com.jung.domain.apiusage.ApiUsage@1afde845
-com.jung.domain.apiusage.ApiUsage@7f811604
-com.jung.domain.apiusage.ApiUsage@31cd6499
-com.jung.domain.apiusage.ApiUsage@4fbf4118
-com.jung.domain.apiusage.ApiUsage@3af5276a
+com.jung.domain.apiusage.ApiUsage@59e31648
+com.jung.domain.apiusage.ApiUsage@582cad7e
+com.jung.domain.apiusage.ApiUsage@1637b847
+com.jung.domain.apiusage.ApiUsage@331dea5f
+com.jung.domain.apiusage.ApiUsage@728dfb22
 3
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

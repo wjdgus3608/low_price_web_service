@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NaverApiService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">module-product</a> &gt; <a href="index.source.html" class="el_package">com.jung.service</a> &gt; <span class="el_source">NaverApiService.java</span></div><h1>NaverApiService.java</h1><pre class="source lang-java linenums">package com.jung.service;
+
+import com.jung.domain.product.Product;
+import com.jung.domain.product.ProductDTO;
+import com.jung.domain.product.SearchInfo;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.expression.ParseException;
+import org.springframework.stereotype.Service;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Service
+<span class="fc" id="L23">public class NaverApiService {</span>
+    // 네이버 검색 API 예제 - 블로그 검색
+    @Value(&quot;${my.clientId}&quot;)
+    private String clientId;
+
+    @Value(&quot;${my.clientSecret}&quot;)
+    private String clientSecret;
+
+    public List&lt;Product&gt; callApi(SearchInfo searchInfo){
+
+<span class="fc" id="L33">        String apiURL = buildUrl(searchInfo);    // JSON 결과</span>
+
+<span class="fc" id="L35">        Map&lt;String, String&gt; requestHeaders = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L36">        requestHeaders.put(&quot;X-Naver-Client-Id&quot;, clientId);</span>
+<span class="fc" id="L37">        requestHeaders.put(&quot;X-Naver-Client-Secret&quot;, clientSecret);</span>
+<span class="fc" id="L38">        String responseBody = get(apiURL,requestHeaders);</span>
+
+<span class="fc" id="L40">        return ProductDTO.jsonToProductList(responseBody);</span>
+    }
+
+    private String buildUrl(SearchInfo searchInfo){
+<span class="fc" id="L44">        String text = null;</span>
+        try {
+<span class="fc" id="L46">            text = URLEncoder.encode(searchInfo.getQuery(), &quot;UTF-8&quot;);</span>
+<span class="nc" id="L47">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L48">            throw new RuntimeException(&quot;검색어 인코딩 실패&quot;,e);</span>
+<span class="fc" id="L49">        }</span>
+<span class="fc" id="L50">        String url = &quot;https://openapi.naver.com/v1/search/shop.json?query=&quot;+text</span>
+<span class="fc" id="L51">                +&quot;&amp;display=&quot;+searchInfo.getDisplay()</span>
+<span class="fc" id="L52">                +&quot;&amp;start=&quot;+searchInfo.getStart()</span>
+<span class="fc" id="L53">                +&quot;&amp;sort=&quot;+searchInfo.getSort();</span>
+<span class="fc" id="L54">        return url;</span>
+    }
+
+
+    private String get(String apiUrl, Map&lt;String, String&gt; requestHeaders){
+<span class="fc" id="L59">        HttpURLConnection con = connect(apiUrl);</span>
+        try {
+<span class="fc" id="L61">            con.setRequestMethod(&quot;GET&quot;);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            for(Map.Entry&lt;String, String&gt; header :requestHeaders.entrySet()) {</span>
+<span class="fc" id="L63">                con.setRequestProperty(header.getKey(), header.getValue());</span>
+<span class="fc" id="L64">            }</span>
+
+
+<span class="fc" id="L67">            int responseCode = con.getResponseCode();</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출</span>
+<span class="fc" id="L69">                return readBody(con.getInputStream());</span>
+            } else { // 오류 발생
+<span class="nc" id="L71">                return readBody(con.getErrorStream());</span>
+            }
+<span class="nc" id="L73">        } catch (IOException e) {</span>
+<span class="nc" id="L74">            throw new RuntimeException(&quot;API 요청과 응답 실패&quot;, e);</span>
+        } finally {
+<span class="fc" id="L76">            con.disconnect();</span>
+        }
+    }
+
+
+    private HttpURLConnection connect(String apiUrl){
+        try {
+<span class="fc" id="L83">            URL url = new URL(apiUrl);</span>
+<span class="fc" id="L84">            return (HttpURLConnection)url.openConnection();</span>
+<span class="nc" id="L85">        } catch (MalformedURLException e) {</span>
+<span class="nc" id="L86">            throw new RuntimeException(&quot;API URL이 잘못되었습니다. : &quot; + apiUrl, e);</span>
+<span class="nc" id="L87">        } catch (IOException e) {</span>
+<span class="nc" id="L88">            throw new RuntimeException(&quot;연결이 실패했습니다. : &quot; + apiUrl, e);</span>
+        }
+    }
+
+
+    private String readBody(InputStream body){
+<span class="fc" id="L94">        InputStreamReader streamReader = new InputStreamReader(body);</span>
+
+
+<span class="fc" id="L97">        try (BufferedReader lineReader = new BufferedReader(streamReader)) {</span>
+<span class="fc" id="L98">            StringBuilder responseBody = new StringBuilder();</span>
+
+
+            String line;
+<span class="fc bfc" id="L102" title="All 2 branches covered.">            while ((line = lineReader.readLine()) != null) {</span>
+<span class="fc" id="L103">                responseBody.append(line);</span>
+            }
+
+
+<span class="fc" id="L107">            return responseBody.toString();</span>
+<span class="nc" id="L108">        } catch (IOException e) {</span>
+<span class="nc" id="L109">            throw new RuntimeException(&quot;API 응답을 읽는 데 실패했습니다.&quot;, e);</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,6 +1,7 @@
 package com.jung.service;
 
 import com.jung.domain.product.Product;
+import com.jung.domain.product.ProductRepository;
 import com.jung.domain.product.SearchInfo;
 import com.jung.domain.product.SortType;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,6 +24,8 @@ class ProductServiceTest {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProductRepository productRepository;
 
     private SearchInfo searchInfo;
 
@@ -51,15 +54,18 @@ class ProductServiceTest {
     @DisplayName("상품검색 캐시 테스트")
     void searchTestWithRedis() {
         //given
+        //when
         long start1 = System.currentTimeMillis();
-        System.out.println(productService.searchProduct(searchInfo));
+        productService.searchProduct(searchInfo);
         long end1 = System.currentTimeMillis();
-        System.out.println(end1 - start1);
-
         long start2 = System.currentTimeMillis();
-        System.out.println(productService.searchProduct(searchInfo));
+        productService.searchProduct(searchInfo);
         long end2 = System.currentTimeMillis();
-        System.out.println(end2 - start2);
+
+        //then
+        assertTrue((end1 - start1) > (end2 - start2));
+        assertTrue(productRepository.findById(searchInfo.getQuery()).isPresent());
+
     }
 
 }

@@ -30,13 +30,15 @@ public class UserController {
     }
 
     @PostMapping("/user/auth")
-    public ResponseEntity<?> signIn(@RequestBody LoginDTO loginDTO) {
-        return userService.signIn(loginDTO.getUserId(),loginDTO.getUserPw());
+    public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO) {
+        userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw())
+
+        return ;
     }
 
     @PostMapping("/user/approval")
-    public ResponseEntity<?> approve(@RequestBody String userInfo) throws ParseException {
-        JSONObject obj = (JSONObject) parser.parse(userInfo);
+    public ResponseEntity<?> approve(@RequestBody String requestBody) throws ParseException {
+        JSONObject obj = (JSONObject) parser.parse(requestBody);
         String userId = (String)obj.get("userId");
         return userService.approveUser(userId);
     }

@@ -27,16 +27,12 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
-    public ResponseEntity<?> signIn(String userId, String userPw){
+    public boolean signIn(String userId, String userPw){
 
         if(!isIdAndPwCorrect(userId,userPw)){
-            return ResponseEntity.badRequest().build();
+            return false;
         }
-        else if(!isApproved(userId)){
-            return ResponseEntity.badRequest().build();
-        }
-
-        return ResponseEntity.ok().build();
+        return isApproved(userId);
     }
 
     @Transactional

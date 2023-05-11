@@ -1,7 +1,7 @@
 package com.jung.domain.comparecart;
 
 import com.jung.domain.RequestDTO;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.*;
 
 @Setter

@@ -1,7 +1,8 @@
 package com.jung.domain.apiusage;
 
-import com.sun.istack.NotNull;
 import lombok.*;
+
+import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter

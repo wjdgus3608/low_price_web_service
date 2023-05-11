@@ -3,7 +3,7 @@ package com.jung.domain.apiusage;
 
 import com.jung.domain.BaseEntity;
 import com.jung.domain.BaseRedisEntity;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.data.redis.core.RedisHash;
 

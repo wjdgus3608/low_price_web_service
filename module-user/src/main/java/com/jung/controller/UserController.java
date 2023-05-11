@@ -2,6 +2,7 @@ package com.jung.controller;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.jung.domain.apiusage.ApiUsageDTO;
+import com.jung.domain.user.LoginDTO;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.service.UserService;
@@ -29,12 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/user/auth")
-    public ResponseEntity<?> signIn(@RequestBody String loginInfo) throws ParseException {
-        JSONObject obj = (JSONObject) parser.parse(loginInfo);
-        String userId = (String)obj.get("userId");
-        String userPw = (String)obj.get("userPw");
-
-        return userService.signIn(userId,userPw);
+    public ResponseEntity<?> signIn(@RequestBody LoginDTO loginDTO) {
+        return userService.signIn(loginDTO.getUserId(),loginDTO.getUserPw());
     }
 
     @PostMapping("/user/approval")

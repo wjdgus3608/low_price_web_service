@@ -2,6 +2,7 @@ package com.jung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.jung.domain.user.LoginDTO;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
 import org.junit.jupiter.api.*;
@@ -31,6 +32,7 @@ class UserControllerTest {
     private ObjectMapper objectMapper;
 
     private UserDTO userDTO;
+    private LoginDTO loginDTO;
 
     @BeforeAll
     void init() throws Exception {
@@ -40,6 +42,11 @@ class UserControllerTest {
                 .userName("John")
                 .userType(UserType.USER)
                 .build();
+        this.loginDTO = LoginDTO.builder()
+                .userId("user1")
+                .userPw("pw1")
+                .build();
+
         String strEntity = objectMapper.writeValueAsString(this.userDTO);
         //when
         mockMvc.perform(MockMvcRequestBuilders.post("/new-user")
@@ -82,10 +89,11 @@ class UserControllerTest {
     @DisplayName("로그인 실패(비번틀림) 테스트")
     void signInWithWrong() throws Exception {
         //given
-        ObjectNode obj = objectMapper.createObjectNode();
-        obj.put("userId","user1");
-        obj.put("userPw","pw333");
-        String strEntity = objectMapper.writeValueAsString(obj);
+        LoginDTO dto = LoginDTO.builder()
+                .userPw("user1")
+                .userPw("pw2")
+                .build();
+        String strEntity = objectMapper.writeValueAsString(dto);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
@@ -100,10 +108,7 @@ class UserControllerTest {
     @DisplayName("로그인 실패(승인전) 테스트")
     void signInWithNotApprove() throws Exception {
         //given
-        ObjectNode obj = objectMapper.createObjectNode();
-        obj.put("userId","user1");
-        obj.put("userPw","pw1");
-        String strEntity = objectMapper.writeValueAsString(obj);
+        String strEntity = objectMapper.writeValueAsString(this.loginDTO);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
@@ -144,10 +149,7 @@ class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
 
-        obj = objectMapper.createObjectNode();
-        obj.put("userId","user1");
-        obj.put("userPw","pw1");
-        strEntity = objectMapper.writeValueAsString(obj);
+        strEntity = objectMapper.writeValueAsString(this.loginDTO);
         //when
         //then
         mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")

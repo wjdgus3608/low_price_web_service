@@ -6,6 +6,7 @@ import com.jung.domain.user.LoginDTO;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.service.UserService;
+import com.jung.utils.RandomSessionIdGenerator;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,6 +14,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -30,10 +32,13 @@ public class UserController {
     }
 
     @PostMapping("/user/auth")
-    public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO) {
-        userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw())
-
-        return ;
+    public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
+        boolean isLoginSuccess = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
+        if (isLoginSuccess && session.getAttribute("loginSession") == null){
+            session.setAttribute("loginSession", RandomSessionIdGenerator.generateSessionId());
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/user/approval")

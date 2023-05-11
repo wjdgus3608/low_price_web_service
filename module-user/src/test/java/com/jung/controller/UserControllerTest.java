@@ -11,10 +11,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -152,12 +154,16 @@ class UserControllerTest {
         strEntity = objectMapper.writeValueAsString(this.loginDTO);
         //when
         //then
-        mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
-                .content(strEntity)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
+        HttpSession session = mockMvc.perform(MockMvcRequestBuilders.post("/user/auth")
+                        .content(strEntity)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(print());
+                .andDo(print())
+                .andReturn().getRequest().getSession();
+
+        assertNotNull(session);
+        assertNotNull(session.getAttribute("loginSession"));
     }
 
     @Test

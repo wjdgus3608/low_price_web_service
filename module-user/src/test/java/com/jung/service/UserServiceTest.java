@@ -75,9 +75,8 @@ class UserServiceTest {
     void signInPwFail() {
         //given
         //when
-        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), "abc");
         //than
-        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+        assertFalse(userService.signIn(this.userDTO.getUserId(), "abc"));
     }
 
     @Test
@@ -86,9 +85,8 @@ class UserServiceTest {
     void signInApproveFail() {
         //given
         //when
-        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
         //than
-        assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
+        assertFalse(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()));
     }
 
     @Test
@@ -98,9 +96,8 @@ class UserServiceTest {
         //given
         userService.approveUser(this.userDTO.getUserId());
         //when
-        ResponseEntity<?> responseEntity = userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw());
         //than
-        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertTrue(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()));
     }
 
     @Test

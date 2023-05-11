@@ -12,6 +12,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.session.Session;
+import org.springframework.session.SessionRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final SessionRepository sessionRepository;
 
     private static final JSONParser parser = new JSONParser();
 
@@ -35,7 +38,20 @@ public class UserController {
     public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
         boolean isLoginSuccess = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
         if (isLoginSuccess && session.getAttribute("loginSession") == null){
-            session.setAttribute("loginSession", RandomSessionIdGenerator.generateSessionId());
+            String uuid = RandomSessionIdGenerator.generateSessionId();
+            session.setAttribute("loginSession", uuid);
+            sessionRepository.save((Session) session);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping("/user/auth")
+    public ResponseEntity<?> logOut(HttpSession httpSession){
+        String uuid = (String) httpSession.getAttribute("loginSession");
+        if(uuid != null){
+            httpSession.removeAttribute("loginSession");
+            sessionRepository.deleteById(httpSession.getId());
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();

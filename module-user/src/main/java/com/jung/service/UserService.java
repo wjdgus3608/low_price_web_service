@@ -35,6 +35,7 @@ public class UserService {
         return isApproved(userId);
     }
 
+
     @Transactional
     public ResponseEntity<?> approveUser(String userId){
         List<User> user = userRepository.findByUserId(userId);

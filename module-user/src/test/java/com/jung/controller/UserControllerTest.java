@@ -3,6 +3,7 @@ package com.jung.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jung.domain.user.LoginDTO;
+import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.domain.user.UserType;
 import org.junit.jupiter.api.*;
@@ -163,7 +164,7 @@ class UserControllerTest {
                 .andReturn().getRequest().getSession();
 
         assertNotNull(session);
-        assertNotNull(session.getAttribute("loginSession"));
+        assertEquals(this.loginDTO.getUserId(),((User)session.getAttribute("loginUser")).getUserId());
     }
 
     @Test

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -38,27 +39,27 @@ public class UserService {
 
     @Transactional
     public ResponseEntity<?> approveUser(String userId){
-        List<User> user = userRepository.findByUserId(userId);
-        user.get(0).approve();
+        Optional<User> user = findUserById(userId);
+        user.ifPresent(User::approve);
         return ResponseEntity.ok().build();
     }
 
-    public List<User> findUserById(String userId){
+    public Optional<User> findUserById(String userId){
         return userRepository.findByUserId(userId);
     }
 
     private boolean isIdAndPwCorrect(String userId, String userPw){
-        List<User> user = findUserById(userId);
-        return user.size() != 0 && user.get(0).getUserPw().equals(userPw);
+        Optional<User> user = findUserById(userId);
+        return user.filter((value)->value.getUserPw().equals(userPw)).isPresent();
     }
 
     private boolean isApproved(String userId){
-        List<User> user = findUserById(userId);
-        return user.get(0).getState()== ApprovalState.ACCEPTED;
+        Optional<User> user = findUserById(userId);
+        return user.filter(value -> value.getState() == ApprovalState.ACCEPTED).isPresent();
     }
 
     private boolean isDupId(String userId){
-        return userRepository.findByUserId(userId).size()!=0;
+        return userRepository.findByUserId(userId).isPresent();
     }
 
 }

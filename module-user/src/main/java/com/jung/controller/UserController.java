@@ -1,7 +1,6 @@
 package com.jung.controller;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.jung.domain.apiusage.ApiUsageDTO;
 import com.jung.domain.user.LoginDTO;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
@@ -12,8 +11,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.session.Session;
-import org.springframework.session.SessionRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +22,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final SessionRepository sessionRepository;
 
     private static final JSONParser parser = new JSONParser();
 
@@ -37,10 +33,9 @@ public class UserController {
     @PostMapping("/user/auth")
     public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
         boolean isLoginSuccess = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
-        if (isLoginSuccess && session.getAttribute("loginSession") == null){
-            String uuid = RandomSessionIdGenerator.generateSessionId();
-            session.setAttribute("loginSession", uuid);
-            sessionRepository.save((Session) session);
+        if (isLoginSuccess){
+            if(session.getAttribute("loginUser") == null)
+                session.setAttribute("loginUser", userService.findUserById(loginDTO.getUserId()));
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();

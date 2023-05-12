@@ -111,7 +111,6 @@ project(':module-user') {
 		implementation project(':domain')
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-		implementation 'org.springframework.session:spring-session-data-redis'
 
 
 	}

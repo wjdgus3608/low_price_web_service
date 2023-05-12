@@ -43,10 +43,9 @@ public class UserController {
 
     @DeleteMapping("/user/auth")
     public ResponseEntity<?> logOut(HttpSession httpSession){
-        String uuid = (String) httpSession.getAttribute("loginSession");
-        if(uuid != null){
-            httpSession.removeAttribute("loginSession");
-            sessionRepository.deleteById(httpSession.getId());
+        User user = (User) httpSession.getAttribute("loginUser");
+        if(user != null){
+            httpSession.invalidate();
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.badRequest().build();

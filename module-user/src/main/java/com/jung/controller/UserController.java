@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -60,10 +61,10 @@ public class UserController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> findUser(@PathVariable String userId){
-        List<User> user = userService.findUserById(userId);
-        if(user.size()==0)
+        Optional<User> user = userService.findUserById(userId);
+        if(user.isEmpty())
             return ResponseEntity.badRequest().build();
 
-        return ResponseEntity.ok(user.get(0));
+        return ResponseEntity.ok(user.get());
     }
 }

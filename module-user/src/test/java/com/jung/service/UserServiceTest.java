@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,9 +47,10 @@ class UserServiceTest {
                 .build();
         userService.signUp(dto);
         //when
-        List<User> findUser = userService.findUserById(dto.getUserId());
+        Optional<User> findUser = userService.findUserById(dto.getUserId());
         //than
-        assertEquals(dto.getUserId(),findUser.get(0).getUserId());
+        assertTrue(findUser.isPresent());
+        assertEquals(dto.getUserId(),findUser.get().getUserId());
 
     }
 
@@ -107,8 +109,9 @@ class UserServiceTest {
         //given
         userService.approveUser(this.userDTO.getUserId());
         //when
-        List<User> user = userService.findUserById(this.userDTO.getUserId());
+        Optional<User> user = userService.findUserById(this.userDTO.getUserId());
         //than
-        assertEquals(ApprovalState.ACCEPTED,user.get(0).getState());
+        assertTrue(user.isPresent());
+        assertEquals(ApprovalState.ACCEPTED,user.get().getState());
     }
 }

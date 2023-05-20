@@ -36,6 +36,10 @@ public class UserService {
         return Optional.of(generateUserSession());
     }
 
+/*    public boolean signOut(String userId){
+        userSessionRepository.delete();
+    }*/
+
 
     @Transactional
     public ResponseEntity<?> approveUser(String userId){
@@ -47,6 +51,8 @@ public class UserService {
     public Optional<User> findUserById(String userId){
         return userRepository.findByUserId(userId);
     }
+
+    public Optional<UserSession> findUserSessionById(String userId){ return userSessionRepository.findById(userId); }
 
     private String generateUserSession(){
         return UUID.randomUUID().toString();

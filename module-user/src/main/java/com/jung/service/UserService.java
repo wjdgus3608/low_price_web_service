@@ -33,7 +33,8 @@ public class UserService {
             return Optional.empty();
         }
 
-        return Optional.of(generateUserSession());
+        Optional<UserSession> userSession = findUserSessionById(userId);
+        return userSession.map(UserSession::getSessionValue).or(() -> Optional.of(generateUserSession()));
     }
 
     public boolean logOut(String userId){
@@ -58,6 +59,8 @@ public class UserService {
     }
 
     public Optional<UserSession> findUserSessionById(String userId){ return userSessionRepository.findById(userId); }
+
+    public boolean checkUserSessionExist(String sessionValue){ return userSessionRepository.existsById(sessionValue);}
 
     private String generateUserSession(){
         return UUID.randomUUID().toString();

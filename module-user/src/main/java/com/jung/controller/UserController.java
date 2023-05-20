@@ -33,15 +33,22 @@ public class UserController {
 
     @PostMapping("/user/auth")
     public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
-        boolean isLoginSuccess = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
-        if (isLoginSuccess){
-            if(session.getAttribute("loginUser") == null) {
-                Optional<User> findUser = userService.findUserById(loginDTO.getUserId());
-                findUser.ifPresent((user)->session.setAttribute("loginUser", user));
-            }
+        String sessionStr = (String) session.getAttribute("sessionValue");
+        if(sessionStr!=null && userService.checkUserSessionExist(sessionStr)){
             return ResponseEntity.ok().build();
         }
-        return ResponseEntity.badRequest().build();
+
+        Optional<String> sessionValue = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
+        if (sessionValue.isEmpty()){
+            return ResponseEntity.badRequest().build();
+        }
+
+        session.setAttribute("sessionValue",sessionValue.get());
+
+        Optional<User> findUser = userService.findUserById(loginDTO.getUserId());
+        findUser.ifPresent((user)->session.setAttribute("loginUser", user));
+        
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/user/auth")

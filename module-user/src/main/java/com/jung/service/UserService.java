@@ -1,9 +1,6 @@
 package com.jung.service;
 
-import com.jung.domain.user.ApprovalState;
-import com.jung.domain.user.User;
-import com.jung.domain.user.UserDTO;
-import com.jung.domain.user.UserRepository;
+import com.jung.domain.user.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -18,6 +16,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
+    private final UserSessionRepository userSessionRepository;
 
     @Transactional
     public ResponseEntity<?> signUp(UserDTO userDTO){
@@ -28,12 +27,13 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
-    public boolean signIn(String userId, String userPw){
+    public Optional<String> signIn(String userId, String userPw){
 
-        if(!isIdAndPwCorrect(userId,userPw)){
-            return false;
+        if(!isIdAndPwCorrect(userId,userPw) || !isApproved(userId)){
+            return Optional.empty();
         }
-        return isApproved(userId);
+
+        return Optional.of(generateUserSession());
     }
 
 
@@ -46,6 +46,10 @@ public class UserService {
 
     public Optional<User> findUserById(String userId){
         return userRepository.findByUserId(userId);
+    }
+
+    private String generateUserSession(){
+        return UUID.randomUUID().toString();
     }
 
     private boolean isIdAndPwCorrect(String userId, String userPw){

@@ -64,6 +64,7 @@ public class UserController {
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> findUser(@PathVariable String userId){
         Optional<User> user = userService.findUserById(userId);
+        ResponseEntity.badRequest().build();
         if(user.isEmpty())
             return ResponseEntity.badRequest().build();
 

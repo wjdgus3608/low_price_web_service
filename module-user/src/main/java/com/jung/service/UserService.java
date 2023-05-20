@@ -36,9 +36,14 @@ public class UserService {
         return Optional.of(generateUserSession());
     }
 
-/*    public boolean signOut(String userId){
-        userSessionRepository.delete();
-    }*/
+    public boolean logOut(String userId){
+        Optional<UserSession> userSession = findUserSessionById(userId);
+        if(userSession.isPresent()) {
+            userSessionRepository.delete(userSession.get());
+            return true;
+        }
+        return false;
+    }
 
 
     @Transactional

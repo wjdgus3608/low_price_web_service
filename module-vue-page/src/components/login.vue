@@ -1,33 +1,36 @@
 <template>
-  <div>
-    <form id="login-box" @submit="submitForm">
-        <div id="id-box">
-            <label for="user-id">ID</label>
-            <input id="user-id" type="text" v-model="userId"/>
-        </div>
-        <div id="pw-box">
-            <label for="password">PW</label>
-            <input id="password" type="password" v-model="password"/>
-        </div>
-        <button class="btn btn-primary" id="signup-btn" type="button" @click="signUp">회원가입</button>
-        <button class="btn btn-primary" id="login-btn" type="submit">로그인</button>
-    </form>
-  </div>
+    <div id="login-main">
+        <title>가격 비교 시스템 로그인</title>
+        <h3>가격 비교 시스템</h3>
+        <form>
+            <div class="mb-3">
+                <label for="userId" class="form-label">ID</label>
+                <input type="text" class="form-control" id="userId" v-model="userId" placeholder="ID">
+            </div>
+            <div class="mb-3">
+                <label for="userPw" class="form-label">Password</label>
+                <input type="password" class="form-control" id="userPw" v-model="password" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary" @click="signUp">회원가입</button>
+            <button type="submit" class="btn btn-primary" id="loginBtn" @click="submitForm">로그인</button>
+        </form>
+    </div>
 </template>
 
 <script>
 export default {
-    data: function(){
+    name: 'LoginView',
+    data: function () {
         return {
-            userId : '',
-            password : ''
+            userId: '',
+            password: ''
         }
     },
-    methods:{
-        signUp(){
+    methods: {
+        signUp() {
             this.$router.push('/signup');
         },
-        submitForm(){
+        submitForm() {
             console.log(this.userId);
             console.log(this.password);
         }
@@ -35,6 +38,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+#login-main {
+    position: absolute;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loginBtn {
+    float: right;
+}
+
 
 </style>

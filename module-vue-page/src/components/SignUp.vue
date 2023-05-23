@@ -12,7 +12,11 @@
                 <input type="password" class="form-control" id="userPw" v-model="password" placeholder="Password">
             </div>
             <div class="mb-3">
-                <label for="userName" class="form-label">Password</label>
+                <label for="userPwRe" class="form-label">Repeat Password</label>
+                <input type="password" class="form-control" id="userPwRe" v-model="passwordRe" placeholder="Repeat Password">
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">이름</label>
                 <input type="text" class="form-control" id="userName" v-model="userName" placeholder="이름">
             </div>
             <button type="submit" class="btn btn-primary" id="signupBtn" @click="submitForm">가입신청</button>
@@ -29,6 +33,7 @@ export default {
 <style scoped>
 #signupMain {
   margin-top: 40px;
+  width: 800px;
 }
 #signupBtn {
     float: right;

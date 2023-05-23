@@ -20,7 +20,7 @@
 <script>
 export default {
     name: 'LoginView',
-    data: function () {
+    data() {
         return {
             userId: '',
             password: ''

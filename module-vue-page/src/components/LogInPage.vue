@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         signUp() {
-            this.$router.push('/signup');
+            this.$router.push('/signup-page');
         },
         submitForm() {
             console.log(this.userId);

@@ -1,15 +1,18 @@
 import { createWebHistory, createRouter } from "vue-router";
-import LogIn from "../components/LogIn";
-import SignUp from "../components/SignUp";
-import SearchMain from "../components/SearchMain";
+import LogInPage from "../components/LogInPage";
+import SignUpPage from "../components/SignUpPage";
+import SearchPage from "../components/SearchPage";
+import MyPage from "../components/MyPage";
+import ItemListPage from "../components/ItemListPage";
 
 const router = createRouter({
     history : createWebHistory(),
     routes : [ // path별 component를 추가한다.
-        { path : "/", name : "LogIn", component : LogIn },
-        { path : "/signup", name : "SignUp", component : SignUp },
-        { path : "/search-main", name : "SearchMain", component : SearchMain },
-        // { path : "/home", name : "HelloWorld", component : HelloWorld }
+        { path : "/", name : "LogInPage", component : LogInPage },
+        { path : "/signup-page", name : "SignUpPage", component : SignUpPage },
+        { path : "/search-page", name : "SearchPage", component : SearchPage },
+        { path : "/my-page", name : "MyPage", component : MyPage },
+        { path : "/item-list-page", name : "ItemListPage", component : ItemListPage },
     ]
 });
 

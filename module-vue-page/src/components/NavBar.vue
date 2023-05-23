@@ -1,6 +1,9 @@
 <template>
     <div id="NavBar">
         <nav class="navbar fixed-top navbar-dark bg-primary justify-content-end">
+            <div>
+                <SearchBar hidden="true"/>
+            </div>
             <a class="navbar-brand" href="#">
                 <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
                     class="d-inline-block align-text-top">
@@ -12,8 +15,11 @@
 </template>
 
 <script>
+import SearchBar from './SearchBar.vue';
 export default {
-
+    components:{
+        SearchBar
+    }
 }
 </script>
 

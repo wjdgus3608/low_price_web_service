@@ -2,7 +2,7 @@
     <div id="searchMain">
         <NavBar/>
         <div class="container" id="searchContainer">
-            <h4>최저가 검색하기</h4>
+            <h3>최저가 검색하기</h3>
             <SearchBar/>
         </div>
     </div>

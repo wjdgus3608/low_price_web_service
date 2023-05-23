@@ -2,7 +2,12 @@
     <div id="myPage">
        <NavBar/>
         <div id="myPageContainer">
-            <MyMenu/>
+            <div id="menuContainer">
+                <MyMenu/>
+            </div>
+            <div id="subPageContainer">
+                abc
+            </div>
         </div>
     </div>
 </template>
@@ -30,8 +35,12 @@ export default {
     height: 100%;
 }
 
+#menuContainer {
+    display: inline;
+}
+
 #subPageContainer {
-    width: 100%;
-    height: 100%;
+    display: inline;
+
 }
 </style>

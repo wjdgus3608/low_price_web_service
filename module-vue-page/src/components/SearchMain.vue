@@ -28,13 +28,4 @@ export default {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
-#searchForm {
-    display: inline-block;
-    width: 700px;
-}
-
-#signupBtn {
-    float: right;
-}
 </style>

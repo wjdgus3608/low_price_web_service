@@ -32,7 +32,6 @@ export default {
 <style scoped>
 #keywordsSubPage {
     padding: 0 40px;
-    flex-grow: 1;
 
 }
 </style>

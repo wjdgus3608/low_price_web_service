@@ -9,7 +9,7 @@
                     class="d-inline-block align-text-top">
                 OOO 님
             </a>
-            <button class="btn btn-outline-success me-2 text-white border-white" type="button">로그아웃</button>
+            <button class="btn btn-outline-success me-2 text-white border-white btn-sm" type="button">로그아웃</button>
         </nav>
     </div>
 </template>

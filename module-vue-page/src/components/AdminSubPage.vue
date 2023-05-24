@@ -36,7 +36,8 @@
                     <td>userId3</td>
                     <td>누구지</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">승인</button>
+                        <button v-if="!isApproved" class="btn btn-primary btn-sm" @click="approveUser">승인</button>
+                        <div v-if="isApproved">승인완료</div>
                     </td>
                     <td>23.01.01</td>
                 </tr>
@@ -47,7 +48,16 @@
 
 <script>
 export default {
-    components: {
+    data(){
+        return{
+            isApproved: false
+        }
+    },
+    methods: {
+        approveUser(){
+            this.isApproved = true;
+            console.log(this.isApproved);
+        }
     }
 }
 </script>
@@ -55,7 +65,6 @@ export default {
 <style scoped>
 #adminSubPage {
     padding: 0 40px;
-    flex-grow: 1;
 }
 .table {
     width: 100%;

@@ -1,5 +1,7 @@
 <template>
     <div id="keywordsSubPage">
+        <h3>키워드 관리</h3>
+        <br><br>
         <div class="row row-cols-3">
             <div class="col">
                 <KeywordCard />
@@ -29,7 +31,8 @@ export default {
 
 <style scoped>
 #keywordsSubPage {
-    display: flex;
     padding: 0 40px;
+    flex-grow: 1;
+
 }
 </style>

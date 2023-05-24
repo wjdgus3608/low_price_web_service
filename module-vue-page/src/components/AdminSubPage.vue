@@ -1,5 +1,7 @@
 <template>
     <div id="adminSubPage">
+        <h3>승인 관리</h3>
+        <br><br>
         <table class="table">
             <thead>
                 <tr>
@@ -52,7 +54,11 @@ export default {
 
 <style scoped>
 #adminSubPage {
-    display: flex;
     padding: 0 40px;
+    flex-grow: 1;
+}
+.table {
+    width: 100%;
+    height: 100%;
 }
 </style>

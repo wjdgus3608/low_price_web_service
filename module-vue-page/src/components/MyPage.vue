@@ -10,7 +10,7 @@
                  <AdminSubPage v-if="menuNum===1"/>
             </div>
         </div>
-        <KeywordPopup ref="modalView"/>
+        <KeywordPopup/>
     </div>
 </template>
 
@@ -47,14 +47,14 @@ export default {
 <style scoped>
 #myPageContainer {
     display: flex;
-    margin: 200px 30px;
-    width: 100%;
-    height: 100%;
+    margin: 100px 30px;
 }
 
 #menuContainer {
+    margin-top: 100px;
 }
 
 #subPageContainer {
+    flex-grow: 1;
 }
 </style>

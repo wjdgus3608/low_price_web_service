@@ -21,6 +21,9 @@ export default {
 
 <style scoped>
 .row {
-    width: 700px;
+    width: 250px;
+}
+.col-4 {
+    width: 100%;
 }
 </style>

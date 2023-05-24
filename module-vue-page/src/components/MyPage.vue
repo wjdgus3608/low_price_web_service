@@ -6,7 +6,7 @@
                 <MyMenu/>
             </div>
             <div id="subPageContainer">
-                abc
+                <KeywordsSubPage/>
             </div>
         </div>
     </div>
@@ -14,14 +14,14 @@
 
 <script>
 import MyMenu from './MyMenu.vue';
-// import KeywordsSubPage from './KeywordsSubPage.vue';
+import KeywordsSubPage from './KeywordsSubPage.vue';
 // import AdminSubPage from './AdminSubPage.vue';
 import NavBar from './NavBar.vue'
 
 export default {
     components:{
         MyMenu,
-        // KeywordsSubPage,
+        KeywordsSubPage,
         // AdminSubPage
         NavBar
     }
@@ -30,17 +30,15 @@ export default {
 
 <style scoped>
 #myPageContainer {
-    margin: 200px 50px;
+    display: flex;
+    margin: 200px 30px;
     width: 100%;
     height: 100%;
 }
 
 #menuContainer {
-    display: inline;
 }
 
 #subPageContainer {
-    display: inline;
-
 }
 </style>

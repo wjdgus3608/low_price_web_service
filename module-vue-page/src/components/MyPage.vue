@@ -6,7 +6,8 @@
                 <MyMenu/>
             </div>
             <div id="subPageContainer">
-                <KeywordsSubPage/>
+                <KeywordsSubPage v-if="menuNum===0"/>
+                <AdminSubPage v-if="menuNum===1"/>
             </div>
         </div>
     </div>
@@ -15,15 +16,21 @@
 <script>
 import MyMenu from './MyMenu.vue';
 import KeywordsSubPage from './KeywordsSubPage.vue';
-// import AdminSubPage from './AdminSubPage.vue';
+import AdminSubPage from './AdminSubPage.vue';
 import NavBar from './NavBar.vue'
 
 export default {
     components:{
         MyMenu,
         KeywordsSubPage,
-        // AdminSubPage
+        AdminSubPage,
         NavBar
+    },
+
+    data(){
+        return {
+            menuNum: 0
+        }
     }
 }
 </script>

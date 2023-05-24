@@ -1,8 +1,8 @@
 <template>
     <div id="NavBar">
         <nav class="navbar fixed-top navbar-dark bg-primary justify-content-end">
-            <div>
-                <SearchBar hidden="true"/>
+            <div id="searchBarContainer">
+                <SearchBar/>
             </div>
             <a class="navbar-brand" href="#">
                 <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
@@ -24,5 +24,7 @@ export default {
 </script>
 
 <style scoped>
-
+#searchBarContainer{
+    margin-right: 50px;
+}
 </style>

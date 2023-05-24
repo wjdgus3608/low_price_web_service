@@ -7,9 +7,10 @@
             </div>
             <div id="subPageContainer">
                 <KeywordsSubPage v-if="menuNum===0"/>
-                <AdminSubPage v-if="menuNum===1"/>
+                 <AdminSubPage v-if="menuNum===1"/>
             </div>
         </div>
+        <KeywordPopup ref="modalView"/>
     </div>
 </template>
 
@@ -17,20 +18,28 @@
 import MyMenu from './MyMenu.vue';
 import KeywordsSubPage from './KeywordsSubPage.vue';
 import AdminSubPage from './AdminSubPage.vue';
-import NavBar from './NavBar.vue'
+import NavBar from './NavBar.vue';
+import KeywordPopup from "./KeywordPopup.vue";
+
 
 export default {
     components:{
         MyMenu,
         KeywordsSubPage,
         AdminSubPage,
-        NavBar
+        NavBar,
+        KeywordPopup
     },
 
     data(){
         return {
-            menuNum: 0
+            menuNum: 0,
+            isModelOpen: false
         }
+    },
+
+    methods:{
+       
     }
 }
 </script>

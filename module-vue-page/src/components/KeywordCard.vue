@@ -10,7 +10,7 @@
                 <li class="list-group-item">제외 키워드3</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">더보기</a>
+                <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#mymodal">더보기</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,16 @@
 
 <script>
 export default {
-
+    components:{
+    },
+    data(){
+        return{
+            isOpen: false
+        }
+    },
+    methods:{
+        
+    }
 }
 </script>
 

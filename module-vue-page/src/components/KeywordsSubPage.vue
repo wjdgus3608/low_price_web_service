@@ -23,10 +23,13 @@ export default {
     components: {
         KeywordCard
     }
+    
 }
 </script>
 
-<style scoped>#keywordsSubPage {
+<style scoped>
+#keywordsSubPage {
     display: flex;
     padding: 0 40px;
-}</style>
+}
+</style>

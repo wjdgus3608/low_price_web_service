@@ -1,6 +1,6 @@
 <template>
     <div id="NavBar">
-        <nav class="navbar fixed-top navbar-dark bg-primary justify-content-end">
+        <nav class="navbar fixed-top navbar-dark bg-dark justify-content-end">
             <div id="searchBarContainer">
                 <SearchBar/>
             </div>

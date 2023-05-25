@@ -2,19 +2,23 @@
     <div id="itemListPage">
         <NavBar/>
         <div id="itemListPageContainer">
-            <div id="leftSideContainer">abc</div>
-            <div id="middleSideContainer">ddd</div>
-            <div id="rightSideContainer">fff</div>
+            <div id="leftSideContainer">leftSideContainer</div>
+            <div id="middleSideContainer">
+                <ItemCard/>
+            </div>
+            <div id="rightSideContainer">rightSideContainer</div>
 
         </div>
     </div>
 </template>
 
 <script>
-import NavBar from './NavBar.vue';
+import NavBar from './NavBar.vue'; 
+import ItemCard from './ItemCard.vue'
 export default {
     components:{
-        NavBar
+        NavBar,
+        ItemCard
     }
 }
 </script>

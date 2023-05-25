@@ -17,7 +17,7 @@
             </div>
             <div id="rightSideContainer">
                 rightSideContainer
-                <div id="compareCartTest">
+                <div id="compareCartContainer">
                     compareCartView
                 </div>
             </div>
@@ -54,10 +54,11 @@ export default {
     display: flex;
     width: 100%;
     max-width: 300px;
+    margin-left: 20px;
     background-color: blue;
     
 }
-#compareCartTest {
+#compareCartContainer {
     position: fixed;
     background-color: pink;
     width: 100%;

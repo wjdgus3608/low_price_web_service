@@ -1,14 +1,26 @@
 <template>
     <div id="itemListPage">
         <NavBar/>
-        <div id="itemListPageContainer">
             <div id="leftSideContainer">leftSideContainer</div>
             <div id="middleSideContainer">
                 <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
+                <ItemCard/>
             </div>
-            <div id="rightSideContainer">rightSideContainer</div>
-
-        </div>
+            <div id="rightSideContainer">
+                rightSideContainer
+                <div id="compareCartTest">
+                    compareCartView
+                </div>
+            </div>
     </div>
 </template>
 
@@ -24,17 +36,32 @@ export default {
 </script>
 
 <style scoped>
-#itemListPageContainer {
+#itemListPage {
     display: flex;
+    justify-content: center;
+    overflow: hidden;
     margin: 70px 30px;
 }
 #leftSideContainer {
-    flex-grow: 1;
+    width: 100%;
+    max-width: 100px;
 }
 #middleSideContainer {
-    flex-grow: 10;
+    width: 100%;
+    max-width: 750px;
 }
 #rightSideContainer {
-    flex-grow: 3;
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    background-color: blue;
+    
+}
+#compareCartTest {
+    position: fixed;
+    background-color: pink;
+    width: 100%;
+    max-width: 300px;
+    height: 600px;
 }
 </style>

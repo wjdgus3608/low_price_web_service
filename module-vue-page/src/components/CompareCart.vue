@@ -1,6 +1,11 @@
 <template>
     <div id="compareCart">
         <CartItemCard/>
+        <CartItemCard/>
+        <CartItemCard/>
+        <CartItemCard/>
+        <CartItemCard/>
+        <CartItemCard/>
     </div>
 </template>
 
@@ -15,6 +20,7 @@ export default {
 
 <style scoped>
 #compareCart {
+    /* overflow: scroll; */
 }
 
 </style>

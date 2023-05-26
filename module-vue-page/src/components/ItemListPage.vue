@@ -19,6 +19,7 @@
                 rightSideContainer
                 <div id="compareCartContainer">
                     compareCartView
+                    <CompareCart/>
                 </div>
             </div>
     </div>
@@ -27,10 +28,12 @@
 <script>
 import NavBar from './NavBar.vue'; 
 import ItemCard from './ItemCard.vue'
+import CompareCart from './CompareCart.vue';
 export default {
     components:{
         NavBar,
-        ItemCard
+        ItemCard,
+        CompareCart
     }
 }
 </script>

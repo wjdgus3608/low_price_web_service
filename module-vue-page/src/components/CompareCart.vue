@@ -20,7 +20,8 @@ export default {
 
 <style scoped>
 #compareCart {
-    /* overflow: scroll; */
+    overflow: scroll;
+    height: 600px;
 }
 
 </style>

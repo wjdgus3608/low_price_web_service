@@ -10,6 +10,7 @@
                 <p class="card-text" id="cartItemDes">상품설명</p>
                 <p class="card-text" id="cartItemBrand"><small class="text-muted">브랜드</small></p>
             </div>
+           
         </div>
     </div>
 </template>
@@ -30,6 +31,7 @@ export default {
     display: flex;
     justify-content: center;
 }
+
 
 img {
     width: 130px;

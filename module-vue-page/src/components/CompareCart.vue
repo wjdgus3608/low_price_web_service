@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style scoped>
+
 #compareCartItemContainer {
     width: 100%;
     overflow: scroll;
@@ -36,6 +37,5 @@ export default {
 }
 
 #compareCartToolContainer {
-    background-color: green;
 }
 </style>

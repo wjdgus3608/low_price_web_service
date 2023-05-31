@@ -17,7 +17,9 @@
                             <p class="card-text" id="contentBrand"><small class="text-muted">브랜드</small></p>
                         </div>
                         <div id="itemCardToolContainer">
-                            <button class="btn btn-primary">담기</button>
+                            <button class="btn btn-primary btn-sm">
+                                <img id="cartImg" src="../assets/cartImg.png" alt="addToCart">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -42,9 +44,15 @@ export default {
 
 #itemCardToolContainer {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
 
+}
+
+#cartImg {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 /* #contentsContainer {

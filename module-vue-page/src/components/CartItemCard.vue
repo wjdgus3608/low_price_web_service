@@ -26,8 +26,7 @@ export default {
 <style scoped>
 #cartItemCard {
     display: flex;
-    padding: 20px;
-    background-color: gray;
+    padding: 5px;
 }
 
 #cartItemImgContainer {

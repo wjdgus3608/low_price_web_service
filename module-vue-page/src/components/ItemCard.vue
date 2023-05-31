@@ -38,8 +38,6 @@ export default {
 <style scoped>
 #itemCard {
     display: flex;
-    padding: 20px;
-    background-color: gray;
 }
 
 #itemCardToolContainer {

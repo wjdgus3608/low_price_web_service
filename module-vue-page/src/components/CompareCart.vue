@@ -32,7 +32,7 @@ export default {
 #compareCartItemContainer {
     width: 100%;
     overflow: scroll;
-    height: 550px;
+    height: 650px;
 }
 
 #compareCartToolContainer {

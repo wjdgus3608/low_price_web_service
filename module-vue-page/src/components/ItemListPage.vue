@@ -1,7 +1,7 @@
 <template>
     <div id="itemListPage">
         <NavBar/>
-            <div id="leftSideContainer">leftSideContainer</div>
+            <div id="leftSideContainer"></div>
             <div id="middleSideContainer">
                 <ItemCard/>
                 <ItemCard/>
@@ -16,7 +16,7 @@
                 <ItemCard/>
             </div>
             <div id="rightSideContainer">
-                rightSideContainer
+                
                 <div id="compareCartContainer">
                     <span style="font-size: medium">비교 바구니</span>
                     <button id="cartClearBtn" class="btn btn-primary btn-sm">전체 비우기</button>
@@ -59,12 +59,10 @@ export default {
     width: 100%;
     max-width: 300px;
     margin-left: 20px;
-    background-color: blue;
     
 }
 #compareCartContainer {
     position: fixed;
-    background-color: pink;
     width: 100%;
     max-width: 300px;
     height: 600px;

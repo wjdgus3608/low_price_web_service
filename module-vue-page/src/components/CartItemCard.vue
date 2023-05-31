@@ -10,7 +10,9 @@
                 <p class="card-text" id="cartItemDes">상품설명</p>
                 <p class="card-text" id="cartItemBrand"><small class="text-muted">브랜드</small></p>
             </div>
-           
+            <div id="cartItemToolContainer">
+                <button class="btn btn-primary btn-close"></button>
+            </div>
         </div>
     </div>
 </template>
@@ -27,9 +29,17 @@ export default {
     padding: 20px;
     background-color: gray;
 }
+
 #cartItemImgContainer {
     display: flex;
     justify-content: center;
+}
+
+#cartItemToolContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+
 }
 
 

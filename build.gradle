@@ -40,10 +40,10 @@ subprojects {
 
 	// 관리하는 모듈에 공통 dependencies
 	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 		implementation 'org.springframework.boot:spring-boot-starter-validation'
-		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 		implementation 'mysql:mysql-connector-java'
 
 		compileOnly 'org.projectlombok:lombok'
@@ -101,6 +101,8 @@ project(':domain') {
 		implementation project(':common')
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	}
 }
@@ -111,7 +113,8 @@ project(':module-user') {
 		implementation project(':domain')
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	}
 }
@@ -123,6 +126,8 @@ project(':module-api-usage') {
 		implementation 'redis.clients:jedis:4.3.1'
 		implementation 'org.springframework.boot:spring-boot-starter-batch'
 		implementation 'org.springframework.boot:spring-boot-starter-quartz'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	}
 }
@@ -135,6 +140,7 @@ project(':module-product') {
 		implementation 'com.h2database:h2:2.1.214'
 		implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	}
 }
 
@@ -142,6 +148,8 @@ project(':module-comparecart') {
 	dependencies {
 		implementation project(':common')
 		implementation project(':domain')
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	}
 }
 
@@ -150,13 +158,14 @@ project(':module-filterkeyword') {
 		implementation project(':common')
 		implementation project(':domain')
 		implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	}
 }
 
 project(':module-webpage') {
 	dependencies {
 		implementation project(':common')
-		implementation project(':domain')
-		implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.3'
+//		implementation project(':domain')
 	}
 }

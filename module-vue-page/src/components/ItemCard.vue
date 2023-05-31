@@ -18,7 +18,6 @@
                         </div>
                         <div id="itemCardToolContainer">
                             <button class="btn btn-primary">담기</button>
-                            <button class="btn btn-primary">X</button>
                         </div>
                     </div>
                 </div>

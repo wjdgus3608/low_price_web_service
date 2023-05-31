@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 #compareCartItemContainer {
+    width: 100%;
     overflow: scroll;
     height: 550px;
 }

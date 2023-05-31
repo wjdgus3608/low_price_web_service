@@ -18,7 +18,8 @@
             <div id="rightSideContainer">
                 rightSideContainer
                 <div id="compareCartContainer">
-                    compareCartView
+                    <span style="font-size: medium">비교 바구니</span>
+                    <button id="cartClearBtn" class="btn btn-primary btn-sm">전체 비우기</button>
                     <CompareCart/>
                 </div>
             </div>
@@ -67,5 +68,10 @@ export default {
     width: 100%;
     max-width: 300px;
     height: 600px;
+}
+#cartClearBtn{
+    float: right;
+    font-size: small;
+
 }
 </style>

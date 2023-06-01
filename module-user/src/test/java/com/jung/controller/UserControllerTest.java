@@ -52,7 +52,7 @@ class UserControllerTest {
 
         String strEntity = objectMapper.writeValueAsString(this.userDTO);
         //when
-        mockMvc.perform(MockMvcRequestBuilders.post("/new-user")
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
                 .content(strEntity)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -72,7 +72,7 @@ class UserControllerTest {
                 .build();
         String strEntity = objectMapper.writeValueAsString(dto);
         //when
-        mockMvc.perform(MockMvcRequestBuilders.post("/new-user")
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
                 .content(strEntity)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))

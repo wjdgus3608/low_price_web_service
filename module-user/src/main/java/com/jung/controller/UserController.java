@@ -26,7 +26,7 @@ public class UserController {
 
     private static final JSONParser parser = new JSONParser();
 
-    @PostMapping("/new-user")
+    @PostMapping("/user")
     public ResponseEntity<?> signUp(@RequestBody @Valid UserDTO userDTO){
         return userService.signUp(userDTO);
     }

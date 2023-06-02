@@ -78,7 +78,7 @@ class UserServiceTest {
         //given
         //when
         //than
-        assertFalse(userService.signIn(this.userDTO.getUserId(), "abc"));
+        assertFalse(userService.signIn(this.userDTO.getUserId(), "abc").isPresent());
     }
 
     @Test
@@ -88,7 +88,7 @@ class UserServiceTest {
         //given
         //when
         //than
-        assertFalse(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()));
+        assertFalse(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()).isPresent());
     }
 
     @Test
@@ -99,7 +99,7 @@ class UserServiceTest {
         userService.approveUser(this.userDTO.getUserId());
         //when
         //than
-        assertTrue(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()));
+        assertTrue(userService.signIn(this.userDTO.getUserId(), this.userDTO.getUserPw()).isPresent());
     }
 
     @Test

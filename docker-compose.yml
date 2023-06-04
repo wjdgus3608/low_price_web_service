@@ -24,3 +24,8 @@ services:
     environment:
      - MYSQL_DATABASE=apiusage
      - MYSQL_ROOT_PASSWORD=qwer1234!!
+  redis_container:
+    image: redis
+    container_name: product_db_redis
+    ports:
+      - 3304:6379

@@ -4,6 +4,7 @@ package com.jung.domain.user;
 import com.jung.domain.BaseEntity;
 import javax.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -22,6 +23,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String userName;
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("USER")
     private UserType userType;
     @Enumerated(EnumType.STRING)
     private ApprovalState state;

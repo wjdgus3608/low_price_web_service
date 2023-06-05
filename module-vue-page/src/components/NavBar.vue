@@ -7,7 +7,7 @@
             <a class="navbar-brand" href="#">
                 <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
                     class="d-inline-block align-text-top">
-                OOO 님
+                {{}} 님
             </a>
             <button class="btn btn-outline-success me-2 text-white border-white btn-sm" type="button">로그아웃</button>
         </nav>
@@ -19,6 +19,11 @@ import SearchBar from './SearchBar.vue';
 export default {
     components:{
         SearchBar
+    },
+    data(){
+        return{
+            // user: this.$session.get
+        }
     }
 }
 </script>

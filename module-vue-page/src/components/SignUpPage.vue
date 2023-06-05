@@ -53,8 +53,10 @@ export default {
                 userPw: this.userPw,
                 userName: this.userName
             })
-                .then(response => {
-                    console.log(response.data);
+                .then(() => {
+                    console.log("회원가입 요청 성공");
+                    alert("회원가입 신청이 완료되었습니다.\n 승인완료 후 사용가능합니다.");
+                    this.$router.push('/');
                 })
                 .catch(error => {
                     console.error(error);

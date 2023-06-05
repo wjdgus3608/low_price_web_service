@@ -42,8 +42,9 @@ export default {
                 userId: this.userId,
                 userPw: this.password,
             })
-                .then(response => {
-                    console.log(response.data);
+                .then(() => {
+                    console.log("로그인 성공");
+                    this.$router.push('/search-page');
                 })
                 .catch(error => {
                     console.error(error);

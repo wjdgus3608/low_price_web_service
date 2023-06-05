@@ -28,8 +28,13 @@ public class UserService {
     }
 
     public Optional<String> signIn(String userId, String userPw){
+        Optional<User> user = findUserById(userId);
+        boolean isAdmin = false;
+        if(user.isPresent()){
+            isAdmin = user.get().getUserType().equals(UserType.ADMIN);
+        }
 
-        if(!isIdAndPwCorrect(userId,userPw) || !isApproved(userId)){
+        if(!isIdAndPwCorrect(userId,userPw) || (!isAdmin && !isApproved(userId))){
             return Optional.empty();
         }
 

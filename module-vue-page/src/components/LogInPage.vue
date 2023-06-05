@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'LoginView',
     data() {
@@ -30,9 +32,28 @@ export default {
         signUp() {
             this.$router.push('/signup-page');
         },
-        submitForm() {
-            console.log(this.userId);
-            console.log(this.password);
+        submitForm(event) {
+            event.preventDefault();
+            if(!this.checkForm()){
+                return;
+            }
+            
+            axios.post('http://localhost:6060/user/auth', {
+                userId: this.userId,
+                userPw: this.password,
+            })
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        checkForm(){
+            if(!this.userId || !this.password){
+                return false;
+            }
+            return true;
         }
     }
 }

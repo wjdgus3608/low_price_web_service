@@ -43,7 +43,6 @@ class UserControllerTest {
                 .userId("user1")
                 .userPw("pw1")
                 .userName("John")
-                .userType(UserType.USER)
                 .build();
         this.loginDTO = LoginDTO.builder()
                 .userId("user1")
@@ -68,7 +67,6 @@ class UserControllerTest {
                 .userId("user2")
                 .userPw("pw2")
                 .userName("Mike")
-                .userType(UserType.USER)
                 .build();
         String strEntity = objectMapper.writeValueAsString(dto);
         //when
@@ -189,7 +187,6 @@ class UserControllerTest {
                 .userId("user3")
                 .userPw("pw1")
                 .userName("John")
-                .userType(UserType.USER)
                 .build();
         //when
         //then

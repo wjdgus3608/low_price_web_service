@@ -30,7 +30,6 @@ class UserServiceTest {
                 .userId("user1")
                 .userPw("pw1")
                 .userName("John")
-                .userType(UserType.USER)
                 .build();
         userService.signUp(this.userDTO);
     }
@@ -43,7 +42,6 @@ class UserServiceTest {
                 .userId("user2")
                 .userPw("pw2")
                 .userName("Cane")
-                .userType(UserType.USER)
                 .build();
         userService.signUp(dto);
         //when
@@ -62,7 +60,6 @@ class UserServiceTest {
                 .userId("user1")
                 .userPw("pw2")
                 .userName("Cane")
-                .userType(UserType.USER)
                 .build();
 
         //when

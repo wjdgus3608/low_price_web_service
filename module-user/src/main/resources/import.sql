@@ -1,0 +1,1 @@
+INSERT INTO my_user (user_id, user_pw, user_name,user_type,state) VALUES ('admin', 'admin', 'admin','ADMIN','ACCEPTED');

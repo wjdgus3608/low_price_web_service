@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Getter
 //ColumnDefault 기능 작동하려면 필요
 @DynamicInsert
-@Table(name = "myuser")
+@Table(name = "my_user")
 public class User extends BaseEntity {
     @Id
     @Column(nullable = false)
@@ -26,9 +26,10 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String userName;
     @Enumerated(EnumType.STRING)
-    @ColumnDefault(value = "USER")
+    @ColumnDefault(value = "'USER'")
     private UserType userType;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ApprovalState state;
 
     public void approve(){

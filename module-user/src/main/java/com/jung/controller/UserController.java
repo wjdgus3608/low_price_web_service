@@ -43,12 +43,11 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
 
-        session.setAttribute("sessionValue",sessionValue.get());
-
-        Optional<User> findUser = userService.findUserById(loginDTO.getUserId());
-        findUser.ifPresent((user)->session.setAttribute("loginUser", user));
+//        session.setAttribute("sessionValue",sessionValue.get());
+//        Optional<User> findUser = userService.findUserById(loginDTO.getUserId());
+//        findUser.ifPresent((user)->session.setAttribute("loginUser", user));
         
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(sessionValue);
     }
 
     @DeleteMapping("/user/auth")

@@ -38,12 +38,12 @@ public class UserService {
             return Optional.empty();
         }
 
-        Optional<UserSession> userSession = findUserSessionById(userId);
+        Optional<UserSession> userSession = findUserSessionByUserId(userId);
         return userSession.map(UserSession::getSessionValue).or(() -> Optional.of(generateUserSession()));
     }
 
     public boolean logOut(String userId){
-        Optional<UserSession> userSession = findUserSessionById(userId);
+        Optional<UserSession> userSession = findUserSessionByUserId(userId);
         if(userSession.isPresent()) {
             userSessionRepository.delete(userSession.get());
             return true;
@@ -67,10 +67,10 @@ public class UserService {
     public Optional<UserSession> findUserSessionBySession(String sessionValue){ return userSessionRepository.findById(sessionValue);}
     public Optional<User> findUserBySession(String sessionValue){
         Optional<UserSession> userSessionBySession = findUserSessionBySession(sessionValue);
-        if(userSessionBySession.isPresent()){
-            return findUserById(userSessionBySession.get().getUserId());
-        }
-        return Optional.empty();
+
+        return findUserById(userSessionBySession
+                .map(UserSession::getUserId).
+                orElse(null));
     }
 
     public boolean checkUserSessionExist(String sessionValue){ return userSessionRepository.existsById(sessionValue);}

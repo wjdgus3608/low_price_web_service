@@ -7,6 +7,7 @@ import com.jung.domain.user.UserDTO;
 import com.jung.service.UserService;
 import com.jung.utils.RandomSessionIdGenerator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
     private final UserService userService;
@@ -43,8 +45,9 @@ public class UserController {
     }
 
     @PostMapping("/user/session")
-    public ResponseEntity<?> signInWithSession(@RequestBody String sessionValue) {
-        Optional<User> user = userService.findUserBySession(sessionValue);
+    public ResponseEntity<?> signInWithSession(@RequestBody String sessionValue) throws ParseException {
+        JSONObject obj = (JSONObject) parser.parse(sessionValue);
+        Optional<User> user = userService.findUserBySession((String)obj.get("sessionValue"));
         if(user.isPresent()){
             return ResponseEntity.ok(user.get());
         }

@@ -2,6 +2,7 @@ package com.jung.service;
 
 import com.jung.domain.user.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -26,7 +27,7 @@ public class UserService {
         userRepository.save(userDTO.dtoToEntity(userDTO));
         return ResponseEntity.ok().build();
     }
-
+    @Transactional
     public Optional<String> signIn(String userId, String userPw){
         Optional<User> user = findUserById(userId);
         boolean isAdmin = false;
@@ -39,8 +40,17 @@ public class UserService {
         }
 
         Optional<UserSession> userSession = findUserSessionByUserId(userId);
-        return userSession.map(UserSession::getSessionValue).or(() -> Optional.of(generateUserSession()));
+        userSession.ifPresent(session -> userSessionRepository.deleteById(session.getSessionValue()));
+
+        String sessionValue = generateUserSession();
+        userSessionRepository.save(UserSession.builder()
+                        .sessionValue(sessionValue)
+                        .userId(userId)
+                        .build());
+
+        return Optional.ofNullable(sessionValue);
     }
+    @Transactional
 
     public boolean logOut(String userId){
         Optional<UserSession> userSession = findUserSessionByUserId(userId);
@@ -67,10 +77,11 @@ public class UserService {
     public Optional<UserSession> findUserSessionBySession(String sessionValue){ return userSessionRepository.findById(sessionValue);}
     public Optional<User> findUserBySession(String sessionValue){
         Optional<UserSession> userSessionBySession = findUserSessionBySession(sessionValue);
-
+        log.info(sessionValue+" = sessionValue");
+        log.info(userSessionBySession.isPresent()+"");
         return findUserById(userSessionBySession
-                .map(UserSession::getUserId).
-                orElse(null));
+                .map(UserSession::getUserId)
+                .orElse(null));
     }
 
     public boolean checkUserSessionExist(String sessionValue){ return userSessionRepository.existsById(sessionValue);}

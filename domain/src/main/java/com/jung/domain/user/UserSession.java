@@ -11,6 +11,6 @@ import org.springframework.data.redis.core.RedisHash;
 @Getter
 public class UserSession {
     @Id
-    private final String sessionValue;
-    private final String userId;
+    private String sessionValue;
+    private String userId;
 }

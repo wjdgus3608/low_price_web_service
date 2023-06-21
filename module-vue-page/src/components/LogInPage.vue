@@ -28,6 +28,13 @@ export default {
             password: ''
         }
     },
+    created(){
+        const sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
+
+        if(sessionValue!==undefined){
+            this.callGetUserBySession(sessionValue);
+        }
+    },
     methods: {
         signUp() {
             this.$router.push('/signup-page');
@@ -38,28 +45,43 @@ export default {
                 return;
             }
 
-            axios.post('http://localhost:6060/user/auth', {
-                userId: this.userId,
-                userPw: this.password,
-            })
-                .then(response => {
-                    console.log("로그인 성공");
-                    console.log(response.data)
-                    
-                    sessionStorage.setItem('user', JSON.stringify(userObject));
-                    const user = JSON.parse(sessionStorage.getItem('user'));
-
-                    this.$router.push('/search-page');
-                })
-                .catch(error => {
-                    console.error(error);
-                });
+            this.callGetSession(this.userId, this.password);
         },
         checkForm() {
             if (!this.userId || !this.password) {
                 return false;
             }
             return true;
+        },
+        callGetSession(userId, password){
+            axios.post('http://localhost:6060/user/auth', {
+                userId: userId,
+                userPw: password,
+            })
+                .then(response => {
+                    console.log("로그인 성공");
+                    sessionStorage.setItem('sessionValue', JSON.stringify(response.data));
+
+                    const sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
+                    this.callGetUserBySession(sessionValue);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        callGetUserBySession(sessionValue){
+            axios.post('http://localhost:6060/user/session', {
+                sessionValue: sessionValue,
+            })
+                .then(response => {
+                    console.log("세션 로그인 성공");
+                    sessionStorage.setItem('loginUser', JSON.stringify(response.data));
+
+                    this.$router.push('/search-page');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     }
 }

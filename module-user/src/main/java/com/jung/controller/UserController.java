@@ -32,11 +32,8 @@ public class UserController {
     }
 
     @PostMapping("/user/auth")
-    public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
-        String sessionStr = (String) session.getAttribute("sessionValue");
-        if(sessionStr!=null && userService.checkUserSessionExist(sessionStr)){
-            return ResponseEntity.ok().build();
-        }
+    public ResponseEntity<?> signIn(@RequestBody @Valid LoginDTO loginDTO) {
+
 
         Optional<String> sessionValue = userService.signIn(loginDTO.getUserId(), loginDTO.getUserPw());
         if (sessionValue.isEmpty()){
@@ -48,6 +45,13 @@ public class UserController {
 //        findUser.ifPresent((user)->session.setAttribute("loginUser", user));
         
         return ResponseEntity.ok(sessionValue);
+    }
+
+    @PostMapping("/user/session")
+    public ResponseEntity<?> signInWithSession(@RequestBody String sessionValue) {
+        if(sessionValue!=null && userService.checkUserSessionExist(sessionValue)){
+            return ResponseEntity.ok().build();
+        }
     }
 
     @DeleteMapping("/user/auth")

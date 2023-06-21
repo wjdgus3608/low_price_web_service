@@ -34,10 +34,10 @@ export default {
         },
         submitForm(event) {
             event.preventDefault();
-            if(!this.checkForm()){
+            if (!this.checkForm()) {
                 return;
             }
-            
+
             axios.post('http://localhost:6060/user/auth', {
                 userId: this.userId,
                 userPw: this.password,
@@ -45,14 +45,18 @@ export default {
                 .then(response => {
                     console.log("로그인 성공");
                     console.log(response.data)
+                    
+                    sessionStorage.setItem('user', JSON.stringify(userObject));
+                    const user = JSON.parse(sessionStorage.getItem('user'));
+
                     this.$router.push('/search-page');
                 })
                 .catch(error => {
                     console.error(error);
                 });
         },
-        checkForm(){
-            if(!this.userId || !this.password){
+        checkForm() {
+            if (!this.userId || !this.password) {
                 return false;
             }
             return true;
@@ -73,6 +77,4 @@ export default {
 #loginBtn {
     float: right;
 }
-
-
 </style>

@@ -63,9 +63,19 @@ public class UserService {
         return userRepository.findByUserId(userId);
     }
 
-    public Optional<UserSession> findUserSessionById(String userId){ return userSessionRepository.findById(userId); }
+    public Optional<UserSession> findUserSessionByUserId(String userId){ return userSessionRepository.findByUserId(userId); }
+    public Optional<UserSession> findUserSessionBySession(String sessionValue){ return userSessionRepository.findById(sessionValue);}
+    public Optional<User> findUserBySession(String sessionValue){
+        Optional<UserSession> userSessionBySession = findUserSessionBySession(sessionValue);
+        if(userSessionBySession.isPresent()){
+            return findUserById(userSessionBySession.get().getUserId());
+        }
+        return Optional.empty();
+    }
 
     public boolean checkUserSessionExist(String sessionValue){ return userSessionRepository.existsById(sessionValue);}
+
+
 
     private String generateUserSession(){
         return UUID.randomUUID().toString();

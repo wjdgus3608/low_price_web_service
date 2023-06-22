@@ -51,7 +51,6 @@ public class UserService {
         return Optional.ofNullable(sessionValue);
     }
     @Transactional
-
     public boolean logOut(String userId){
         Optional<UserSession> userSession = findUserSessionByUserId(userId);
         if(userSession.isPresent()) {

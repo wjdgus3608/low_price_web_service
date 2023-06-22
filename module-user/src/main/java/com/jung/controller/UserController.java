@@ -54,14 +54,10 @@ public class UserController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/user/auth")
-    public ResponseEntity<?> logOut(HttpSession httpSession){
-        User user = (User) httpSession.getAttribute("loginUser");
-        if(user != null){
-            httpSession.invalidate();
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.badRequest().build();
+    @DeleteMapping("/user/session")
+    public ResponseEntity<?> logOut(@RequestBody String userId){
+        userService.logOut(userId);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/user/approval")

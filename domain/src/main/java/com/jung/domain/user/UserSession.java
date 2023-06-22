@@ -7,7 +7,7 @@ import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
 
-@RedisHash("user_sessions")
+@RedisHash(value = "user_sessions", timeToLive = 1200L)
 @Builder
 @Getter
 public class UserSession {

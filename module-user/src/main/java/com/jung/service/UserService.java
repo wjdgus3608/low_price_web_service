@@ -52,7 +52,9 @@ public class UserService {
     }
     @Transactional
     public boolean logOut(String userId){
+
         Optional<UserSession> userSession = findUserSessionByUserId(userId);
+
         if(userSession.isPresent()) {
             userSessionRepository.delete(userSession.get());
             return true;
@@ -76,8 +78,6 @@ public class UserService {
     public Optional<UserSession> findUserSessionBySession(String sessionValue){ return userSessionRepository.findById(sessionValue);}
     public Optional<User> findUserBySession(String sessionValue){
         Optional<UserSession> userSessionBySession = findUserSessionBySession(sessionValue);
-        log.info(sessionValue+" = sessionValue");
-        log.info(userSessionBySession.isPresent()+"");
         return findUserById(userSessionBySession
                 .map(UserSession::getUserId)
                 .orElse(null));

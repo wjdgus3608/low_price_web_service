@@ -55,7 +55,9 @@ public class UserController {
     }
 
     @PostMapping("/user/logout")
-    public ResponseEntity<?> logOut(@RequestBody String userId){
+    public ResponseEntity<?> logOut(@RequestBody String requestBody) throws ParseException {
+        JSONObject obj = (JSONObject) parser.parse(requestBody);
+        String userId = (String)obj.get("userId");
         userService.logOut(userId);
         return ResponseEntity.ok().build();
     }

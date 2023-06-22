@@ -30,8 +30,7 @@ export default {
     },
     created(){
         const sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
-
-        if(sessionValue!==undefined){
+        if(sessionValue!==null){
             this.callGetUserBySession(sessionValue);
         }
     },

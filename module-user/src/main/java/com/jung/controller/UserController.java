@@ -54,7 +54,7 @@ public class UserController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/user/session")
+    @PostMapping("/user/logout")
     public ResponseEntity<?> logOut(@RequestBody String userId){
         userService.logOut(userId);
         return ResponseEntity.ok().build();

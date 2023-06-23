@@ -37,3 +37,11 @@ services:
     environment:
      - MYSQL_DATABASE=filter_keyword
      - MYSQL_ROOT_PASSWORD=qwer1234!
+  module_user:
+    image: openjdk
+    container_name: module_user
+    command: "java -jar /usr/src/myapp/module-user.jar"
+    ports:
+     - "6301:6301"
+    volumes:
+     - ./module-user/build/libs:/usr/src/myapp

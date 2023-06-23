@@ -23,7 +23,6 @@
 hs_err_pid*
 
 # custom
-application-prod.propertie
 **/test-results/
 **/reports/
 **/jacoco/

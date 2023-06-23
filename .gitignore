@@ -23,6 +23,7 @@
 hs_err_pid*
 
 # custom
+**/libs/
 **/test-results/
 **/reports/
 **/jacoco/

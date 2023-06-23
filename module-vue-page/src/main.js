@@ -12,7 +12,7 @@ app.config.globalProperties.$getUserBaseUrl = function () {
 };
 
 app.config.globalProperties.$getFilterKeywordBaseUrl = function () {
-    return 'http://localhost:6301';
+    return 'http://localhost:6305';
 };
 
 app.mount('#app');

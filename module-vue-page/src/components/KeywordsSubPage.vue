@@ -21,9 +21,32 @@
 
 <script>
 import KeywordCard from './KeywordCard.vue';
+import axios from 'axios';
+
 export default {
+    props:['loginUser','sessionValue'],
+    created(){
+        this.callGetKeywords(this.loginUser.userId);
+    },
+    data(){
+        return{
+            filterKeywords:''
+        }
+    },
     components: {
         KeywordCard
+    },
+    methods:{
+        callGetKeywords(userId){
+            axios.get('http://localhost:6060/filter-keywords/'+userId)
+                .then((response) => {
+                    console.log("필터키워드 로드 성공");
+                    this.filterKeywords = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
     }
     
 }

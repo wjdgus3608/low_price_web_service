@@ -17,6 +17,10 @@ import java.util.Optional;
 public class FilterKeywordController {
     private final FilterKeywordService filterKeywordService;
 
+    @GetMapping("/filter-keywords/{ownerId}")
+    public ResponseEntity<?> searchKeywordByOwnerId(@PathVariable String ownerId){
+        return ResponseEntity.ok(filterKeywordService.searchKeywordByOwnerId(ownerId));
+    }
     @PostMapping("/filter-keyword")
     public ResponseEntity<?> generateFilterKeyword(@RequestBody FilterKeywordDTO keywordDTO){
         return filterKeywordService.generateFilterKeyword(keywordDTO);

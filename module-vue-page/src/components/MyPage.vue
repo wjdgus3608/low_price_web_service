@@ -6,7 +6,7 @@
                 <MyMenu/>
             </div>
             <div id="subPageContainer">
-                <KeywordsSubPage v-if="menuNum===0"/>
+                <KeywordsSubPage v-if="menuNum===0" :login-user="loginUser" :session-value="sessionValue"/>
                  <AdminSubPage v-if="menuNum===1"/>
             </div>
         </div>

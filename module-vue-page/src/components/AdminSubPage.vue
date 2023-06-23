@@ -50,7 +50,6 @@ export default {
             axios.get('http://localhost:6060/users')
                 .then((response) => {
                     this.users = response.data;
-                    console.log(response.data);
                 })
                 .catch(error => {
                     console.error(error);

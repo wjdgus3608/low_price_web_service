@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -15,6 +16,9 @@ import java.util.Optional;
 public class FilterKeywordService {
     private final FilterKeywordRepository filterKeywordRepository;
 
+    public List<FilterKeyword> searchKeywordByOwnerId(String ownerId){
+        return filterKeywordRepository.findByOwnerId(ownerId);
+    }
     public Optional<FilterKeyword> searchKeywordByInfo(KeywordSearchInfo keywordSearchInfo){
         return filterKeywordRepository.findByOwnerIdAndSearchKeyword(
                 keywordSearchInfo.getOwnerId(),

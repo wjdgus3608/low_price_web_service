@@ -2,7 +2,6 @@ version: '2'
 services:
   mysql_user:
     image: mysql
-    container_name: user_db_mysql
     ports:
      - "3301:3306"
     environment:
@@ -24,7 +23,7 @@ services:
     environment:
      - MYSQL_DATABASE=apiusage
      - MYSQL_ROOT_PASSWORD=qwer1234!
-  redis_container:
+  redis_product:
     image: redis
     container_name: product_db_redis
     ports:
@@ -37,6 +36,10 @@ services:
     environment:
      - MYSQL_DATABASE=filter_keyword
      - MYSQL_ROOT_PASSWORD=qwer1234!
+  redis_user:
+    image: redis
+    ports:
+      - 3307:6379
   module_user:
     image: openjdk
     container_name: module_user
@@ -45,3 +48,6 @@ services:
      - "6301:6301"
     volumes:
      - ./module-user/build/libs:/usr/src/myapp
+    depends_on:
+      - redis_user
+      - mysql_user

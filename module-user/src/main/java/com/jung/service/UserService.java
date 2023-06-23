@@ -71,7 +71,7 @@ public class UserService {
     }
 
     public List<?> findAllUser(){
-        return userRepository.findAll();
+        return userRepository.findByUserType(UserType.USER);
     }
 
     public Optional<User> findUserById(String userId){

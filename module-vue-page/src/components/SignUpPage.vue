@@ -48,7 +48,7 @@ export default {
                 return;
             }
             
-            axios.post('http://localhost:6060/user', {
+            axios.post(this.$getUserBaseUrl()+'/user', {
                 userId: this.userId,
                 userPw: this.userPw,
                 userName: this.userName

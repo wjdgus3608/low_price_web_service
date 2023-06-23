@@ -32,7 +32,7 @@ export default {
             this.$router.push('/');
         },
         callLogout(userId){
-            axios.post('http://localhost:6060/user/logout', {
+            axios.post(this.$getUserBaseUrl()+'/user/logout', {
                 userId: userId,
             })
                 .then(() => {

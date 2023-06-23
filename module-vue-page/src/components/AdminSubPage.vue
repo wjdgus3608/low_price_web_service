@@ -47,7 +47,7 @@ export default {
             
         },
         callAllUsers(){
-            axios.get('http://localhost:6060/users')
+            axios.get(this.$getUserBaseUrl()+'/users')
                 .then((response) => {
                     this.users = response.data;
                 })
@@ -56,7 +56,7 @@ export default {
                 });
         },
         callApproveUser(userId){
-            axios.post('http://localhost:6060/user/approval',{
+            axios.post(this.$getUserBaseUrl()+'/user/approval',{
                 userId: userId
             })
                 .then(() => {

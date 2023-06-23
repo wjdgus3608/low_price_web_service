@@ -53,7 +53,7 @@ export default {
             return true;
         },
         callGetSession(userId, password){
-            axios.post('http://localhost:6060/user/auth', {
+            axios.post(this.$getUserBaseUrl()+'/user/auth', {
                 userId: userId,
                 userPw: password,
             })
@@ -69,7 +69,8 @@ export default {
                 });
         },
         callGetUserBySession(sessionValue){
-            axios.post('http://localhost:6060/user/session', {
+            console.log('session url: '+this.$getUserBaseUrl());
+            axios.post(this.$getUserBaseUrl()+'/user/session', {
                 sessionValue: sessionValue,
             })
                 .then(response => {

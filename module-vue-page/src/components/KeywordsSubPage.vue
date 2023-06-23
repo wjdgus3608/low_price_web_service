@@ -38,7 +38,7 @@ export default {
     },
     methods:{
         callGetKeywords(userId){
-            axios.get('http://localhost:6060/filter-keywords/'+userId)
+            axios.get(this.$getFilterKeywordBaseUrl()+'/filter-keywords/'+userId)
                 .then((response) => {
                     console.log("필터키워드 로드 성공");
                     this.filterKeywords = response.data;

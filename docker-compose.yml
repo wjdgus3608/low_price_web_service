@@ -1,7 +1,8 @@
-version: '2'
+version: '3'
 services:
   mysql_user:
     image: mysql
+    container_name: mysql_user
     ports:
      - "3301:3306"
     environment:
@@ -17,7 +18,7 @@ services:
      - MYSQL_ROOT_PASSWORD=qwer1234
   mysql_api_usage:
     image: mysql
-    container_name: apiusage_db_mysql
+    container_name: mysql_api_usage
     ports:
      - "3303:3306"
     environment:
@@ -25,12 +26,12 @@ services:
      - MYSQL_ROOT_PASSWORD=qwer1234!
   redis_product:
     image: redis
-    container_name: product_db_redis
+    container_name: redis_product
     ports:
       - 3304:6379
   mysql_filter_keyword:
     image: mysql
-    container_name: filter_keyword_db_mysql
+    container_name: mysql_filter_keywor
     ports:
      - "3305:3306"
     environment:
@@ -38,6 +39,7 @@ services:
      - MYSQL_ROOT_PASSWORD=qwer1234!
   redis_user:
     image: redis
+    container_name: redis_user
     ports:
       - 3307:6379
   module_user:

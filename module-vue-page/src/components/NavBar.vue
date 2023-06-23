@@ -7,7 +7,7 @@
             <a class="navbar-brand" href="#">
                 <img src="" alt="" width="30" height="24"
                     class="d-inline-block align-text-top">
-                {{}} 님
+                {{loginUser.userName}} 님
             </a>
             <button class="btn btn-outline-success me-2 text-white border-white btn-sm" type="button" @click="logout">로그아웃</button>
         </nav>
@@ -19,18 +19,22 @@ import SearchBar from './SearchBar.vue';
 import axios from 'axios';
 
 export default {
+    props:['loginUser','sessionValue'],
     components:{
         SearchBar
     },
     data(){
         return{
-            // user: this.$session.get
+           
         }
+    },
+    created(){
+
     },
     methods:{
         logout(){
-            const json = JSON.parse(sessionStorage.getItem('loginUser'));
-            this.callLogout(json.userId);
+            
+            this.callLogout(this.loginUser.userId);
 
             this.initSessionStorage();
             this.$router.push('/');

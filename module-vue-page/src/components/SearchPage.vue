@@ -1,6 +1,6 @@
 <template>
     <div id="searchMain">
-        <NavBar/>
+        <NavBar :login-user="loginUser" :session-value="sessionValue"/>
         <div class="container" id="searchContainer">
             <h3>최저가 검색하기</h3>
             <SearchBar/>
@@ -12,10 +12,21 @@
 import NavBar from './NavBar.vue'
 import SearchBar from './SearchBar.vue'
 export default {
+    created(){
+        this.loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
+        this.sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
+    },
     components: {
         NavBar,
         SearchBar
+    },
+    data(){
+        return{
+            loginUser: '',
+            sessionValue: ''
+        }
     }
+
 }
 </script>
 

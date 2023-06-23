@@ -40,7 +40,7 @@ services:
   module_user:
     image: openjdk
     container_name: module_user
-    command: "java -jar /usr/src/myapp/module-user.jar"
+    command: "java -jar /usr/src/myapp/module-user.jar --spring.config.additional-location=file:/usr/src/myapp/"
     ports:
      - "6301:6301"
     volumes:

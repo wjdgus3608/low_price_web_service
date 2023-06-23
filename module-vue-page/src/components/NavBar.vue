@@ -4,7 +4,7 @@
             <div id="searchBarContainer">
                 <SearchBar/>
             </div>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/my-page">
                 <img src="@/assets/images/userIcon.png" alt="" width="30" height="30"
                     class="d-inline-block align-text-top">
                 {{loginUser.userName}} 님
@@ -22,14 +22,6 @@ export default {
     props:['loginUser','sessionValue'],
     components:{
         SearchBar
-    },
-    data(){
-        return{
-           
-        }
-    },
-    created(){
-
     },
     methods:{
         logout(){

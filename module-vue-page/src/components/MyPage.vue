@@ -1,6 +1,6 @@
 <template>
     <div id="myPage">
-       <NavBar/>
+       <NavBar :login-user="loginUser" :session-value="sessionValue"/>
         <div id="myPageContainer">
             <div id="menuContainer">
                 <MyMenu/>
@@ -34,8 +34,15 @@ export default {
     data(){
         return {
             menuNum: 0,
-            isModelOpen: false
+            isModelOpen: false,
+            loginUser:'',
+            sessionValue:''
         }
+    },
+
+    created(){
+        this.loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
+        this.sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
     },
 
     methods:{

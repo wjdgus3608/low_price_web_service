@@ -69,6 +69,11 @@ public class UserController {
         return userService.approveUser(userId);
     }
 
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers(){
+        return ResponseEntity.ok(userService.findAllUser());
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> findUser(@PathVariable String userId){
         Optional<User> user = userService.findUserById(userId);

@@ -70,6 +70,10 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
+    public List<?> findAllUser(){
+        return userRepository.findAll();
+    }
+
     public Optional<User> findUserById(String userId){
         return userRepository.findByUserId(userId);
     }

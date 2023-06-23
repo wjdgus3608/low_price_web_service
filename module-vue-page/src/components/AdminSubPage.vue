@@ -13,31 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>userId1</td>
-                    <td>홍길동</td>
+                <tr v-for="(user, index) in users" :key="index">
+                    <th scope="row">{{ index+1 }}</th>
+                    <td>{{user.userId}}</td>
+                    <td>{{user.userName}}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">승인</button>
-                    </td>
-                    <td>23.01.01</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>userId2</td>
-                    <td>가나다</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">승인</button>
-                    </td>
-                    <td>23.01.01</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>userId3</td>
-                    <td>누구지</td>
-                    <td>
-                        <button v-if="!isApproved" class="btn btn-primary btn-sm" @click="approveUser">승인</button>
-                        <div v-if="isApproved">승인완료</div>
+                        <button v-if="user.state==='WAIT'" class="btn btn-primary btn-sm" @click="approveUser(user)">승인</button>
+                        <div v-if="user.state==='ACCEPTED'">승인완료</div>
                     </td>
                     <td>23.01.01</td>
                 </tr>
@@ -47,16 +29,42 @@
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
+    created(){
+        this.callAllUsers();
+    },
     data(){
         return{
-            isApproved: false
+            users:''
         }
     },
     methods: {
-        approveUser(){
-            this.isApproved = true;
-            console.log(this.isApproved);
+        approveUser(user){
+            this.callApproveUser(user.userId);
+            user.state = 'ACCEPTED';
+            
+        },
+        callAllUsers(){
+            axios.get('http://localhost:6060/users')
+                .then((response) => {
+                    this.users = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+        callApproveUser(userId){
+            axios.post('http://localhost:6060/user/approval',{
+                userId: userId
+            })
+                .then(() => {
+                    console.log("승인 완료");
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     }
 }

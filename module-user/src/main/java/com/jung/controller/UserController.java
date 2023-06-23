@@ -2,6 +2,7 @@ package com.jung.controller;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.jung.domain.user.LoginDTO;
+import com.jung.domain.user.ResUserDTO;
 import com.jung.domain.user.User;
 import com.jung.domain.user.UserDTO;
 import com.jung.service.UserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +73,12 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers(){
-        return ResponseEntity.ok(userService.findAllUser());
+        List<User> allUser = userService.findAllUser();
+        List<ResUserDTO> resUserDTOList = new ArrayList<>();
+        for(User user:allUser){
+            resUserDTOList.add(ResUserDTO.entityToDTO(user));
+        }
+        return ResponseEntity.ok(resUserDTOList);
     }
 
     @GetMapping("/user/{userId}")

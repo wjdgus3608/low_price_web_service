@@ -70,7 +70,7 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
-    public List<?> findAllUser(){
+    public List<User> findAllUser(){
         return userRepository.findByUserType(UserType.USER);
     }
 

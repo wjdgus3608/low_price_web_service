@@ -21,7 +21,7 @@
                         <button v-if="user.state==='WAIT'" class="btn btn-primary btn-sm" @click="approveUser(user)">승인</button>
                         <div v-if="user.state==='ACCEPTED'">승인완료</div>
                     </td>
-                    <td>23.01.01</td>
+                    <td>{{ user.createdAt }}</td>
                 </tr>
             </tbody>
         </table>
@@ -50,6 +50,7 @@ export default {
             axios.get('http://localhost:6060/users')
                 .then((response) => {
                     this.users = response.data;
+                    console.log(response.data);
                 })
                 .catch(error => {
                     console.error(error);

@@ -11,8 +11,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    private int responseCode;
-    private String responseMessage;
     @NotNull
     private String userId;
     @NotNull

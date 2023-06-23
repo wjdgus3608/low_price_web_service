@@ -23,7 +23,7 @@ services:
      - "3303:3306"
     environment:
      - MYSQL_DATABASE=apiusage
-     - MYSQL_ROOT_PASSWORD=qwer1234!!
+     - MYSQL_ROOT_PASSWORD=qwer1234!
   redis_container:
     image: redis
     container_name: product_db_redis
@@ -33,7 +33,7 @@ services:
     image: mysql
     container_name: filter_keyword_db_mysql
     ports:
-     - "3304:3306"
+     - "3305:3306"
     environment:
      - MYSQL_DATABASE=filter_keyword
-     - MYSQL_ROOT_PASSWORD=qwer1234!!
+     - MYSQL_ROOT_PASSWORD=qwer1234!

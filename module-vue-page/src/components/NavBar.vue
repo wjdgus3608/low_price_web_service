@@ -5,7 +5,7 @@
                 <SearchBar/>
             </div>
             <a class="navbar-brand" href="#">
-                <img src="" alt="" width="30" height="24"
+                <img src="@/assets/images/userIcon.png" alt="" width="30" height="30"
                     class="d-inline-block align-text-top">
                 {{loginUser.userName}} 님
             </a>

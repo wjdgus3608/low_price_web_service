@@ -3,7 +3,10 @@
         <h3>키워드 관리</h3>
         <br><br>
         <div class="row row-cols-3">
-            <div class="col">
+            <div class="col" v-for="(filterKeyword, index) in filterKeywords" :key="index">
+                <KeywordCard :filterKeyword="filterKeyword"/>
+            </div>
+            <!-- <div class="col">
                 <KeywordCard />
             </div>
             <div class="col">
@@ -14,7 +17,7 @@
             </div>
             <div class="col">
                 <KeywordCard />
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

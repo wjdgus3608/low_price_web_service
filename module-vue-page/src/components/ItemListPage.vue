@@ -1,6 +1,6 @@
 <template>
     <div id="itemListPage">
-        <NavBar/>
+        <NavBar :login-user="loginUser" :session-value="sessionValue"/>
             <div id="leftSideContainer"></div>
             <div id="middleSideContainer">
                 <ItemCard/>
@@ -31,6 +31,16 @@ import NavBar from './NavBar.vue';
 import ItemCard from './ItemCard.vue'
 import CompareCart from './CompareCart.vue';
 export default {
+    created(){
+        this.loginUser = JSON.parse(sessionStorage.getItem('loginUser'));
+        this.sessionValue = JSON.parse(sessionStorage.getItem('sessionValue'));
+    },
+    data(){
+        return{
+            loginUser:'',
+            sessionValue:''
+        }
+    },
     components:{
         NavBar,
         ItemCard,
